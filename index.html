@@ -73,6 +73,7 @@ nav.links a:hover { color: var(--text); }
 .hero { padding: 48px 0 56px; }
 .hero h1 { font-size: clamp(34px, 5vw, 52px); line-height: 1.12; letter-spacing: -1px; margin: 0 0 20px; max-width: 760px; }
 .hero p.lead { font-size: 20px; color: var(--muted); max-width: 720px; margin: 0 0 32px; }
+.hero p.note { color: var(--muted); font-size: 15px; margin: 14px 0 0; max-width: 860px; }
 
 .code { background: var(--code-bg); color: var(--code-text); border-radius: 12px; overflow: hidden; max-width: 860px; }
 .code .bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; border-bottom: 1px solid #1E3A41; }
@@ -148,7 +149,7 @@ footer p { margin: 0 0 8px; }
   <div class="hero">
     <div class="wrap">
       <h1>.NET libraries for Chroma and Chroma Cloud</h1>
-      <p class="lead">A client for the Chroma API, a Microsoft.Extensions.VectorData provider, a Testcontainers module and Aspire integrations. Tested with Chroma 0.4.10 to 1.5.9 and with Chroma Cloud.</p>
+      <p class="lead">A client for the Chroma API, a Microsoft.Extensions.VectorData provider, a Testcontainers module and Aspire integrations. The client is tested with Chroma 0.4.10 to 1.5.9 and with Chroma Cloud.</p>
       <div class="code">
         <div class="bar"><span>dotnet add package ChromaDotNet.Client</span><button class="copy" type="button" data-copy="dotnet add package ChromaDotNet.Client">Copy</button></div>
 <pre><code><span class="k">using</span> ChromaDB.Client;
@@ -164,13 +165,14 @@ footer p { margin: 0 0 8px; }
 <span class="k">var</span> results = <span class="k">await</span> docs.QueryAsync(
     <span class="k">new</span> <span class="t">ReadOnlyMemory</span>&lt;<span class="k">float</span>&gt;([0.1f, 0.4f, 0.2f]), nResults: 1);</code></pre>
       </div>
+      <p class="note">The packages are named <code>ChromaDotNet.*</code>; the namespaces keep their original names, like <code>ChromaDB.Client</code>.</p>
     </div>
   </div>
 
   <section id="libraries">
     <div class="wrap">
       <h2>Libraries</h2>
-      <p class="sub">Each one is a NuGet package with its own repository.</p>
+      <p class="sub">Each repository publishes its own NuGet packages.</p>
       <div class="grid">
         <article class="lib">
           <h3>ChromaDotNet.<wbr>Client</h3>
@@ -191,11 +193,11 @@ footer p { margin: 0 0 8px; }
           <div class="more"><a href="https://github.com/ChromaDotNet/ChromaDB.Testcontainers">GitHub</a><a href="https://www.nuget.org/packages/ChromaDotNet.Testcontainers">NuGet</a></div>
         </article>
         <article class="lib">
-          <h3>ChromaDotNet.<wbr>Aspire</h3>
+          <h3>ChromaDotNet.<wbr>Aspire.<wbr>Hosting / .<wbr>Client</h3>
           <p>Aspire integrations: Chroma in the app host, and the client in the services, with health checks, traces and metrics.</p>
           <div class="install"><code>dotnet add package ChromaDotNet.<wbr>Aspire.<wbr>Hosting</code><button class="copy" type="button" data-copy="dotnet add package ChromaDotNet.Aspire.Hosting">Copy</button></div>
           <div class="install"><code>dotnet add package ChromaDotNet.<wbr>Aspire.<wbr>Client</code><button class="copy" type="button" data-copy="dotnet add package ChromaDotNet.Aspire.Client">Copy</button></div>
-          <div class="more"><a href="https://github.com/ChromaDotNet/ChromaDB.Aspire">GitHub</a><a href="https://www.nuget.org/packages/ChromaDotNet.Aspire.Hosting">NuGet</a></div>
+          <div class="more"><a href="https://github.com/ChromaDotNet/ChromaDB.Aspire">GitHub</a><a href="https://www.nuget.org/packages/ChromaDotNet.Aspire.Hosting">NuGet (hosting)</a><a href="https://www.nuget.org/packages/ChromaDotNet.Aspire.Client">NuGet (client)</a></div>
         </article>
       </div>
     </div>
@@ -204,7 +206,7 @@ footer p { margin: 0 0 8px; }
   <section id="samples">
     <div class="wrap">
       <h2>Samples</h2>
-      <p class="sub">Each sample runs with Azure OpenAI or Microsoft Foundry, or locally with Ollama.</p>
+      <p class="sub">The samples run with Azure OpenAI (Semantic Kernel) or Microsoft Foundry (Agent Framework); the chat samples also run locally with Ollama.</p>
       <ul class="samples">
         <li><a href="https://github.com/ChromaDotNet/ChromaDB.SemanticKernel.Sample">Semantic Kernel</a><span>Vector search and an agent that answers from documents stored in Chroma.</span></li>
         <li><a href="https://github.com/ChromaDotNet/ChromaDB.AgentFramework.Sample">Microsoft Agent Framework</a><span>Chat history kept in Chroma, and an agent that answers from documentation stored in Chroma.</span></li>

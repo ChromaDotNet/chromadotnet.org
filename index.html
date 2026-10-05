@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChromaDotNet: .NET libraries for Chroma</title>
+<meta name="description" content=".NET libraries for Chroma and Chroma Cloud: a client for the Chroma API, a Microsoft.Extensions.VectorData provider, a Testcontainers module and Aspire integrations.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0B1F24">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ChromaDotNet">
+<meta property="og:title" content="ChromaDotNet: .NET libraries for Chroma">
+<meta property="og:description" content="A client for the Chroma API, a Microsoft.Extensions.VectorData provider, a Testcontainers module and Aspire integrations, for Chroma and Chroma Cloud.">
+<meta property="og:url" content="https://chromadotnet.org/">
+<meta property="og:image" content="https://chromadotnet.org/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root {
+  --bg: #FFFFFF;
+  --surface: #F6F8FA;
+  --border: #D8DEE4;
+  --text: #0B1F24;
+  --muted: #4A5A60;
+  --accent: #512BD4;
+  --code-bg: #0B1F24;
+  --code-text: #E6EDF0;
+  --code-muted: #8FA3A9;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0B1F24;
+    --surface: #10292F;
+    --border: #23434B;
+    --text: #F2F6F7;
+    --muted: #A9B8BD;
+    --accent: #9B87F5;
+    --code-bg: #07161A;
+    --code-text: #E6EDF0;
+    --code-muted: #8FA3A9;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+code, pre { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+header.top { padding: 28px 0; }
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 600; font-size: 22px; letter-spacing: -0.3px; }
+.brand svg { width: 40px; height: 40px; flex-shrink: 0; }
+.brand .net { color: var(--accent); }
+nav.links { display: flex; gap: 20px; flex-wrap: wrap; }
+nav.links a { color: var(--muted); text-decoration: none; font-weight: 500; padding: 10px 0; }
+nav.links a:hover { color: var(--text); }
+
+.hero { padding: 48px 0 56px; }
+.hero h1 { font-size: clamp(34px, 5vw, 52px); line-height: 1.12; letter-spacing: -1px; margin: 0 0 20px; max-width: 760px; }
+.hero p.lead { font-size: 20px; color: var(--muted); max-width: 720px; margin: 0 0 32px; }
+
+.code { background: var(--code-bg); color: var(--code-text); border-radius: 12px; overflow: hidden; max-width: 860px; }
+.code .bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; border-bottom: 1px solid #1E3A41; }
+.code .bar span { color: var(--code-muted); font-size: 14px; font-family: "IBM Plex Mono", monospace; overflow-wrap: anywhere; min-width: 0; }
+.code pre { margin: 0; padding: 18px 20px; overflow-x: auto; font-size: 14.5px; line-height: 1.65; }
+.code .c { color: var(--code-muted); }
+.code .k { color: #9B87F5; }
+.code .s { color: #FFDE2D; }
+.code .t { color: #7FB2FF; }
+
+button.copy {
+  font: inherit; font-size: 13px; font-weight: 500;
+  color: var(--code-text); background: transparent;
+  border: 1px solid #2E5058; border-radius: 6px;
+  padding: 4px 10px; min-height: 32px; cursor: pointer;
+}
+button.copy:hover { border-color: #9B87F5; }
+.lib button.copy { color: var(--text); border-color: var(--border); }
+.lib button.copy:hover { border-color: var(--accent); }
+
+section { padding: 40px 0; }
+section h2 { font-size: 28px; letter-spacing: -0.4px; margin: 0 0 8px; }
+section p.sub { color: var(--muted); margin: 0 0 28px; max-width: 720px; }
+
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+@media (max-width: 760px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+.lib { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 14px; }
+.lib h3 { margin: 0; font-size: 19px; font-family: "IBM Plex Mono", monospace; font-weight: 500; overflow-wrap: break-word; }
+.lib p { margin: 0; color: var(--muted); overflow-wrap: break-word; }
+.install { display: flex; align-items: center; gap: 10px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 6px 6px 6px 12px; }
+.install code { flex: 1; min-width: 0; font-size: 13.5px; overflow-wrap: break-word; }
+.lib .more { display: flex; gap: 18px; flex-wrap: wrap; margin-top: auto; }
+.lib .more a { font-weight: 500; padding: 6px 0; }
+
+ul.samples { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+ul.samples li { border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; }
+ul.samples a { font-weight: 600; }
+ul.samples span { display: block; color: var(--muted); }
+
+footer { border-top: 1px solid var(--border); margin-top: 40px; padding: 32px 0 48px; color: var(--muted); font-size: 15px; }
+footer p { margin: 0 0 8px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="ChromaDotNet home">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="42.43" cy="45.43" r="2.4" fill="#327EFF"/>
+        <circle cx="32.30" cy="50.71" r="3.0" fill="#327EFF"/>
+        <circle cx="20.97" cy="49.22" r="3.6" fill="#327EFF"/>
+        <circle cx="12.55" cy="41.50" r="4.2" fill="#FF6446"/>
+        <circle cx="10.07" cy="30.34" r="4.6" fill="#FF6446"/>
+        <circle cx="14.45" cy="19.79" r="4.2" fill="#FF6446"/>
+        <circle cx="24.08" cy="13.65" r="3.6" fill="#FFDE2D"/>
+        <circle cx="35.50" cy="14.15" r="3.0" fill="#FFDE2D"/>
+        <circle cx="43.55" cy="19.79" r="2.4" fill="#FFDE2D"/>
+        <circle cx="52" cy="46" r="5.2" fill="var(--accent)"/>
+      </svg>
+      <span>Chroma<span class="net">DotNet</span></span>
+    </a>
+    <nav class="links" aria-label="Project links">
+      <a href="#libraries">Libraries</a>
+      <a href="#samples">Samples</a>
+      <a href="https://github.com/ChromaDotNet">GitHub</a>
+      <a href="https://www.nuget.org/profiles/ChromaDotNet">NuGet</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <h1>.NET libraries for Chroma and Chroma Cloud</h1>
+      <p class="lead">A client for the Chroma API, a Microsoft.Extensions.VectorData provider, a Testcontainers module and Aspire integrations. Tested with Chroma 0.4.10 to 1.5.9 and with Chroma Cloud.</p>
+      <div class="code">
+        <div class="bar"><span>dotnet add package ChromaDotNet.Client</span><button class="copy" type="button" data-copy="dotnet add package ChromaDotNet.Client">Copy</button></div>
+<pre><code><span class="k">using</span> ChromaDB.Client;
+
+<span class="k">using var</span> client = <span class="k">new</span> <span class="t">ChromaClient</span>(<span class="s">"http://localhost:8000"</span>);
+<span class="k">var</span> collection = <span class="k">await</span> client.GetOrCreateCollectionAsync(<span class="s">"docs"</span>);
+<span class="k">var</span> docs = client.GetCollectionClient(collection);
+
+<span class="k">await</span> docs.AddAsync([<span class="s">"doc-1"</span>],
+    embeddings: [<span class="k">new</span>([0.1f, 0.4f, 0.2f])],
+    documents: [<span class="s">"Chroma from .NET"</span>]);
+
+<span class="k">var</span> results = <span class="k">await</span> docs.QueryAsync(
+    <span class="k">new</span> <span class="t">ReadOnlyMemory</span>&lt;<span class="k">float</span>&gt;([0.1f, 0.4f, 0.2f]), nResults: 1);</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <section id="libraries">
+    <div class="wrap">
+      <h2>Libraries</h2>
+      <p class="sub">Each one is a NuGet package with its own repository.</p>
+      <div class="grid">
+        <article class="lib">
+          <h3>ChromaDotNet.<wbr>Client</h3>
+          <p>The client: every operation of the Chroma v2 API, Chroma Cloud included, on .NET 8, .NET Framework 4.6.2 and .NET Standard 2.0. Dependency injection comes in ChromaDotNet.<wbr>Client.<wbr>DependencyInjection.</p>
+          <div class="install"><code>dotnet add package ChromaDotNet.<wbr>Client</code><button class="copy" type="button" data-copy="dotnet add package ChromaDotNet.Client">Copy</button></div>
+          <div class="more"><a href="https://github.com/ChromaDotNet/ChromaDB.Client">GitHub</a><a href="https://www.nuget.org/packages/ChromaDotNet.Client">NuGet</a><a href="https://github.com/ChromaDotNet/ChromaDB.Client/blob/main/docs/COMPATIBILITY.md">Tested versions</a></div>
+        </article>
+        <article class="lib">
+          <h3>ChromaDotNet.<wbr>VectorData</h3>
+          <p>A Microsoft.Extensions.VectorData provider, for Semantic Kernel, Agent Framework and any code written against the abstractions. Hybrid search on Chroma Cloud.</p>
+          <div class="install"><code>dotnet add package ChromaDotNet.<wbr>VectorData</code><button class="copy" type="button" data-copy="dotnet add package ChromaDotNet.VectorData">Copy</button></div>
+          <div class="more"><a href="https://github.com/ChromaDotNet/ChromaDB.VectorData">GitHub</a><a href="https://www.nuget.org/packages/ChromaDotNet.VectorData">NuGet</a></div>
+        </article>
+        <article class="lib">
+          <h3>ChromaDotNet.<wbr>Testcontainers</h3>
+          <p>A Testcontainers for .NET module: a throwaway Chroma container in your tests.</p>
+          <div class="install"><code>dotnet add package ChromaDotNet.<wbr>Testcontainers</code><button class="copy" type="button" data-copy="dotnet add package ChromaDotNet.Testcontainers">Copy</button></div>
+          <div class="more"><a href="https://github.com/ChromaDotNet/ChromaDB.Testcontainers">GitHub</a><a href="https://www.nuget.org/packages/ChromaDotNet.Testcontainers">NuGet</a></div>
+        </article>
+        <article class="lib">
+          <h3>ChromaDotNet.<wbr>Aspire</h3>
+          <p>Aspire integrations: Chroma in the app host, and the client in the services, with health checks, traces and metrics.</p>
+          <div class="install"><code>dotnet add package ChromaDotNet.<wbr>Aspire.<wbr>Hosting</code><button class="copy" type="button" data-copy="dotnet add package ChromaDotNet.Aspire.Hosting">Copy</button></div>
+          <div class="install"><code>dotnet add package ChromaDotNet.<wbr>Aspire.<wbr>Client</code><button class="copy" type="button" data-copy="dotnet add package ChromaDotNet.Aspire.Client">Copy</button></div>
+          <div class="more"><a href="https://github.com/ChromaDotNet/ChromaDB.Aspire">GitHub</a><a href="https://www.nuget.org/packages/ChromaDotNet.Aspire.Hosting">NuGet</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="samples">
+    <div class="wrap">
+      <h2>Samples</h2>
+      <p class="sub">Each sample runs with Azure OpenAI or Microsoft Foundry, or locally with Ollama.</p>
+      <ul class="samples">
+        <li><a href="https://github.com/ChromaDotNet/ChromaDB.SemanticKernel.Sample">Semantic Kernel</a><span>Vector search and an agent that answers from documents stored in Chroma.</span></li>
+        <li><a href="https://github.com/ChromaDotNet/ChromaDB.AgentFramework.Sample">Microsoft Agent Framework</a><span>Chat history kept in Chroma, and an agent that answers from documentation stored in Chroma.</span></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>ChromaDotNet is a community project. It is not affiliated with or endorsed by Chroma.</p>
+    <p>The client continues <a href="https://github.com/ssone95/ChromaDB.Client">ssone95/ChromaDB.Client</a>. All the libraries are MIT licensed, on <a href="https://github.com/ChromaDotNet">GitHub</a>.</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll("button.copy").forEach(function (button) {
+  button.addEventListener("click", function () {
+    var text = button.getAttribute("data-copy");
+    if (!navigator.clipboard) { return; }
+    navigator.clipboard.writeText(text).then(function () {
+      button.textContent = "Copied";
+      setTimeout(function () { button.textContent = "Copy"; }, 1500);
+    });
+  });
+});
+</script>
+</body>
+</html>

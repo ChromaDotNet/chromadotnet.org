@@ -1,0 +1,1014 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compatibility: ChromaDotNet.Client</title>
+<meta name="description" content="What ChromaDotNet.Client 2.9.2 passes on Chroma 1.5.9 and on Chroma Cloud, on .NET Framework, .NET Core and .NET 5 to 10, on Windows, Linux, Alpine, arm64 and NativeAOT.">
+<meta name="theme-color" content="#0B1F24">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" href="../assets/icon-48.png" sizes="48x48" type="image/png">
+<link rel="icon" href="../assets/icon-96.png" sizes="96x96" type="image/png">
+<link rel="icon" href="../assets/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ChromaDotNet">
+<meta property="og:title" content="Compatibility: ChromaDotNet.Client">
+<meta property="og:description" content="What ChromaDotNet.Client 2.9.2 passes on Chroma 1.5.9 and on Chroma Cloud, on every .NET runtime and platform.">
+<link rel="canonical" href="https://chromadotnet.org/compatibility/">
+<meta property="og:url" content="https://chromadotnet.org/compatibility/">
+<meta property="og:image" content="https://chromadotnet.org/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root {
+  --bg: #FFFFFF;
+  --surface: #F6F8FA;
+  --border: #D8DEE4;
+  --text: #0B1F24;
+  --muted: #4A5A60;
+  --accent: #512BD4;
+  --code-bg: #0B1F24;
+  --code-text: #E6EDF0;
+  --code-muted: #8FA3A9;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0B1F24;
+    --surface: #10292F;
+    --border: #23434B;
+    --text: #F2F6F7;
+    --muted: #A9B8BD;
+    --accent: #9B87F5;
+    --code-bg: #07161A;
+    --code-text: #E6EDF0;
+    --code-muted: #8FA3A9;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+code, pre { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+header.top { padding: 28px 0; }
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 600; font-size: 22px; letter-spacing: -0.3px; }
+.brand svg { width: 40px; height: 40px; flex-shrink: 0; }
+.brand .net { color: var(--accent); }
+nav.links { display: flex; gap: 20px; flex-wrap: wrap; }
+nav.links a { color: var(--muted); text-decoration: none; font-weight: 500; padding: 10px 0; }
+nav.links a:hover { color: var(--text); }
+
+.hero { padding: 48px 0 56px; }
+.hero h1 { font-size: clamp(34px, 5vw, 52px); line-height: 1.12; letter-spacing: -1px; margin: 0 0 20px; max-width: 760px; }
+.hero p.lead { font-size: 20px; color: var(--muted); max-width: 720px; margin: 0 0 32px; }
+.hero p.note { color: var(--muted); font-size: 15px; margin: 14px 0 0; max-width: 860px; }
+
+.code { background: var(--code-bg); color: var(--code-text); border-radius: 12px; overflow: hidden; max-width: 860px; }
+.code .bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; border-bottom: 1px solid #1E3A41; }
+.code .bar span { color: var(--code-muted); font-size: 14px; font-family: "IBM Plex Mono", monospace; overflow-wrap: anywhere; min-width: 0; }
+.code pre { margin: 0; padding: 18px 20px; overflow-x: auto; font-size: 14.5px; line-height: 1.65; }
+.code .c { color: var(--code-muted); }
+.code .k { color: #9B87F5; }
+.code .s { color: #FFDE2D; }
+.code .t { color: #7FB2FF; }
+
+button.copy {
+  font: inherit; font-size: 13px; font-weight: 500;
+  color: var(--code-text); background: transparent;
+  border: 1px solid #2E5058; border-radius: 6px;
+  padding: 4px 10px; min-height: 32px; cursor: pointer;
+}
+button.copy:hover { border-color: #9B87F5; }
+.lib button.copy { color: var(--text); border-color: var(--border); }
+.lib button.copy:hover { border-color: var(--accent); }
+
+section { padding: 40px 0; }
+section h2 { font-size: 28px; letter-spacing: -0.4px; margin: 0 0 8px; }
+section p.sub { color: var(--muted); margin: 0 0 28px; max-width: 720px; }
+
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+@media (max-width: 760px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+.lib { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 14px; }
+.lib h3 { margin: 0; font-size: 19px; font-family: "IBM Plex Mono", monospace; font-weight: 500; overflow-wrap: break-word; }
+.lib p { margin: 0; color: var(--muted); overflow-wrap: break-word; }
+.install { display: flex; align-items: center; gap: 10px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 6px 6px 6px 12px; }
+.install code { flex: 1; min-width: 0; font-size: 13.5px; overflow-wrap: break-word; }
+.lib .more { display: flex; gap: 18px; flex-wrap: wrap; margin-top: auto; }
+.lib .more a { font-weight: 500; padding: 6px 0; }
+
+ul.samples { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+ul.samples li { border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; }
+ul.samples a { font-weight: 600; }
+ul.samples span { display: block; color: var(--muted); }
+
+footer { border-top: 1px solid var(--border); margin-top: 40px; padding: 32px 0 48px; color: var(--muted); font-size: 15px; }
+footer p { margin: 0 0 8px; }
+
+.doc { padding: 24px 0 8px; }
+.doc h1 { font-size: clamp(30px, 4.4vw, 44px); line-height: 1.15; letter-spacing: -0.8px; margin: 0 0 20px; }
+.doc h2 { font-size: 26px; letter-spacing: -0.4px; margin: 44px 0 12px; }
+.doc h3 { font-size: 18px; margin: 28px 0 8px; }
+.doc ul { padding-left: 22px; }
+.doc li { margin: 4px 0; overflow-wrap: anywhere; }
+.doc p { overflow-wrap: anywhere; }
+.doc code { font-size: 0.9em; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 0 4px; }
+.tablewrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; margin: 12px 0; }
+.doc table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+.doc th, .doc td { padding: 8px 12px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+.doc th { background: var(--surface); font-weight: 600; }
+.doc tr:last-child td { border-bottom: 0; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="ChromaDotNet home">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="42.43" cy="45.43" r="2.4" fill="#327EFF"/>
+        <circle cx="32.30" cy="50.71" r="3.0" fill="#327EFF"/>
+        <circle cx="20.97" cy="49.22" r="3.6" fill="#327EFF"/>
+        <circle cx="12.55" cy="41.50" r="4.2" fill="#FF6446"/>
+        <circle cx="10.07" cy="30.34" r="4.6" fill="#FF6446"/>
+        <circle cx="14.45" cy="19.79" r="4.2" fill="#FF6446"/>
+        <circle cx="24.08" cy="13.65" r="3.6" fill="#FFDE2D"/>
+        <circle cx="35.50" cy="14.15" r="3.0" fill="#FFDE2D"/>
+        <circle cx="43.55" cy="19.79" r="2.4" fill="#FFDE2D"/>
+        <circle cx="52" cy="46" r="5.2" fill="var(--accent)"/>
+      </svg>
+      <span>Chroma<span class="net">DotNet</span></span>
+    </a>
+    <nav class="links" aria-label="Project links">
+      <a href="../#libraries">Libraries</a>
+      <a href="../#samples">Samples</a>
+      <a href="./">Compatibility</a>
+      <a href="https://github.com/ChromaDotNet">GitHub</a>
+      <a href="https://www.nuget.org/profiles/ChromaDotNet">NuGet</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap doc">
+<h1>ChromaDotNet.Client conformance: Chroma single server and Chroma Cloud</h1>
+<ul>
+<li><strong>Client:</strong> ChromaDotNet.Client 2.9.2</li>
+<li><strong>Chroma:</strong> <code>chromadb/chroma:1.5.9</code>, a single server in Docker</li>
+<li><strong>Chroma Cloud:</strong> AWS us-east-1, run on 2026-10-06 with the client 2.9.2 on .NET 10.0.12; every collection and database deleted at the end</li>
+<li><strong>OpenTelemetry SDK:</strong> 1.19.1; <strong>ChromaDotNet.Testcontainers:</strong> 0.1.3 (Testcontainers 4.15.0)</li>
+<li><strong>Chroma image digest:</strong> chromadb/chroma@sha256:1e0b73a187a28757c572acba508c46f48c9e8b0acaf5c20e6d95cdedce1acdf6</li>
+<li><strong>Docker:</strong> 29.7.2 (linux/amd64)</li>
+<li><strong>.NET SDK:</strong> 10.0.400</li>
+<li><strong>Host:</strong> Windows 10.0.26200, x86_64</li>
+<li><strong>Client package:</strong> from nuget.org</li>
+<li><strong>Arm64:</strong> the Linux arm64 images of .NET, emulated by Docker on this x86-64 host</li>
+<li><strong>Environments:</strong> 31, 1500 checks run</li>
+<li><strong>Generated:</strong> 2026-10-06 08:15 UTC</li>
+</ul>
+<p>✓ every check passed · ✗ a check failed · — not on a single server: the Chroma docs put it in Chroma Cloud, and the check verified that the client reports the error of the server as documented · on Chroma Cloud, — is what an API key cannot do, with the error the check verified · ¹ a note under the table · a blank cell: the row is not about that column (the quotas of Chroma Cloud on a single server; on Chroma Cloud, the checks with no server or with a local container)</p>
+<h2>By feature</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Chroma docs section</th>
+<th>Feature</th>
+<th>Windows · .NET Framework 4.6.2, 4.8 · x64, x86</th>
+<th>Windows · .NET Core 3.1, .NET 5, 6, 7 · x64</th>
+<th>Windows · .NET 8, 9, 10 · x64, x86</th>
+<th>Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64</th>
+<th>Alpine 3.24 (musl) · .NET 8, 10 · x64</th>
+<th>Linux (Debian 12, Ubuntu 24.04) · .NET 8, 10 · arm64</th>
+<th>NativeAOT, Ubuntu 24.04 · .NET 10 · x64</th>
+<th>Chroma Cloud, AWS us-east-1 · .NET 10 · x64</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Run Chroma</strong></td>
+<td>Clients: local server, Chroma Cloud, authentication</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td></td>
+<td>Tenants and databases</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓¹</td>
+</tr>
+<tr>
+<td><strong>Collections</strong></td>
+<td>Manage collections</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td></td>
+<td>Add, update, delete data (large writes in batches)</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td></td>
+<td>Configure: HNSW, SPANN, embedding function</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><strong>Querying collections</strong></td>
+<td>Query and get: l2, cosine, ip</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td></td>
+<td>Metadata filtering, array metadata</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td></td>
+<td>Full-text search and regex</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><strong>Chroma Cloud</strong></td>
+<td>Collection forking</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>✓</td>
+</tr>
+<tr>
+<td></td>
+<td>Schema: sparse vector search, BM25</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>✓</td>
+</tr>
+<tr>
+<td></td>
+<td>Search API (basics, filtering, ranking, group by, hybrid, pagination, batch)</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>✓</td>
+</tr>
+<tr>
+<td></td>
+<td>Quotas &amp; Limits: the client keeps to them or reports the error of Chroma</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>✓</td>
+</tr>
+<tr>
+<td><strong>Beyond the Chroma docs</strong></td>
+<td>OpenTelemetry traces and metrics</td>
+<td>✓</td>
+<td>✓³</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td></td>
+<td>Cancellation, timeouts, concurrent calls</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td></td>
+<td>Dependency injection</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td></td>
+<td>Testcontainers module</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Mocks in tests</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>BM25 vectors computed by the client</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Search and filter requests built by the client</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>¹ On cloud_aws-us-east-1, “create and get a tenant” is not available: an API key of Chroma Cloud cannot create a tenant: Chroma Cloud answers 403 "Permission denied.", which the client throws as a ChromaException; on cloud_aws-us-east-1, “collections in another tenant and database” is not available: an API key of Chroma Cloud cannot create a tenant for the collections of another tenant: Chroma Cloud answers 403 "Permission denied.", which the client throws as a ChromaException.<br />
+³ On win_netcoreapp3.1, win_netcoreapp3.1_ja-JP, “the duration histogram and its buckets, with the OpenTelemetry SDK” is not available: the OpenTelemetry SDK exports no metric on this runtime, also from a meter of its own.  </p>
+<h2>Same answers in every environment</h2>
+<p>The seeded fuzz of the test bench sends the same random requests from each environment to a fresh Chroma 1.5.9 and compares what comes back, suite by suite, with the answers on win_net10.0: 30 environments, two seeds. ✓ the same answers in every environment of the column, ✗ different somewhere.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Suite</th>
+<th>Windows · .NET Framework 4.6.2, 4.8 · x64, x86</th>
+<th>Windows · .NET Core 3.1, .NET 5, 6, 7 · x64</th>
+<th>Windows · .NET 8, 9, 10 · x64, x86</th>
+<th>Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64</th>
+<th>Alpine 3.24 (musl) · .NET 8, 10 · x64</th>
+<th>Linux (Debian 12, Ubuntu 24.04) · .NET 8, 10 · arm64</th>
+<th>NativeAOT, Ubuntu 24.04 · .NET 10 · x64</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bm25</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>concurrency</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>documents</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>edges</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>embeddings</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>filters</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>metadata</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>names</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>paging</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>serialization</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Environments</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Environment</th>
+<th>System</th>
+<th>Architecture</th>
+<th>Runtime</th>
+<th>Client build</th>
+<th>Culture</th>
+<th>Checks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows · .NET Framework 4.6.2, 4.8 · x64, x86</td>
+<td>win_net462</td>
+<td>Microsoft Windows 10.0.26200</td>
+<td>X64</td>
+<td>.NET Framework 4.8.9345.0</td>
+<td>.NETFramework,Version=v4.6.2</td>
+<td>en-GB</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Windows · .NET Framework 4.6.2, 4.8 · x64, x86</td>
+<td>win32_net48</td>
+<td>Microsoft Windows 10.0.26200</td>
+<td>X86</td>
+<td>.NET Framework 4.8.9345.0</td>
+<td>.NETFramework,Version=v4.6.2</td>
+<td>en-GB</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Windows · .NET Framework 4.6.2, 4.8 · x64, x86</td>
+<td>win_net48</td>
+<td>Microsoft Windows 10.0.26200</td>
+<td>X64</td>
+<td>.NET Framework 4.8.9345.0</td>
+<td>.NETFramework,Version=v4.6.2</td>
+<td>en-GB</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Windows · .NET Framework 4.6.2, 4.8 · x64, x86</td>
+<td>win_net48_de-DE</td>
+<td>Microsoft Windows 10.0.26200</td>
+<td>X64</td>
+<td>.NET Framework 4.8.9345.0</td>
+<td>.NETFramework,Version=v4.6.2</td>
+<td>de-DE</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Windows · .NET Framework 4.6.2, 4.8 · x64, x86</td>
+<td>win_net48_fa-IR</td>
+<td>Microsoft Windows 10.0.26200</td>
+<td>X64</td>
+<td>.NET Framework 4.8.9345.0</td>
+<td>.NETFramework,Version=v4.6.2</td>
+<td>fa-IR</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Windows · .NET Framework 4.6.2, 4.8 · x64, x86</td>
+<td>win_net48_tr-TR</td>
+<td>Microsoft Windows 10.0.26200</td>
+<td>X64</td>
+<td>.NET Framework 4.8.9345.0</td>
+<td>.NETFramework,Version=v4.6.2</td>
+<td>tr-TR</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Windows · .NET Core 3.1, .NET 5, 6, 7 · x64</td>
+<td>win_netcoreapp3.1</td>
+<td>Microsoft Windows 10.0.26200</td>
+<td>X64</td>
+<td>.NET Core 3.1.28</td>
+<td>.NETStandard,Version=v2.0</td>
+<td>en-GB</td>
+<td>44 ✓ · 4 —</td>
+</tr>
+<tr>
+<td>Windows · .NET Core 3.1, .NET 5, 6, 7 · x64</td>
+<td>win_netcoreapp3.1_ja-JP</td>
+<td>Microsoft Windows 10.0.26200</td>
+<td>X64</td>
+<td>.NET Core 3.1.28</td>
+<td>.NETStandard,Version=v2.0</td>
+<td>ja-JP</td>
+<td>44 ✓ · 4 —</td>
+</tr>
+<tr>
+<td>Windows · .NET Core 3.1, .NET 5, 6, 7 · x64</td>
+<td>win_net5.0</td>
+<td>Microsoft Windows 10.0.26200</td>
+<td>X64</td>
+<td>.NET 5.0.16</td>
+<td>.NETStandard,Version=v2.0</td>
+<td>en-GB</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Windows · .NET Core 3.1, .NET 5, 6, 7 · x64</td>
+<td>win_net6.0</td>
+<td>Microsoft Windows 10.0.26200</td>
+<td>X64</td>
+<td>.NET 6.0.6</td>
+<td>.NETStandard,Version=v2.0</td>
+<td>en-GB</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Windows · .NET Core 3.1, .NET 5, 6, 7 · x64</td>
+<td>win_net6.0_ar-SA</td>
+<td>Microsoft Windows 10.0.26200</td>
+<td>X64</td>
+<td>.NET 6.0.6</td>
+<td>.NETStandard,Version=v2.0</td>
+<td>ar-SA</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Windows · .NET Core 3.1, .NET 5, 6, 7 · x64</td>
+<td>win_net7.0</td>
+<td>Microsoft Windows 10.0.26200</td>
+<td>X64</td>
+<td>.NET 7.0.20</td>
+<td>.NETStandard,Version=v2.0</td>
+<td>en-GB</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Windows · .NET 8, 9, 10 · x64, x86</td>
+<td>win32_net8.0</td>
+<td>Microsoft Windows 10.0.26200</td>
+<td>X86</td>
+<td>.NET 8.0.30</td>
+<td>.NETCoreApp,Version=v8.0</td>
+<td>en-GB</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Windows · .NET 8, 9, 10 · x64, x86</td>
+<td>win_net8.0</td>
+<td>Microsoft Windows 10.0.26200</td>
+<td>X64</td>
+<td>.NET 8.0.31</td>
+<td>.NETCoreApp,Version=v8.0</td>
+<td>en-GB</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Windows · .NET 8, 9, 10 · x64, x86</td>
+<td>win_net8.0_de-DE</td>
+<td>Microsoft Windows 10.0.26200</td>
+<td>X64</td>
+<td>.NET 8.0.31</td>
+<td>.NETCoreApp,Version=v8.0</td>
+<td>de-DE</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Windows · .NET 8, 9, 10 · x64, x86</td>
+<td>win_net9.0</td>
+<td>Microsoft Windows 10.0.26200</td>
+<td>X64</td>
+<td>.NET 9.0.19</td>
+<td>.NETCoreApp,Version=v8.0</td>
+<td>en-GB</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Windows · .NET 8, 9, 10 · x64, x86</td>
+<td>win32_net10.0</td>
+<td>Microsoft Windows 10.0.26200</td>
+<td>X86</td>
+<td>.NET 10.0.11</td>
+<td>.NETCoreApp,Version=v8.0</td>
+<td>en-GB</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Windows · .NET 8, 9, 10 · x64, x86</td>
+<td>win_net10.0</td>
+<td>Microsoft Windows 10.0.26200</td>
+<td>X64</td>
+<td>.NET 10.0.12</td>
+<td>.NETCoreApp,Version=v8.0</td>
+<td>en-GB</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Windows · .NET 8, 9, 10 · x64, x86</td>
+<td>win_net10.0_th-TH</td>
+<td>Microsoft Windows 10.0.26200</td>
+<td>X64</td>
+<td>.NET 10.0.12</td>
+<td>.NETCoreApp,Version=v8.0</td>
+<td>th-TH</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Windows · .NET 8, 9, 10 · x64, x86</td>
+<td>win_net10.0_tr-TR</td>
+<td>Microsoft Windows 10.0.26200</td>
+<td>X64</td>
+<td>.NET 10.0.12</td>
+<td>.NETCoreApp,Version=v8.0</td>
+<td>tr-TR</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64</td>
+<td>linux_net6.0</td>
+<td>Debian GNU/Linux 11 (bullseye)</td>
+<td>X64</td>
+<td>.NET 6.0.36</td>
+<td>.NETStandard,Version=v2.0</td>
+<td>invariant</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64</td>
+<td>linux_net8.0</td>
+<td>Debian GNU/Linux 12 (bookworm)</td>
+<td>X64</td>
+<td>.NET 8.0.31</td>
+<td>.NETCoreApp,Version=v8.0</td>
+<td>invariant</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64</td>
+<td>linux_net9.0</td>
+<td>Debian GNU/Linux 12 (bookworm)</td>
+<td>X64</td>
+<td>.NET 9.0.20</td>
+<td>.NETCoreApp,Version=v8.0</td>
+<td>invariant</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64</td>
+<td>linux_net10.0</td>
+<td>Ubuntu 24.04.5 LTS</td>
+<td>X64</td>
+<td>.NET 10.0.12</td>
+<td>.NETCoreApp,Version=v8.0</td>
+<td>invariant</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64</td>
+<td>linux_net10.0_tr-TR</td>
+<td>Ubuntu 24.04.5 LTS</td>
+<td>X64</td>
+<td>.NET 10.0.12</td>
+<td>.NETCoreApp,Version=v8.0</td>
+<td>tr-TR</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Alpine 3.24 (musl) · .NET 8, 10 · x64</td>
+<td>alpine_net8.0</td>
+<td>Alpine Linux v3.24</td>
+<td>X64</td>
+<td>.NET 8.0.31</td>
+<td>.NETCoreApp,Version=v8.0</td>
+<td>invariant</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Alpine 3.24 (musl) · .NET 8, 10 · x64</td>
+<td>alpine_net10.0</td>
+<td>Alpine Linux v3.24</td>
+<td>X64</td>
+<td>.NET 10.0.12</td>
+<td>.NETCoreApp,Version=v8.0</td>
+<td>invariant</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Linux (Debian 12, Ubuntu 24.04) · .NET 8, 10 · arm64</td>
+<td>arm64_net8.0</td>
+<td>Debian GNU/Linux 12 (bookworm)</td>
+<td>Arm64</td>
+<td>.NET 8.0.31</td>
+<td>.NETCoreApp,Version=v8.0</td>
+<td>invariant</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Linux (Debian 12, Ubuntu 24.04) · .NET 8, 10 · arm64</td>
+<td>arm64_net10.0</td>
+<td>Ubuntu 24.04.5 LTS</td>
+<td>Arm64</td>
+<td>.NET 10.0.12</td>
+<td>.NETCoreApp,Version=v8.0</td>
+<td>invariant</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>NativeAOT, Ubuntu 24.04 · .NET 10 · x64</td>
+<td>aot_net10.0</td>
+<td>Ubuntu 24.04.5 LTS</td>
+<td>X64</td>
+<td>.NET 10.0.12, NativeAOT</td>
+<td>.NETCoreApp,Version=v8.0</td>
+<td>invariant</td>
+<td>45 ✓ · 3 —</td>
+</tr>
+<tr>
+<td>Chroma Cloud, AWS us-east-1 · .NET 10 · x64</td>
+<td>cloud_aws-us-east-1</td>
+<td>Chroma Cloud, AWS us-east-1; the client on Microsoft Windows 10.0.26200</td>
+<td>X64</td>
+<td>.NET 10.0.12</td>
+<td>.NETCoreApp,Version=v8.0</td>
+<td>en-GB</td>
+<td>58 ✓ · 2 —</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Checks</h2>
+<h3>Clients: local server, Chroma Cloud, authentication</h3>
+<ul>
+<li>✓ the address alone, with /api/v2 and with /api/v2/</li>
+<li>✓ constructors: uri, options, options and HttpClient</li>
+<li>✓ connection strings</li>
+<li>✓ version, heartbeat, healthcheck, pre-flight checks, identity</li>
+<li>✓ authentication headers: X-Chroma-Token, Bearer, Basic</li>
+<li>✓ the v1 API on Chroma 1.x answers 410 Gone</li>
+<li>✓ errors: status, error type, CollectionExistsAsync</li>
+</ul>
+<h3>Tenants and databases</h3>
+<ul>
+<li>✓ create and get a tenant; — on cloud_aws-us-east-1: an API key of Chroma Cloud cannot create a tenant: Chroma Cloud answers 403 "Permission denied.", which the client throws as a ChromaException</li>
+<li>✓ databases: create, get, list with paging, delete</li>
+<li>✓ collections in another tenant and database; — on cloud_aws-us-east-1: an API key of Chroma Cloud cannot create a tenant for the collections of another tenant: Chroma Cloud answers 403 "Permission denied.", which the client throws as a ChromaException</li>
+</ul>
+<h3>Manage collections</h3>
+<ul>
+<li>✓ create, get, get or create, exists, delete</li>
+<li>✓ list with paging, count</li>
+<li>✓ modify name and metadata</li>
+<li>✓ by id, collection clients, dimension, version</li>
+<li>✓ names and metadata the client stops: dots, lists, lone surrogates</li>
+</ul>
+<h3>Add, update, delete data (large writes in batches)</h3>
+<ul>
+<li>✓ add and read back embeddings, metadata, documents, URIs</li>
+<li>✓ update, upsert, null deletes a key</li>
+<li>✓ 12,000 records: written in batches, read in pages</li>
+<li>✓ batches: one request, and a smaller size</li>
+<li>✓ delete: by ids, by filters, with a limit</li>
+<li>✓ count at a read level</li>
+</ul>
+<h3>Configure: HNSW, SPANN, embedding function</h3>
+<ul>
+<li>✓ space: l2, cosine, inner product</li>
+<li>✓ HNSW settings, changed after the creation</li>
+<li>✓ SPANN on a single server: the client tells</li>
+<li>✓ embedding function declared</li>
+<li>✓ schema: value indexes off, full-text search off, space</li>
+<li>✓ index settings, changed after the creation: SPANN on Chroma Cloud</li>
+<li>✓ the index Chroma Cloud does not use: HNSW, the client tells</li>
+</ul>
+<h3>Query and get: l2, cosine, ip</h3>
+<ul>
+<li>✓ nearest records and distances, in each space</li>
+<li>✓ several queries, ids, filters, include, ChromaQuery</li>
+<li>✓ get: one, many, missing, limit and offset, include</li>
+<li>✓ floats the server cannot write: read as NaN or infinity, the other records intact</li>
+</ul>
+<h3>Metadata filtering, array metadata</h3>
+<ul>
+<li>✓ every operator on ints, floats, strings, bools</li>
+<li>✓ &amp; and |, nested, long chains</li>
+<li>✓ lists in metadata: $contains, $not_contains</li>
+<li>✓ metadata values read exactly, or inferred</li>
+</ul>
+<h3>Full-text search and regex</h3>
+<ul>
+<li>✓ $contains, $not_contains, combined</li>
+<li>✓ $regex, $not_regex</li>
+</ul>
+<h3>Collection forking</h3>
+<ul>
+<li>✓ ForkAsync and ForkCountAsync; — on alpine_net10.0, alpine_net8.0, aot_net10.0, arm64_net10.0, arm64_net8.0, linux_net10.0, linux_net10.0_tr-TR, linux_net6.0, linux_net8.0, linux_net9.0, win32_net10.0, win32_net48, win32_net8.0, win_net10.0, win_net10.0_th-TH, win_net10.0_tr-TR, win_net462, win_net48, win_net48_de-DE, win_net48_fa-IR, win_net48_tr-TR, win_net5.0, win_net6.0, win_net6.0_ar-SA, win_net7.0, win_net8.0, win_net8.0_de-DE, win_net9.0, win_netcoreapp3.1, win_netcoreapp3.1_ja-JP: Chroma docs: "Forking is available in Chroma Cloud only"; a single server answers 501, which the client throws as a ChromaException</li>
+</ul>
+<h3>Schema: sparse vector search, BM25</h3>
+<ul>
+<li>— a sparse vector index in the schema: Chroma docs: sparse vector search is in the Chroma Cloud section; a single server answers 400, which the client throws as a ChromaException</li>
+<li>✓ a sparse vector index with BM25: written, read back, searched</li>
+</ul>
+<h3>Search API (basics, filtering, ranking, group by, hybrid, pagination, batch)</h3>
+<ul>
+<li>— SearchAsync: Chroma docs: "Search API is available in Chroma Cloud only"; a single server answers 501, which the client throws as a ChromaException</li>
+<li>✓ basics: knn, limit, select</li>
+<li>✓ filtering: where, where_document, ids</li>
+<li>✓ ranking: sums and products of rankings</li>
+<li>✓ group by: the nearest of each category</li>
+<li>✓ hybrid: RRF of a dense and a BM25 ranking</li>
+<li>✓ pagination: limit and offset</li>
+<li>✓ batch: several searches in one request</li>
+</ul>
+<h3>Quotas &amp; Limits: the client keeps to them or reports the error of Chroma</h3>
+<ul>
+<li>✓ 300 records per write: the client splits; one request beyond gets the error</li>
+<li>✓ 300 results: a get reads beyond in pages; a query or search beyond</li>
+<li>✓ 10 reads or writes at a time per collection: 30 at once</li>
+<li>✓ 8 predicates per filter</li>
+<li>✓ 256 characters in a full-text search or a regex</li>
+<li>✓ 4,096 dimensions</li>
+<li>✓ 16,384 bytes per document</li>
+<li>✓ 128 bytes per id, collection name and database name</li>
+<li>✓ 8,182 bytes per metadata value</li>
+<li>✓ 32 metadata keys</li>
+</ul>
+<h3>OpenTelemetry traces and metrics</h3>
+<ul>
+<li>✓ a span for each operation, with the attributes of the conventions</li>
+<li>✓ the duration histogram and its buckets, with the OpenTelemetry SDK; — on win_netcoreapp3.1, win_netcoreapp3.1_ja-JP: the OpenTelemetry SDK exports no metric on this runtime, also from a meter of its own</li>
+</ul>
+<h3>Cancellation, timeouts, concurrent calls</h3>
+<ul>
+<li>✓ a canceled token, a timeout</li>
+<li>✓ tasks at the same time on one client: 24, or 10 on Chroma Cloud</li>
+</ul>
+<h3>Dependency injection</h3>
+<ul>
+<li>✓ AddChromaClient, AddKeyedChromaClient, CreateChromaClient</li>
+</ul>
+<h3>Testcontainers module</h3>
+<ul>
+<li>✓ a Chroma container from ChromaDotNet.Testcontainers</li>
+</ul>
+<h3>Mocks in tests</h3>
+<ul>
+<li>✓ a subclass without a server</li>
+</ul>
+<h3>BM25 vectors computed by the client</h3>
+<ul>
+<li>✓ the vectors of the Python client of Chroma for 216 texts</li>
+</ul>
+<h3>Search and filter requests built by the client</h3>
+<ul>
+<li>✓ the JSON of ranks and filters</li>
+</ul>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>ChromaDotNet is a community project. It is not affiliated with or endorsed by Chroma.</p>
+    <p>The client is a continuation of <a href="https://github.com/ssone95/ChromaDB.Client">ssone95/ChromaDB.Client</a>. All the libraries are MIT licensed. Their source is on <a href="https://github.com/ChromaDotNet">GitHub</a>.</p>
+  </div>
+</footer>
+</body>
+</html>

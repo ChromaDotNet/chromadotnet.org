@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ChromaDotNet: .NET libraries for Chroma</title>
-<meta name="description" content=".NET libraries for Chroma and Chroma Cloud: a client for the Chroma API, a Microsoft.Extensions.VectorData provider, a Testcontainers module and Aspire integrations.">
+<meta name="description" content=".NET libraries for Chroma and Chroma Cloud. A client for the Chroma API, a Microsoft.Extensions.VectorData provider, a Testcontainers module and Aspire integrations.">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="assets/icon-48.png" sizes="48x48" type="image/png">
 <link rel="icon" href="assets/icon-96.png" sizes="96x96" type="image/png">
@@ -14,7 +14,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ChromaDotNet">
 <meta property="og:title" content="ChromaDotNet: .NET libraries for Chroma">
-<meta property="og:description" content="A client for the Chroma API, a Microsoft.Extensions.VectorData provider, a Testcontainers module and Aspire integrations, for Chroma and Chroma Cloud.">
+<meta property="og:description" content="A client for the Chroma API, a Microsoft.Extensions.VectorData provider, a Testcontainers module and Aspire integrations for Chroma and Chroma Cloud.">
 <link rel="canonical" href="https://chromadotnet.org/">
 <meta property="og:url" content="https://chromadotnet.org/">
 <meta property="og:image" content="https://chromadotnet.org/assets/og.png">
@@ -152,7 +152,7 @@ footer p { margin: 0 0 8px; }
   <div class="hero">
     <div class="wrap">
       <h1>.NET libraries for Chroma and Chroma Cloud</h1>
-      <p class="lead">A client for the Chroma API, a Microsoft.Extensions.VectorData provider, a Testcontainers module and Aspire integrations. The client is tested with Chroma 0.4.10 to 1.5.9 and with Chroma Cloud.</p>
+      <p class="lead">A client for the Chroma API, a Microsoft.Extensions.VectorData provider, a Testcontainers module and Aspire integrations. We test the client with Chroma 0.4.10 to 1.5.9 and with Chroma Cloud.</p>
       <div class="code">
         <div class="bar"><span>dotnet add package ChromaDotNet.Client</span><button class="copy" type="button" data-copy="dotnet add package ChromaDotNet.Client">Copy</button></div>
 <pre><code><span class="k">using</span> ChromaDB.Client;
@@ -168,7 +168,7 @@ footer p { margin: 0 0 8px; }
 <span class="k">var</span> results = <span class="k">await</span> docs.QueryAsync(
     <span class="k">new</span> <span class="t">ReadOnlyMemory</span>&lt;<span class="k">float</span>&gt;([0.1f, 0.4f, 0.2f]), nResults: 1);</code></pre>
       </div>
-      <p class="note">The packages are named <code>ChromaDotNet.*</code>; the namespaces keep their original names, like <code>ChromaDB.Client</code>.</p>
+      <p class="note">The packages are named <code>ChromaDotNet.*</code>. The namespaces keep their original names, such as <code>ChromaDB.Client</code>.</p>
     </div>
   </div>
 
@@ -179,25 +179,25 @@ footer p { margin: 0 0 8px; }
       <div class="grid">
         <article class="lib">
           <h3>ChromaDotNet.<wbr>Client</h3>
-          <p>The client: every operation of the Chroma v2 API, Chroma Cloud included, on .NET 8 and later, .NET 10 included, on .NET Framework 4.6.2 and on .NET Standard 2.0 platforms. Dependency injection comes in ChromaDotNet.<wbr>Client.<wbr>DependencyInjection.</p>
+          <p>The client covers every operation in the Chroma v2 API, including Chroma Cloud. It runs on .NET 8 and later (including .NET 10), .NET Framework 4.6.2 and .NET Standard 2.0 platforms. For dependency injection, use ChromaDotNet.<wbr>Client.<wbr>DependencyInjection.</p>
           <div class="install"><code>dotnet add package ChromaDotNet.<wbr>Client</code><button class="copy" type="button" data-copy="dotnet add package ChromaDotNet.Client">Copy</button></div>
           <div class="more"><a href="https://github.com/ChromaDotNet/ChromaDB.Client">GitHub</a><a href="https://www.nuget.org/packages/ChromaDotNet.Client">NuGet</a><a href="https://github.com/ChromaDotNet/ChromaDB.Client/blob/main/docs/COMPATIBILITY.md">Tested versions</a></div>
         </article>
         <article class="lib">
           <h3>ChromaDotNet.<wbr>VectorData</h3>
-          <p>A Microsoft.Extensions.VectorData provider, for Semantic Kernel, Agent Framework and any code written against the abstractions. Hybrid search on Chroma Cloud.</p>
+          <p>A Microsoft.Extensions.VectorData provider. Use it with Semantic Kernel, Agent Framework or any code written against the abstractions. It supports hybrid search on Chroma Cloud.</p>
           <div class="install"><code>dotnet add package ChromaDotNet.<wbr>VectorData</code><button class="copy" type="button" data-copy="dotnet add package ChromaDotNet.VectorData">Copy</button></div>
           <div class="more"><a href="https://github.com/ChromaDotNet/ChromaDB.VectorData">GitHub</a><a href="https://www.nuget.org/packages/ChromaDotNet.VectorData">NuGet</a></div>
         </article>
         <article class="lib">
           <h3>ChromaDotNet.<wbr>Testcontainers</h3>
-          <p>A Testcontainers for .NET module: a throwaway Chroma container in your tests.</p>
+          <p>A Testcontainers for .NET module. It gives your tests a throwaway Chroma container.</p>
           <div class="install"><code>dotnet add package ChromaDotNet.<wbr>Testcontainers</code><button class="copy" type="button" data-copy="dotnet add package ChromaDotNet.Testcontainers">Copy</button></div>
           <div class="more"><a href="https://github.com/ChromaDotNet/ChromaDB.Testcontainers">GitHub</a><a href="https://www.nuget.org/packages/ChromaDotNet.Testcontainers">NuGet</a></div>
         </article>
         <article class="lib">
           <h3>ChromaDotNet.<wbr>Aspire.<wbr>Hosting / .<wbr>Client</h3>
-          <p>Aspire integrations: Chroma in the app host, and the client in the services, with health checks, traces and metrics.</p>
+          <p>Aspire integrations. Add Chroma to the app host and the client to your services, with health checks, traces and metrics.</p>
           <div class="install"><code>dotnet add package ChromaDotNet.<wbr>Aspire.<wbr>Hosting</code><button class="copy" type="button" data-copy="dotnet add package ChromaDotNet.Aspire.Hosting">Copy</button></div>
           <div class="install"><code>dotnet add package ChromaDotNet.<wbr>Aspire.<wbr>Client</code><button class="copy" type="button" data-copy="dotnet add package ChromaDotNet.Aspire.Client">Copy</button></div>
           <div class="more"><a href="https://github.com/ChromaDotNet/ChromaDB.Aspire">GitHub</a><a href="https://www.nuget.org/packages/ChromaDotNet.Aspire.Hosting">NuGet (hosting)</a><a href="https://www.nuget.org/packages/ChromaDotNet.Aspire.Client">NuGet (client)</a></div>
@@ -209,10 +209,10 @@ footer p { margin: 0 0 8px; }
   <section id="samples">
     <div class="wrap">
       <h2>Samples</h2>
-      <p class="sub">The samples run with Azure OpenAI (Semantic Kernel) or Microsoft Foundry (Agent Framework); the chat samples also run locally with Ollama.</p>
+      <p class="sub">The Semantic Kernel samples run with Azure OpenAI. The Agent Framework samples run with Microsoft Foundry. The chat samples also run locally with Ollama.</p>
       <ul class="samples">
         <li><a href="https://github.com/ChromaDotNet/ChromaDB.SemanticKernel.Sample">Semantic Kernel</a><span>Vector search and an agent that answers from documents stored in Chroma.</span></li>
-        <li><a href="https://github.com/ChromaDotNet/ChromaDB.AgentFramework.Sample">Microsoft Agent Framework</a><span>Chat history kept in Chroma, and an agent that answers from documentation stored in Chroma.</span></li>
+        <li><a href="https://github.com/ChromaDotNet/ChromaDB.AgentFramework.Sample">Microsoft Agent Framework</a><span>Chat history kept in Chroma, and an agent that answers from documentation stored there.</span></li>
       </ul>
     </div>
   </section>
@@ -221,7 +221,7 @@ footer p { margin: 0 0 8px; }
 <footer>
   <div class="wrap">
     <p>ChromaDotNet is a community project. It is not affiliated with or endorsed by Chroma.</p>
-    <p>The client continues <a href="https://github.com/ssone95/ChromaDB.Client">ssone95/ChromaDB.Client</a>. All the libraries are MIT licensed, on <a href="https://github.com/ChromaDotNet">GitHub</a>.</p>
+    <p>The client is a continuation of <a href="https://github.com/ssone95/ChromaDB.Client">ssone95/ChromaDB.Client</a>. All the libraries are MIT licensed. Their source is on <a href="https://github.com/ChromaDotNet">GitHub</a>.</p>
   </div>
 </footer>
 

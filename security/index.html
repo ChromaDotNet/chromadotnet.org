@@ -3,20 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Libraries: ChromaDotNet</title>
-<meta name="description" content="The ChromaDotNet libraries for Chroma and Chroma Cloud: the client, the Microsoft.Extensions.VectorData provider, the Testcontainers module and the Aspire integrations.">
+<title>Security: ChromaDotNet.Client</title>
+<meta name="description" content="How the ChromaDotNet.Client packages are published, signed and checked, and how to report a vulnerability.">
+<meta name="theme-color" content="#0B1F24">
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" href="../assets/icon-48.png" sizes="48x48" type="image/png">
 <link rel="icon" href="../assets/icon-96.png" sizes="96x96" type="image/png">
 <link rel="icon" href="../assets/icon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-<meta name="theme-color" content="#0B1F24">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ChromaDotNet">
-<meta property="og:title" content="Libraries: ChromaDotNet">
-<meta property="og:description" content="The ChromaDotNet libraries for Chroma and Chroma Cloud: the client, the Microsoft.Extensions.VectorData provider, the Testcontainers module and the Aspire integrations.">
-<link rel="canonical" href="https://chromadotnet.org/libraries/">
-<meta property="og:url" content="https://chromadotnet.org/libraries/">
+<meta property="og:title" content="Security: ChromaDotNet.Client">
+<meta property="og:description" content="How the ChromaDotNet.Client packages are published, signed and checked, and how to report a vulnerability.">
+<link rel="canonical" href="https://chromadotnet.org/security/">
+<meta property="og:url" content="https://chromadotnet.org/security/">
 <meta property="og:image" content="https://chromadotnet.org/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -118,6 +118,22 @@ ul.samples span { display: block; color: var(--muted); }
 
 footer { border-top: 1px solid var(--border); margin-top: 40px; padding: 32px 0 48px; color: var(--muted); font-size: 15px; }
 footer p { margin: 0 0 8px; }
+
+.doc { padding: 24px 0 8px; }
+.doc h1 { font-size: clamp(30px, 4.4vw, 44px); line-height: 1.15; letter-spacing: -0.8px; margin: 0 0 20px; }
+.doc h2 { font-size: 26px; letter-spacing: -0.4px; margin: 44px 0 12px; }
+.doc h3 { font-size: 18px; margin: 28px 0 8px; }
+.doc ul { padding-left: 22px; }
+.doc li { margin: 4px 0; overflow-wrap: anywhere; }
+.doc p { overflow-wrap: anywhere; }
+.doc code { font-size: 0.9em; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 0 4px; }
+.tablewrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; margin: 12px 0; }
+.doc table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+.doc th, .doc td { padding: 8px 12px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+.doc th { background: var(--surface); font-weight: 600; }
+.doc tr:last-child td { border-bottom: 0; }
+.doc pre { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; overflow-x: auto; }
+.doc pre code { background: none; border: 0; padding: 0; font-size: 13.5px; }
 </style>
 </head>
 <body>
@@ -151,39 +167,36 @@ footer p { margin: 0 0 8px; }
 </header>
 
 <main>
-<section id="libraries">
-    <div class="wrap">
-      <h2>Libraries</h2>
-      <p class="sub">Each repository publishes its own NuGet packages.</p>
-      <div class="grid">
-        <article class="lib">
-          <h3>ChromaDotNet.<wbr>Client</h3>
-          <p>The client covers every operation in the Chroma v2 API, including Chroma Cloud. It runs on .NET 8 and later (including .NET 10), .NET Framework 4.6.2 and .NET Standard 2.0 platforms. For dependency injection, use ChromaDotNet.<wbr>Client.<wbr>DependencyInjection.</p>
-          <div class="install"><code>dotnet add package ChromaDotNet.<wbr>Client</code><button class="copy" type="button" data-copy="dotnet add package ChromaDotNet.Client">Copy</button></div>
-          <div class="more"><a href="https://github.com/ChromaDotNet/ChromaDB.Client">GitHub</a><a href="https://www.nuget.org/packages/ChromaDotNet.Client">NuGet</a><a href="https://github.com/ChromaDotNet/ChromaDB.Client/blob/main/docs/COMPATIBILITY.md">Tested versions</a></div>
-        </article>
-        <article class="lib">
-          <h3>ChromaDotNet.<wbr>VectorData</h3>
-          <p>A Microsoft.Extensions.VectorData provider. Use it with Semantic Kernel, Agent Framework or any code written against the abstractions. It supports hybrid search on Chroma Cloud.</p>
-          <div class="install"><code>dotnet add package ChromaDotNet.<wbr>VectorData</code><button class="copy" type="button" data-copy="dotnet add package ChromaDotNet.VectorData">Copy</button></div>
-          <div class="more"><a href="https://github.com/ChromaDotNet/ChromaDB.VectorData">GitHub</a><a href="https://www.nuget.org/packages/ChromaDotNet.VectorData">NuGet</a></div>
-        </article>
-        <article class="lib">
-          <h3>ChromaDotNet.<wbr>Testcontainers</h3>
-          <p>A Testcontainers for .NET module. It gives your tests a throwaway Chroma container.</p>
-          <div class="install"><code>dotnet add package ChromaDotNet.<wbr>Testcontainers</code><button class="copy" type="button" data-copy="dotnet add package ChromaDotNet.Testcontainers">Copy</button></div>
-          <div class="more"><a href="https://github.com/ChromaDotNet/ChromaDB.Testcontainers">GitHub</a><a href="https://www.nuget.org/packages/ChromaDotNet.Testcontainers">NuGet</a></div>
-        </article>
-        <article class="lib">
-          <h3>ChromaDotNet.<wbr>Aspire.<wbr>Hosting / .<wbr>Client</h3>
-          <p>Aspire integrations. Add Chroma to the app host and the client to your services, with health checks, traces and metrics.</p>
-          <div class="install"><code>dotnet add package ChromaDotNet.<wbr>Aspire.<wbr>Hosting</code><button class="copy" type="button" data-copy="dotnet add package ChromaDotNet.Aspire.Hosting">Copy</button></div>
-          <div class="install"><code>dotnet add package ChromaDotNet.<wbr>Aspire.<wbr>Client</code><button class="copy" type="button" data-copy="dotnet add package ChromaDotNet.Aspire.Client">Copy</button></div>
-          <div class="more"><a href="https://github.com/ChromaDotNet/ChromaDB.Aspire">GitHub</a><a href="https://www.nuget.org/packages/ChromaDotNet.Aspire.Hosting">NuGet (hosting)</a><a href="https://www.nuget.org/packages/ChromaDotNet.Aspire.Client">NuGet (client)</a></div>
-        </article>
-      </div>
-    </div>
-  </section>
+  <div class="wrap doc">
+<h1>Security</h1>
+<p>This page is about <code>ChromaDotNet.Client</code> and <code>ChromaDotNet.Client.DependencyInjection</code>, the packages the other ChromaDotNet libraries build on. The full policy is in <a href="https://github.com/ChromaDotNet/ChromaDB.Client/blob/main/SECURITY.md">SECURITY.md</a>.</p>
+<h2>How the packages are published</h2>
+<ul>
+<li>Only the CI publishes the packages, from the version tags of <a href="https://github.com/ChromaDotNet/ChromaDB.Client">ChromaDotNet/ChromaDB.Client</a>, with <a href="https://learn.microsoft.com/nuget/nuget-org/trusted-publishing">NuGet trusted publishing</a>. No person and no repository keeps a NuGet API key.</li>
+<li>The <code>ChromaDotNet.*</code> prefix is reserved on nuget.org for this organization.</li>
+<li>The organization requires two-factor authentication.</li>
+</ul>
+<h2>What every change goes through</h2>
+<ul>
+<li><code>main</code> takes changes only through pull requests, and only when these checks pass: the tests on nine Chroma versions from 0.4.10 to 1.5.9, the trimming and NativeAOT build, the .NET Framework build, and CodeQL. The rule has no exceptions.</li>
+<li>The workflows pin their actions to commit hashes.</li>
+<li>Dependabot watches the dependencies and the actions, and <a href="https://scorecard.dev/viewer/?uri=github.com/ChromaDotNet/ChromaDB.Client">OpenSSF Scorecard</a> rates the repository.</li>
+</ul>
+<h2>What the packages depend on</h2>
+<ul>
+<li><code>ChromaDotNet.Client</code>: System.Text.Json, System.Diagnostics.DiagnosticSource and System.Memory, all from Microsoft.</li>
+<li><code>ChromaDotNet.Client.DependencyInjection</code>: the client, Microsoft.Extensions.DependencyInjection.Abstractions and Microsoft.Extensions.Http.</li>
+</ul>
+<h2>Verifying a package</h2>
+<p>The latest <a href="https://github.com/ChromaDotNet/ChromaDB.Client/releases">GitHub releases</a> have the packages as published on nuget.org, with their Sigstore signatures, made by the release workflow. With Cosign 3 or later:</p>
+<pre><code>cosign verify-blob ChromaDotNet.Client.2.10.0.nupkg --bundle ChromaDotNet.Client.2.10.0.nupkg.sigstore.json --certificate-identity-regexp '^https://github.com/ChromaDotNet/ChromaDB.Client/\.github/workflows/release-assets\.yml@' --certificate-oidc-issuer https://token.actions.githubusercontent.com
+</code></pre>
+<p>nuget.org also signs every package with its repository signature:</p>
+<pre><code>dotnet nuget verify --all ChromaDotNet.Client.2.10.0.nupkg
+</code></pre>
+<h2>Reporting a vulnerability</h2>
+<p>Do not report a vulnerability in a public issue. Report it privately on GitHub: <a href="https://github.com/ChromaDotNet/ChromaDB.Client/security/advisories/new">Report a vulnerability</a>. We acknowledge the report within 7 days, and confirm or rule it out within 14 days. Security fixes go into the latest release.</p>
+  </div>
 </main>
 
 <footer>
@@ -192,18 +205,5 @@ footer p { margin: 0 0 8px; }
     <p>The client is a continuation of <a href="https://github.com/ssone95/ChromaDB.Client">ssone95/ChromaDB.Client</a>. All the libraries are MIT licensed. Their source is on <a href="https://github.com/ChromaDotNet">GitHub</a>.</p>
   </div>
 </footer>
-
-<script>
-document.querySelectorAll("button.copy").forEach(function (button) {
-  button.addEventListener("click", function () {
-    var text = button.getAttribute("data-copy");
-    if (!navigator.clipboard) { return; }
-    navigator.clipboard.writeText(text).then(function () {
-      button.textContent = "Copied";
-      setTimeout(function () { button.textContent = "Copy"; }, 1500);
-    });
-  });
-});
-</script>
 </body>
 </html>

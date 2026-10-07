@@ -118,6 +118,14 @@ ul.samples span { display: block; color: var(--muted); }
 
 footer { border-top: 1px solid var(--border); margin-top: 40px; padding: 32px 0 48px; color: var(--muted); font-size: 15px; }
 footer p { margin: 0 0 8px; }
+.stack { display: grid; gap: 8px; max-width: 760px; margin: 0 0 28px; }
+.stack .layer { border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; background: var(--surface); font-family: "IBM Plex Mono", monospace; font-size: 14px; overflow-wrap: anywhere; }
+.stack .layer span { display: block; font-family: "IBM Plex Sans", system-ui, sans-serif; color: var(--muted); font-size: 13.5px; }
+.stack .layer-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+@media (max-width: 560px) { .stack .layer-row { grid-template-columns: minmax(0, 1fr); } }
+.stack .layer-core { border: 2px solid var(--accent); }
+.stack .layer-edge { background: transparent; border-style: dashed; font-family: "IBM Plex Sans", system-ui, sans-serif; color: var(--muted); text-align: center; }
+.stack p.stack-note { color: var(--muted); font-size: 15px; margin: 4px 0 0; }
 </style>
 </head>
 <body>
@@ -177,7 +185,17 @@ footer p { margin: 0 0 8px; }
   <section id="libraries">
     <div class="wrap">
       <h2>Libraries</h2>
-      <p class="sub">Each repository publishes its own NuGet packages.</p>
+      <p class="sub">ChromaDotNet.Client is the .NET client for Chroma. The Microsoft.Extensions.VectorData provider and the Aspire client integration are built on it.</p>
+      <div class="stack" role="img" aria-label="Your app uses the VectorData provider or the Aspire client integration, which are built on ChromaDotNet.Client, which talks to Chroma and Chroma Cloud.">
+        <div class="layer layer-edge">Your app: Semantic Kernel, Agent Framework, Aspire services</div>
+        <div class="layer-row">
+          <div class="layer">ChromaDotNet.VectorData<span>Microsoft.Extensions.VectorData provider</span></div>
+          <div class="layer">ChromaDotNet.Aspire.Client<span>Aspire client integration</span></div>
+        </div>
+        <div class="layer layer-core">ChromaDotNet.Client<span>the .NET client for the Chroma API</span></div>
+        <div class="layer layer-edge">Chroma and Chroma Cloud</div>
+        <p class="stack-note">ChromaDotNet.Testcontainers and ChromaDotNet.Aspire.Hosting start Chroma: in your tests, and in the Aspire app host.</p>
+      </div>
       <div class="grid">
         <article class="lib">
           <h3>ChromaDotNet.<wbr>Client</h3>

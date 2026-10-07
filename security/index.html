@@ -188,10 +188,14 @@ footer p { margin: 0 0 8px; }
 <li><code>ChromaDotNet.Client.DependencyInjection</code>: the client, Microsoft.Extensions.DependencyInjection.Abstractions and Microsoft.Extensions.Http.</li>
 </ul>
 <h2>Verifying a package</h2>
-<p>The latest <a href="https://github.com/ChromaDotNet/ChromaDB.Client/releases">GitHub releases</a> have the packages as published on nuget.org, with their Sigstore signatures, made by the release workflow. With Cosign 3 or later:</p>
-<pre><code>cosign verify-blob ChromaDotNet.Client.2.11.0.nupkg --bundle ChromaDotNet.Client.2.11.0.nupkg.sigstore.json --certificate-identity-regexp '^https://github.com/ChromaDotNet/ChromaDB.Client/\.github/workflows/release-assets\.yml@' --certificate-oidc-issuer https://token.actions.githubusercontent.com
+<p>From 2.10.2 on, each <a href="https://github.com/ChromaDotNet/ChromaDB.Client/releases">GitHub release</a> has the packages that the CI built from the version tag, with their Sigstore signatures and their build provenance. nuget.org serves the same packages with its repository signature added. So the two files have different hashes, and each check works on one of them.</p>
+<p>On the package from the GitHub release, with Cosign 3 or later:</p>
+<pre><code>cosign verify-blob ChromaDotNet.Client.2.11.0.nupkg --bundle ChromaDotNet.Client.2.11.0.nupkg.sigstore.json --certificate-identity-regexp '^https://github.com/ChromaDotNet/ChromaDB.Client/[.]github/workflows/release-assets[.]yml@' --certificate-oidc-issuer https://token.actions.githubusercontent.com
 </code></pre>
-<p>nuget.org also signs every package with its repository signature:</p>
+<p>On the package from the GitHub release, with the GitHub CLI:</p>
+<pre><code>gh attestation verify ChromaDotNet.Client.2.11.0.nupkg --bundle provenance-v2.11.0.intoto.jsonl --repo ChromaDotNet/ChromaDB.Client --signer-workflow ChromaDotNet/ChromaDB.Client/.github/workflows/ci.yml --source-ref refs/tags/v2.11.0
+</code></pre>
+<p>On the package from nuget.org:</p>
 <pre><code>dotnet nuget verify --all ChromaDotNet.Client.2.11.0.nupkg
 </code></pre>
 <h2>Reporting a vulnerability</h2>

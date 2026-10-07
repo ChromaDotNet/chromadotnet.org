@@ -189,10 +189,10 @@ footer p { margin: 0 0 8px; }
 </ul>
 <h2>Verifying a package</h2>
 <p>The latest <a href="https://github.com/ChromaDotNet/ChromaDB.Client/releases">GitHub releases</a> have the packages as published on nuget.org, with their Sigstore signatures, made by the release workflow. With Cosign 3 or later:</p>
-<pre><code>cosign verify-blob ChromaDotNet.Client.2.10.2.nupkg --bundle ChromaDotNet.Client.2.10.2.nupkg.sigstore.json --certificate-identity-regexp '^https://github.com/ChromaDotNet/ChromaDB.Client/\.github/workflows/release-assets\.yml@' --certificate-oidc-issuer https://token.actions.githubusercontent.com
+<pre><code>cosign verify-blob ChromaDotNet.Client.2.10.3.nupkg --bundle ChromaDotNet.Client.2.10.3.nupkg.sigstore.json --certificate-identity-regexp '^https://github.com/ChromaDotNet/ChromaDB.Client/\.github/workflows/release-assets\.yml@' --certificate-oidc-issuer https://token.actions.githubusercontent.com
 </code></pre>
 <p>nuget.org also signs every package with its repository signature:</p>
-<pre><code>dotnet nuget verify --all ChromaDotNet.Client.2.10.2.nupkg
+<pre><code>dotnet nuget verify --all ChromaDotNet.Client.2.10.3.nupkg
 </code></pre>
 <h2>Reporting a vulnerability</h2>
 <p>Do not report a vulnerability in a public issue. Report it privately on GitHub: <a href="https://github.com/ChromaDotNet/ChromaDB.Client/security/advisories/new">Report a vulnerability</a>. We acknowledge the report within 7 days, and confirm or rule it out within 14 days. Security fixes go into the latest release.</p>

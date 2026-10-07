@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Compatibility: ChromaDotNet.Client</title>
-<meta name="description" content="What ChromaDotNet.Client 2.10.3 passes on Chroma 1.5.9 and on Chroma Cloud, on .NET Framework, .NET Core and .NET 5 to 10, on Windows, Linux, Alpine, arm64 and NativeAOT.">
+<meta name="description" content="What ChromaDotNet.Client 2.11.0 passes on Chroma 1.5.9 and on Chroma Cloud, on .NET Framework, .NET Core and .NET 5 to 10, on Windows, Linux, Alpine, arm64 and NativeAOT.">
 <meta name="theme-color" content="#0B1F24">
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" href="../assets/icon-48.png" sizes="48x48" type="image/png">
@@ -14,7 +14,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ChromaDotNet">
 <meta property="og:title" content="Compatibility: ChromaDotNet.Client">
-<meta property="og:description" content="What ChromaDotNet.Client 2.10.3 passes on Chroma 1.5.9 and on Chroma Cloud, on every .NET runtime and platform.">
+<meta property="og:description" content="What ChromaDotNet.Client 2.11.0 passes on Chroma 1.5.9 and on Chroma Cloud, on every .NET runtime and platform.">
 <link rel="canonical" href="https://chromadotnet.org/compatibility/">
 <meta property="og:url" content="https://chromadotnet.org/compatibility/">
 <meta property="og:image" content="https://chromadotnet.org/assets/og.png">
@@ -168,9 +168,9 @@ footer p { margin: 0 0 8px; }
   <div class="wrap doc">
 <h1>ChromaDotNet.Client conformance: Chroma single server and Chroma Cloud</h1>
 <ul>
-<li><strong>Client:</strong> ChromaDotNet.Client 2.10.3</li>
+<li><strong>Client:</strong> ChromaDotNet.Client 2.11.0</li>
 <li><strong>Chroma:</strong> <code>chromadb/chroma:1.5.9</code>, a single server in Docker</li>
-<li><strong>Chroma Cloud:</strong> AWS us-east-1, run on 2026-10-07 with the client 2.10.3 on .NET 10.0.12; every collection and database deleted at the end</li>
+<li><strong>Chroma Cloud:</strong> AWS us-east-1, run on 2026-10-07 with the client 2.11.0 on .NET 10.0.12; every collection and database deleted at the end</li>
 <li><strong>OpenTelemetry SDK:</strong> 1.19.1; <strong>ChromaDotNet.Testcontainers:</strong> 0.1.3 (Testcontainers 4.15.0)</li>
 <li><strong>Chroma image digest:</strong> chromadb/chroma@sha256:1e0b73a187a28757c572acba508c46f48c9e8b0acaf5c20e6d95cdedce1acdf6</li>
 <li><strong>Docker:</strong> 29.7.2 (linux/amd64)</li>
@@ -178,8 +178,8 @@ footer p { margin: 0 0 8px; }
 <li><strong>Host:</strong> Windows 10.0.26200, x86_64</li>
 <li><strong>Client package:</strong> the packages of nuget.org (same SHA-512)</li>
 <li><strong>Arm64:</strong> the Linux arm64 images of .NET, emulated by Docker on this x86-64 host</li>
-<li><strong>Environments:</strong> 31, 1500 checks run</li>
-<li><strong>Generated:</strong> 2026-10-07 11:18 UTC</li>
+<li><strong>Environments:</strong> 31, 1655 checks run</li>
+<li><strong>Generated:</strong> 2026-10-07 14:28 UTC</li>
 </ul>
 <p>✓ every check passed · ✗ a check failed · — not on a single server: the Chroma docs put it in Chroma Cloud, and the check verified that the client reports the error of the server as documented · on Chroma Cloud, — is what an API key cannot do, with the error the check verified · ¹ a note under the table · a blank cell: the row is not about that column (the quotas of Chroma Cloud on a single server; on Chroma Cloud, the checks with no server or with a local container)</p>
 <h2>By feature</h2>
@@ -572,7 +572,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET Framework 4.8.9345.0</td>
 <td>.NETFramework,Version=v4.6.2</td>
 <td>en-GB</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Windows · .NET Framework 4.6.2, 4.8 · x64, x86</td>
@@ -582,7 +582,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET Framework 4.8.9345.0</td>
 <td>.NETFramework,Version=v4.6.2</td>
 <td>en-GB</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Windows · .NET Framework 4.6.2, 4.8 · x64, x86</td>
@@ -592,7 +592,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET Framework 4.8.9345.0</td>
 <td>.NETFramework,Version=v4.6.2</td>
 <td>en-GB</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Windows · .NET Framework 4.6.2, 4.8 · x64, x86</td>
@@ -602,7 +602,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET Framework 4.8.9345.0</td>
 <td>.NETFramework,Version=v4.6.2</td>
 <td>de-DE</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Windows · .NET Framework 4.6.2, 4.8 · x64, x86</td>
@@ -612,7 +612,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET Framework 4.8.9345.0</td>
 <td>.NETFramework,Version=v4.6.2</td>
 <td>fa-IR</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Windows · .NET Framework 4.6.2, 4.8 · x64, x86</td>
@@ -622,7 +622,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET Framework 4.8.9345.0</td>
 <td>.NETFramework,Version=v4.6.2</td>
 <td>tr-TR</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Windows · .NET Core 3.1, .NET 5, 6, 7 · x64</td>
@@ -632,7 +632,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET Core 3.1.28</td>
 <td>.NETStandard,Version=v2.0</td>
 <td>en-GB</td>
-<td>44 ✓ · 4 —</td>
+<td>49 ✓ · 4 —</td>
 </tr>
 <tr>
 <td>Windows · .NET Core 3.1, .NET 5, 6, 7 · x64</td>
@@ -642,7 +642,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET Core 3.1.28</td>
 <td>.NETStandard,Version=v2.0</td>
 <td>ja-JP</td>
-<td>44 ✓ · 4 —</td>
+<td>49 ✓ · 4 —</td>
 </tr>
 <tr>
 <td>Windows · .NET Core 3.1, .NET 5, 6, 7 · x64</td>
@@ -652,7 +652,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET 5.0.16</td>
 <td>.NETStandard,Version=v2.0</td>
 <td>en-GB</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Windows · .NET Core 3.1, .NET 5, 6, 7 · x64</td>
@@ -662,7 +662,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET 6.0.6</td>
 <td>.NETStandard,Version=v2.0</td>
 <td>en-GB</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Windows · .NET Core 3.1, .NET 5, 6, 7 · x64</td>
@@ -672,7 +672,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET 6.0.6</td>
 <td>.NETStandard,Version=v2.0</td>
 <td>ar-SA</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Windows · .NET Core 3.1, .NET 5, 6, 7 · x64</td>
@@ -682,7 +682,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET 7.0.20</td>
 <td>.NETStandard,Version=v2.0</td>
 <td>en-GB</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Windows · .NET 8, 9, 10 · x64, x86</td>
@@ -692,7 +692,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET 8.0.31</td>
 <td>.NETCoreApp,Version=v8.0</td>
 <td>en-GB</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Windows · .NET 8, 9, 10 · x64, x86</td>
@@ -702,7 +702,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET 8.0.31</td>
 <td>.NETCoreApp,Version=v8.0</td>
 <td>en-GB</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Windows · .NET 8, 9, 10 · x64, x86</td>
@@ -712,7 +712,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET 8.0.31</td>
 <td>.NETCoreApp,Version=v8.0</td>
 <td>de-DE</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Windows · .NET 8, 9, 10 · x64, x86</td>
@@ -722,7 +722,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET 9.0.20</td>
 <td>.NETCoreApp,Version=v8.0</td>
 <td>en-GB</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Windows · .NET 8, 9, 10 · x64, x86</td>
@@ -732,7 +732,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET 10.0.12</td>
 <td>.NETCoreApp,Version=v8.0</td>
 <td>en-GB</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Windows · .NET 8, 9, 10 · x64, x86</td>
@@ -742,7 +742,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET 10.0.12</td>
 <td>.NETCoreApp,Version=v8.0</td>
 <td>en-GB</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Windows · .NET 8, 9, 10 · x64, x86</td>
@@ -752,7 +752,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET 10.0.12</td>
 <td>.NETCoreApp,Version=v8.0</td>
 <td>th-TH</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Windows · .NET 8, 9, 10 · x64, x86</td>
@@ -762,7 +762,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET 10.0.12</td>
 <td>.NETCoreApp,Version=v8.0</td>
 <td>tr-TR</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64</td>
@@ -772,7 +772,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET 6.0.36</td>
 <td>.NETStandard,Version=v2.0</td>
 <td>invariant</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64</td>
@@ -782,7 +782,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET 8.0.31</td>
 <td>.NETCoreApp,Version=v8.0</td>
 <td>invariant</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64</td>
@@ -792,7 +792,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET 9.0.20</td>
 <td>.NETCoreApp,Version=v8.0</td>
 <td>invariant</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64</td>
@@ -802,7 +802,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET 10.0.12</td>
 <td>.NETCoreApp,Version=v8.0</td>
 <td>invariant</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64</td>
@@ -812,7 +812,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET 10.0.12</td>
 <td>.NETCoreApp,Version=v8.0</td>
 <td>tr-TR</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Alpine 3.24 (musl) · .NET 8, 10 · x64</td>
@@ -822,7 +822,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET 8.0.31</td>
 <td>.NETCoreApp,Version=v8.0</td>
 <td>invariant</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Alpine 3.24 (musl) · .NET 8, 10 · x64</td>
@@ -832,7 +832,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET 10.0.12</td>
 <td>.NETCoreApp,Version=v8.0</td>
 <td>invariant</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Linux (Debian 12, Ubuntu 24.04) · .NET 8, 10 · arm64</td>
@@ -842,7 +842,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET 8.0.31</td>
 <td>.NETCoreApp,Version=v8.0</td>
 <td>invariant</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Linux (Debian 12, Ubuntu 24.04) · .NET 8, 10 · arm64</td>
@@ -852,7 +852,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET 10.0.12</td>
 <td>.NETCoreApp,Version=v8.0</td>
 <td>invariant</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>NativeAOT, Ubuntu 24.04 · .NET 10 · x64</td>
@@ -862,7 +862,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET 10.0.12, NativeAOT</td>
 <td>.NETCoreApp,Version=v8.0</td>
 <td>invariant</td>
-<td>45 ✓ · 3 —</td>
+<td>50 ✓ · 3 —</td>
 </tr>
 <tr>
 <td>Chroma Cloud, AWS us-east-1 · .NET 10 · x64</td>
@@ -872,7 +872,7 @@ footer p { margin: 0 0 8px; }
 <td>.NET 10.0.12</td>
 <td>.NETCoreApp,Version=v8.0</td>
 <td>en-GB</td>
-<td>58 ✓ · 2 —</td>
+<td>63 ✓ · 2 —</td>
 </tr>
 </tbody>
 </table></div>
@@ -882,6 +882,7 @@ footer p { margin: 0 0 8px; }
 <li>✓ the address alone, with /api/v2 and with /api/v2/</li>
 <li>✓ constructors: uri, options, options and HttpClient</li>
 <li>✓ connection strings</li>
+<li>✓ Chroma Cloud at another address: WithChromaCloud</li>
 <li>✓ version, heartbeat, healthcheck, pre-flight checks, identity</li>
 <li>✓ authentication headers: X-Chroma-Token, Bearer, Basic</li>
 <li>✓ the v1 API on Chroma 1.x answers 410 Gone</li>
@@ -900,10 +901,13 @@ footer p { margin: 0 0 8px; }
 <li>✓ modify name and metadata</li>
 <li>✓ by id, collection clients, dimension, version</li>
 <li>✓ names and metadata the client stops: dots, lists, lone surrogates</li>
+<li>✓ deleteRecordsFirst when the records stay after their delete: an error, the collection kept</li>
 </ul>
 <h3>Add, update, delete data (large writes in batches)</h3>
 <ul>
 <li>✓ add and read back embeddings, metadata, documents, URIs</li>
+<li>✓ metadata without keys or with a mixed list: stopped; a record without keys reads back empty</li>
+<li>✓ a write that fails after some of its batches: how many records went, not run again</li>
 <li>✓ update, upsert, null deletes a key</li>
 <li>✓ 12,000 records: written in batches, read in pages</li>
 <li>✓ batches: one request, and a smaller size</li>
@@ -931,6 +935,7 @@ footer p { margin: 0 0 8px; }
 <ul>
 <li>✓ every operator on ints, floats, strings, bools</li>
 <li>✓ &amp; and |, nested, long chains</li>
+<li>✓ a condition on the ids with a repeated id: each id sent once</li>
 <li>✓ lists in metadata: $contains, $not_contains</li>
 <li>✓ metadata values read exactly, or inferred</li>
 </ul>

@@ -115,9 +115,13 @@ ul.samples { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; 
 ul.samples li { border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; }
 ul.samples a { font-weight: 600; }
 ul.samples span { display: block; color: var(--muted); }
-ul.samples ul.cited { list-style: disc; margin: 4px 0 0; padding-left: 20px; color: var(--muted); }
-ul.samples ul.cited li { border: 0; border-radius: 0; padding: 2px 0; }
-ul.samples p.tree-h { margin: 12px 0 0; font-size: 14px; font-weight: 600; }
+ul.samples .subgroup { margin-top: 14px; }
+ul.samples p.tree-h { margin: 0 0 8px; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+ul.samples .subgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+ul.samples a.subcard { display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; font-weight: 400; text-decoration: none; color: var(--text); }
+ul.samples a.subcard:hover { border-color: var(--accent); }
+ul.samples a.subcard strong { display: block; color: var(--accent); font-weight: 600; }
+ul.samples a.subcard small { display: block; color: var(--muted); font-size: 14px; margin-top: 2px; }
 section h3.next { margin: 32px 0 14px; font-size: 19px; }
 section h2 + h3.next { margin-top: 0; }
 
@@ -192,16 +196,20 @@ footer p { margin: 0 0 8px; }
       <h2>Used by</h2>
       <ul class="samples">
         <li><a href="https://github.com/CommunityToolkit/AI/tree/main/MEVD/src/Chroma">AI Community Toolkit</a><span>CommunityToolkit.VectorData.Chroma: the Chroma provider for Microsoft.Extensions.VectorData, in the AI Community Toolkit of the .NET Foundation. It works with Semantic Kernel and Agent Framework.</span>
-          <p class="tree-h">Used by</p>
-          <ul class="cited">
-            <li><a href="https://github.com/microsoft/Generative-AI-for-beginners-dotnet/tree/main/samples/CoreSamples/RAGSimple-05MEAIVectorsChroma">Generative AI for Beginners .NET</a>: a RAG sample in the Microsoft course.</li>
-            <li><a href="https://github.com/tryAGI/LangChain.Databases">LangChain .NET</a>: the integration tests of LangChain.Databases.</li>
-          </ul>
-          <p class="tree-h">Cited in</p>
-          <ul class="cited">
-            <li><a href="https://github.com/microsoft/semantic-kernel/blob/main/dotnet/src/VectorData/Chroma/README.md">Semantic Kernel</a></li>
-            <li><a href="https://github.com/microsoft/agent-framework/blob/main/dotnet/samples/community-projects.md">Microsoft Agent Framework</a></li>
-          </ul>
+          <div class="subgroup">
+            <p class="tree-h">Used by</p>
+            <div class="subgrid">
+              <a class="subcard" href="https://github.com/microsoft/Generative-AI-for-beginners-dotnet/tree/main/samples/CoreSamples/RAGSimple-05MEAIVectorsChroma"><strong>Generative AI for Beginners .NET</strong><small>A RAG sample in the Microsoft course.</small></a>
+              <a class="subcard" href="https://github.com/tryAGI/LangChain.Databases"><strong>LangChain .NET</strong><small>The integration tests of LangChain.Databases.</small></a>
+            </div>
+          </div>
+          <div class="subgroup">
+            <p class="tree-h">Cited in</p>
+            <div class="subgrid">
+              <a class="subcard" href="https://github.com/microsoft/semantic-kernel/blob/main/dotnet/src/VectorData/Chroma/README.md"><strong>Semantic Kernel</strong></a>
+              <a class="subcard" href="https://github.com/microsoft/agent-framework/blob/main/dotnet/samples/community-projects.md"><strong>Microsoft Agent Framework</strong></a>
+            </div>
+          </div>
         </li>
         <li><a href="https://github.com/CommunityToolkit/Aspire">Aspire Community Toolkit</a><span>CommunityToolkit.Aspire.Chroma: the Chroma client integration, in the Aspire Community Toolkit of the .NET Foundation. The packages are not on nuget.org yet.</span></li>
       </ul>

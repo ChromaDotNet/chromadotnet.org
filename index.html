@@ -116,6 +116,7 @@ ul.samples li { border: 1px solid var(--border); border-radius: 12px; padding: 1
 ul.samples a { font-weight: 600; }
 ul.samples span { display: block; color: var(--muted); }
 section h3.next { margin: 32px 0 14px; font-size: 19px; }
+section h2 + h3.next { margin-top: 0; }
 
 footer { border-top: 1px solid var(--border); margin-top: 40px; padding: 32px 0 48px; color: var(--muted); font-size: 15px; }
 footer p { margin: 0 0 8px; }
@@ -186,11 +187,15 @@ footer p { margin: 0 0 8px; }
   <section id="used-by">
     <div class="wrap">
       <h2>Used by</h2>
+      <h3 class="next">Built on the client</h3>
       <ul class="samples">
-        <li><a href="https://github.com/CommunityToolkit/AI/tree/main/MEVD/src/Chroma">AI Community Toolkit</a><span>CommunityToolkit.VectorData.Chroma, the Chroma provider for Microsoft.Extensions.VectorData in the AI Community Toolkit of the .NET Foundation, is built on ChromaDotNet.Client.</span></li>
-        <li><a href="https://github.com/microsoft/Generative-AI-for-beginners-dotnet/tree/main/samples/CoreSamples/RAGSimple-05MEAIVectorsChroma">Generative AI for Beginners .NET</a><span>A RAG sample in the Microsoft course, through CommunityToolkit.VectorData.Chroma.</span></li>
-        <li><a href="https://github.com/CommunityToolkit/Aspire">Aspire Community Toolkit</a><span>The Chroma integrations for Aspire, hosting and client. The client integration, CommunityToolkit.Aspire.Chroma, is built on ChromaDotNet.Client. The packages are not on nuget.org yet.</span></li>
-        <li><a href="https://github.com/tryAGI/LangChain.Databases">LangChain .NET</a><span>Chroma in the integration tests of LangChain.Databases, and in its README, through CommunityToolkit.VectorData.Chroma.</span></li>
+        <li><a href="https://github.com/CommunityToolkit/AI/tree/main/MEVD/src/Chroma">AI Community Toolkit</a><span>CommunityToolkit.VectorData.Chroma: the Chroma provider for Microsoft.Extensions.VectorData. It works with Semantic Kernel and Agent Framework.</span></li>
+        <li><a href="https://github.com/CommunityToolkit/Aspire">Aspire Community Toolkit</a><span>CommunityToolkit.Aspire.Chroma: the Chroma client integration. The packages are not on nuget.org yet.</span></li>
+      </ul>
+      <h3 class="next">Through CommunityToolkit.VectorData.Chroma</h3>
+      <ul class="samples">
+        <li><a href="https://github.com/microsoft/Generative-AI-for-beginners-dotnet/tree/main/samples/CoreSamples/RAGSimple-05MEAIVectorsChroma">Generative AI for Beginners .NET</a><span>A RAG sample in the Microsoft course.</span></li>
+        <li><a href="https://github.com/tryAGI/LangChain.Databases">LangChain .NET</a><span>The integration tests of LangChain.Databases.</span></li>
       </ul>
       <h3 class="next">On the way</h3>
       <ul class="samples">

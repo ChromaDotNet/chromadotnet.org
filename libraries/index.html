@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Libraries: ChromaDotNet</title>
-<meta name="description" content="The ChromaDotNet libraries for Chroma and Chroma Cloud: the client, the Microsoft.Extensions.VectorData provider, the Testcontainers module, the Aspire integrations, and Chroma without Docker.">
+<meta name="description" content="The ChromaDotNet libraries for Chroma and Chroma Cloud: the client, the Microsoft.Extensions.VectorData provider, the Testcontainers module, the Aspire integrations, Chroma without Docker, and the default embedding function of Chroma.">
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" href="../assets/icon-48.png" sizes="48x48" type="image/png">
 <link rel="icon" href="../assets/icon-96.png" sizes="96x96" type="image/png">
@@ -14,7 +14,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ChromaDotNet">
 <meta property="og:title" content="Libraries: ChromaDotNet">
-<meta property="og:description" content="The ChromaDotNet libraries for Chroma and Chroma Cloud: the client, the Microsoft.Extensions.VectorData provider, the Testcontainers module, the Aspire integrations, and Chroma without Docker.">
+<meta property="og:description" content="The ChromaDotNet libraries for Chroma and Chroma Cloud: the client, the Microsoft.Extensions.VectorData provider, the Testcontainers module, the Aspire integrations, Chroma without Docker, and the default embedding function of Chroma.">
 <link rel="canonical" href="https://chromadotnet.org/libraries/">
 <meta property="og:url" content="https://chromadotnet.org/libraries/">
 <meta property="og:image" content="https://chromadotnet.org/assets/og.png">
@@ -191,6 +191,12 @@ footer p { margin: 0 0 8px; }
           <p>Chroma on your machine, without Docker and without Python. It starts the Chroma executable as a child process of your app, and stops it when the app ends. Windows, Linux and macOS. ChromaDotNet.<wbr>Local brings the executables of every platform; ChromaDotNet.<wbr>Local.<wbr>Core downloads the one it needs at the first start. Preview.</p>
           <div class="install"><code>dotnet add package ChromaDotNet.<wbr>Local --prerelease</code><button class="copy" type="button" data-copy="dotnet add package ChromaDotNet.Local --prerelease">Copy</button></div>
           <div class="more"><a href="https://github.com/ChromaDotNet/ChromaDB.Local">GitHub</a><a href="https://www.nuget.org/packages/ChromaDotNet.Local">NuGet</a><a href="https://github.com/ChromaDotNet/ChromaDB.Local/blob/main/samples/GettingStarted/Program.cs">Sample</a></div>
+        </article>
+        <article class="lib">
+          <h3>ChromaDotNet.<wbr>Embeddings</h3>
+          <p>The default embedding function of Chroma for .NET: all-MiniLM-L6-v2, with the same vectors as the Python client. Give it to ChromaDotNet.<wbr>Client 2.17.0 and later, and add or query records by their text. Preview.</p>
+          <div class="install"><code>dotnet add package ChromaDotNet.<wbr>Embeddings --prerelease</code><button class="copy" type="button" data-copy="dotnet add package ChromaDotNet.Embeddings --prerelease">Copy</button></div>
+          <div class="more"><a href="https://github.com/ChromaDotNet/ChromaDB.Embeddings">GitHub</a><a href="https://www.nuget.org/packages/ChromaDotNet.Embeddings">NuGet</a></div>
         </article>
         <article class="lib">
           <h3>ChromaDotNet.<wbr>Testcontainers</h3>

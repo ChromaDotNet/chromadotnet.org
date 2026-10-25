@@ -20,4 +20,40 @@
     <loc>https://chromadotnet.org/security/</loc>
     <lastmod>2026-10-07</lastmod>
   </url>
+  <url>
+    <loc>https://chromadotnet.org/libraries/client/</loc>
+    <lastmod>2026-10-25</lastmod>
+  </url>
+  <url>
+    <loc>https://chromadotnet.org/libraries/vectordata/</loc>
+    <lastmod>2026-10-25</lastmod>
+  </url>
+  <url>
+    <loc>https://chromadotnet.org/libraries/local/</loc>
+    <lastmod>2026-10-25</lastmod>
+  </url>
+  <url>
+    <loc>https://chromadotnet.org/libraries/embeddings/</loc>
+    <lastmod>2026-10-25</lastmod>
+  </url>
+  <url>
+    <loc>https://chromadotnet.org/libraries/testcontainers/</loc>
+    <lastmod>2026-10-25</lastmod>
+  </url>
+  <url>
+    <loc>https://chromadotnet.org/libraries/aspire/</loc>
+    <lastmod>2026-10-25</lastmod>
+  </url>
+  <url>
+    <loc>https://chromadotnet.org/samples/semantic-kernel/</loc>
+    <lastmod>2026-10-25</lastmod>
+  </url>
+  <url>
+    <loc>https://chromadotnet.org/samples/agent-framework/</loc>
+    <lastmod>2026-10-25</lastmod>
+  </url>
+  <url>
+    <loc>https://chromadotnet.org/vecturadb/</loc>
+    <lastmod>2026-10-25</lastmod>
+  </url>
 </urlset>

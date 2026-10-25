@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Microsoft Agent Framework samples with Chroma: ChromaDotNet</title>
+<meta name="description" content="Microsoft Agent Framework samples that use Chroma as the vector store, through CommunityToolkit.VectorData.Chroma: what they show and how to run them.">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" href="../../assets/icon-48.png" sizes="48x48" type="image/png">
+<link rel="icon" href="../../assets/icon-96.png" sizes="96x96" type="image/png">
+<link rel="icon" href="../../assets/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0B1F24">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ChromaDotNet">
+<meta property="og:title" content="Microsoft Agent Framework samples with Chroma: ChromaDotNet">
+<meta property="og:description" content="Microsoft Agent Framework samples that use Chroma as the vector store, through CommunityToolkit.VectorData.Chroma: what they show and how to run them.">
+<link rel="canonical" href="https://chromadotnet.org/samples/agent-framework/">
+<meta property="og:url" content="https://chromadotnet.org/samples/agent-framework/">
+<meta property="og:image" content="https://chromadotnet.org/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root {
+  --bg: #FFFFFF;
+  --surface: #F6F8FA;
+  --border: #D8DEE4;
+  --text: #0B1F24;
+  --muted: #4A5A60;
+  --accent: #512BD4;
+  --code-bg: #0B1F24;
+  --code-text: #E6EDF0;
+  --code-muted: #8FA3A9;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0B1F24;
+    --surface: #10292F;
+    --border: #23434B;
+    --text: #F2F6F7;
+    --muted: #A9B8BD;
+    --accent: #9B87F5;
+    --code-bg: #07161A;
+    --code-text: #E6EDF0;
+    --code-muted: #8FA3A9;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+code, pre { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+header.top { padding: 28px 0; }
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 600; font-size: 22px; letter-spacing: -0.3px; }
+.brand svg { width: 40px; height: 40px; flex-shrink: 0; }
+.brand .net { color: var(--accent); }
+nav.links { display: flex; gap: 20px; flex-wrap: wrap; }
+nav.links a { color: var(--muted); text-decoration: none; font-weight: 500; padding: 10px 0; }
+nav.links a:hover { color: var(--text); }
+nav.links a.gh { display: inline-flex; align-items: center; gap: 8px; align-self: center; padding: 6px 12px; border: 1px solid var(--border); border-radius: 8px; color: var(--text); }
+nav.links a.gh:hover { border-color: var(--muted); }
+nav.links a.gh svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+
+.hero { padding: 48px 0 56px; }
+.hero h1 { font-size: clamp(34px, 5vw, 52px); line-height: 1.12; letter-spacing: -1px; margin: 0 0 20px; max-width: 760px; }
+.hero p.lead { font-size: 20px; color: var(--muted); max-width: 720px; margin: 0 0 32px; }
+.hero p.note { color: var(--muted); font-size: 15px; margin: 14px 0 0; max-width: 860px; }
+
+.code { background: var(--code-bg); color: var(--code-text); border-radius: 12px; overflow: hidden; max-width: 860px; }
+.code .bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; border-bottom: 1px solid #1E3A41; }
+.code .bar span { color: var(--code-muted); font-size: 14px; font-family: "IBM Plex Mono", monospace; overflow-wrap: anywhere; min-width: 0; }
+.code pre { margin: 0; padding: 18px 20px; overflow-x: auto; font-size: 14.5px; line-height: 1.65; }
+.code .c { color: var(--code-muted); }
+.code .k { color: #9B87F5; }
+.code .s { color: #FFDE2D; }
+.code .t { color: #7FB2FF; }
+
+button.copy {
+  font: inherit; font-size: 13px; font-weight: 500;
+  color: var(--code-text); background: transparent;
+  border: 1px solid #2E5058; border-radius: 6px;
+  padding: 4px 10px; min-height: 32px; cursor: pointer;
+}
+button.copy:hover { border-color: #9B87F5; }
+.lib button.copy { color: var(--text); border-color: var(--border); }
+.lib button.copy:hover { border-color: var(--accent); }
+
+section { padding: 40px 0; }
+section h2 { font-size: 28px; letter-spacing: -0.4px; margin: 0 0 8px; }
+section p.sub { color: var(--muted); margin: 0 0 28px; max-width: 720px; }
+
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+@media (max-width: 760px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+.lib { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 14px; }
+.lib h3 { margin: 0; font-size: 19px; font-family: "IBM Plex Mono", monospace; font-weight: 500; overflow-wrap: break-word; }
+.lib p { margin: 0; color: var(--muted); overflow-wrap: break-word; }
+.install { display: flex; align-items: center; gap: 10px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 6px 6px 6px 12px; }
+.install code { flex: 1; min-width: 0; font-size: 13.5px; overflow-wrap: break-word; }
+.lib .more { display: flex; gap: 18px; flex-wrap: wrap; margin-top: auto; }
+.lib .more a { font-weight: 500; padding: 6px 0; }
+
+ul.samples { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+ul.samples li { border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; }
+ul.samples a { font-weight: 600; }
+ul.samples span { display: block; color: var(--muted); }
+
+footer { border-top: 1px solid var(--border); margin-top: 40px; padding: 32px 0 48px; color: var(--muted); font-size: 15px; }
+footer p { margin: 0 0 8px; }
+.stack { display: grid; gap: 8px; max-width: 760px; margin: 0 0 28px; }
+.stack .layer { border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; background: var(--surface); font-family: "IBM Plex Mono", monospace; font-size: 14px; overflow-wrap: anywhere; }
+.stack .layer span { display: block; font-family: "IBM Plex Sans", system-ui, sans-serif; color: var(--muted); font-size: 13.5px; }
+.stack .layer-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+@media (max-width: 560px) { .stack .layer-row { grid-template-columns: minmax(0, 1fr); } }
+.stack .layer-core { border: 2px solid var(--accent); }
+.stack .layer-edge { background: transparent; border-style: dashed; font-family: "IBM Plex Sans", system-ui, sans-serif; color: var(--muted); text-align: center; }
+.stack p.stack-note { color: var(--muted); font-size: 15px; margin: 4px 0 0; }
+
+.crumb { margin: 0 0 10px; font-size: 15px; }
+.crumb a { color: var(--muted); }
+.hero h1.name { font-size: clamp(30px, 4.5vw, 44px); overflow-wrap: break-word; }
+ul.facts { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 0; padding: 0; color: var(--muted); font-size: 15px; }
+ul.facts strong { color: var(--text); font-weight: 600; }
+ul.facts a { font-weight: 500; }
+section p { max-width: 760px; }
+section .install { max-width: 760px; margin: 0 0 12px; }
+section .install button.copy { color: var(--text); border-color: var(--border); }
+section .install button.copy:hover { border-color: var(--accent); }
+section .code { margin: 0 0 14px; }
+section p.note { color: var(--muted); font-size: 15px; }
+ul.docs { margin: 0; padding-left: 1.2em; max-width: 760px; }
+ul.docs li { margin: 8px 0; }
+.label { display: inline-block; margin: 0 0 8px; padding: 2px 10px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font-size: 13px; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../../" aria-label="ChromaDotNet home">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="42.43" cy="45.43" r="2.4" fill="#327EFF"/>
+        <circle cx="32.30" cy="50.71" r="3.0" fill="#327EFF"/>
+        <circle cx="20.97" cy="49.22" r="3.6" fill="#327EFF"/>
+        <circle cx="12.55" cy="41.50" r="4.2" fill="#FF6446"/>
+        <circle cx="10.07" cy="30.34" r="4.6" fill="#FF6446"/>
+        <circle cx="14.45" cy="19.79" r="4.2" fill="#FF6446"/>
+        <circle cx="24.08" cy="13.65" r="3.6" fill="#FFDE2D"/>
+        <circle cx="35.50" cy="14.15" r="3.0" fill="#FFDE2D"/>
+        <circle cx="43.55" cy="19.79" r="2.4" fill="#FFDE2D"/>
+        <circle cx="52" cy="46" r="5.2" fill="var(--accent)"/>
+      </svg>
+      <span>Chroma<span class="net">DotNet</span></span>
+    </a>
+    <nav class="links" aria-label="Project links">
+      <a href="../../libraries/">Libraries</a>
+      <a href="../../samples/">Samples</a>
+      <a href="../../compatibility/">Compatibility</a>
+      <a href="../../security/">Security</a>
+      <a href="https://www.nuget.org/profiles/ChromaDotNet">NuGet</a>
+      <a class="gh" href="https://github.com/ChromaDotNet"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg>GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <p class="crumb"><a href="../">Samples</a></p>
+      <h1 class="name">Microsoft Agent Framework samples with Chroma</h1>
+      <p class="lead">Microsoft Agent Framework samples that use Chroma as the vector store through <a href="../../libraries/vectordata/">CommunityToolkit.VectorData.Chroma</a>, the Chroma provider of the AI Community Toolkit. They follow the form of the Agent Framework .NET samples, and each sample also comes in a variant with models that run locally in Ollama.</p>
+      <ul class="facts"><li><a href="https://github.com/ChromaDotNet/ChromaDB.AgentFramework.Sample">GitHub</a></li><li><a href="https://github.com/ChromaDotNet/ChromaDB.AgentFramework.Sample#readme">Documentation</a></li></ul>
+    </div>
+  </section>
+
+  <section id="samples">
+    <div class="wrap">
+      <h2>The samples</h2>
+      <ul class="docs"><li><a href="https://github.com/ChromaDotNet/ChromaDB.AgentFramework.Sample/tree/main/samples/AgentWithMemory_Step10_MemoryUsingChroma">Memory with Chroma</a>: persists chat history in Chroma with <code>ChatHistoryMemoryProvider</code> and recalls it in a new session.</li><li><a href="https://github.com/ChromaDotNet/ChromaDB.AgentFramework.Sample/tree/main/samples/AgentWithRAG_Step06_ChromaRAG">RAG with Chroma</a>: answers from documentation stored in Chroma with a custom schema, through <code>TextSearchProvider</code>.</li><li><a href="https://github.com/ChromaDotNet/ChromaDB.AgentFramework.Sample/tree/main/samples/AgentWithRAG_Step07_ChromaBasicTextRAG">RAG with Chroma and the TextSearchStore</a>: answers from documents stored in Chroma, through <code>TextSearchProvider</code>.</li></ul>
+      <p>Each one uses Microsoft Foundry models, and has a variant with models that run locally in Ollama.</p>
+    </div>
+  </section>
+
+  <section id="run">
+    <div class="wrap">
+      <h2>Run the samples without a model</h2>
+      <p>The tests run the scenario of each sample with the same configuration, against Chroma in a container started with ChromaDotNet.Testcontainers. They need the .NET 10 SDK and Docker, but no model:</p>
+      <div class="code"><div class="bar"><span>Terminal</span><button class="copy" type="button" data-copy="git clone https://github.com/ChromaDotNet/ChromaDB.AgentFramework.Sample
+cd ChromaDB.AgentFramework.Sample
+dotnet test">Copy</button></div><pre><code>git clone https://github.com/ChromaDotNet/ChromaDB.AgentFramework.Sample
+cd ChromaDB.AgentFramework.Sample
+dotnet test</code></pre></div>
+      <p class="note">Tested on 25 October 2026: 10 tests of 10 pass.</p>
+      <p class="note">To run the samples with Microsoft Foundry or with models in Ollama, see the <a href="https://github.com/ChromaDotNet/ChromaDB.AgentFramework.Sample#readme">README</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>ChromaDotNet is a community project. It is not affiliated with or endorsed by <a href="https://www.trychroma.com/">Chroma</a>.</p>
+    <p>The client is a continuation of <a href="https://github.com/ssone95/ChromaDB.Client">ssone95/ChromaDB.Client</a>. The original <a href="https://www.nuget.org/packages/ChromaDB.Client">ChromaDB.Client</a> package is deprecated on NuGet in favor of ChromaDotNet.Client. All the libraries are MIT licensed. Their source is on <a href="https://github.com/ChromaDotNet">GitHub</a>.</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll("button.copy").forEach(function (button) {
+  button.addEventListener("click", function () {
+    var text = button.getAttribute("data-copy");
+    if (!navigator.clipboard) { return; }
+    navigator.clipboard.writeText(text).then(function () {
+      button.textContent = "Copied";
+      setTimeout(function () { button.textContent = "Copy"; }, 1500);
+    });
+  });
+});
+</script>
+</body>
+</html>

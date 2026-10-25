@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ChromaDB.Operator: a Kubernetes operator for Chroma</title>
 <meta name="description" content="A Kubernetes operator for Chroma 1.x, single-node and distributed, and for VecturaDB single-node, written in .NET with KubeOps.">
-<meta name="robots" content="noindex">
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" href="../assets/icon-48.png" sizes="48x48" type="image/png">
 <link rel="icon" href="../assets/icon-96.png" sizes="96x96" type="image/png">
@@ -170,6 +169,7 @@ ul.docs li { margin: 8px 0; }
     <nav class="links" aria-label="Project links">
       <a href="../libraries/">Libraries</a>
       <a href="../samples/">Samples</a>
+      <a href="../operator/">Operator</a>
       <a href="../compatibility/">Compatibility</a>
       <a href="../security/">Security</a>
       <a href="https://www.nuget.org/profiles/ChromaDotNet">NuGet</a>
@@ -183,16 +183,18 @@ ul.docs li { margin: 8px 0; }
     <div class="wrap">
       <p class="crumb"><a href="../">Home</a></p>
       <h1 class="name">ChromaDB.<wbr>Operator</h1>
-      <p class="lead">A Kubernetes operator for Chroma 1.x, single-node and distributed, and for <a href="../vecturadb/">VecturaDB</a> single-node, written in .NET with KubeOps. v0.1: the API is <code>v1alpha1</code> and can change. The distributed mode and VecturaDB are previews.</p>
-      <ul class="facts"><li>Latest release <strong>v0.1.0</strong></li><li><a href="https://github.com/ChromaDotNet/ChromaDB.Operator">GitHub</a></li><li><a href="https://github.com/ChromaDotNet/ChromaDB.Operator/releases">Releases</a></li><li><a href="https://github.com/ChromaDotNet/ChromaDB.Operator#readme">Documentation</a></li><li><a href="https://github.com/ChromaDotNet/ChromaDB.Operator/pkgs/container/chroma-operator">Image</a></li></ul>
+      <p class="lead">A Kubernetes operator for Chroma 1.x, single-node and distributed, and for <a href="../vecturadb/">VecturaDB</a> 1.0.0-preview.3, single-node, written in .NET with KubeOps. v0.1: the API is <code>v1alpha1</code> and can change. The distributed mode and VecturaDB are previews.</p>
+      <ul class="facts"><li>Latest release <strong>v0.1.1</strong></li><li><a href="https://github.com/ChromaDotNet/ChromaDB.Operator">GitHub</a></li><li><a href="https://github.com/ChromaDotNet/ChromaDB.Operator/releases">Releases</a></li><li><a href="https://github.com/ChromaDotNet/ChromaDB.Operator#readme">Documentation</a></li><li><a href="https://github.com/ChromaDotNet/ChromaDB.Operator/pkgs/container/chroma-operator">Image</a></li></ul>
     </div>
   </section>
 
   <section id="install">
     <div class="wrap">
       <h2>Install</h2>
-      <p>The manifest of the latest release, with the image <code>ghcr.io/chromadotnet/chroma-operator</code> for amd64 and arm64:</p>
+      <p>The manifest of the latest release:</p>
       <div class="install"><code>kubectl apply -f https://github.<wbr>com/ChromaDotNet/ChromaDB.<wbr>Operator/releases/latest/download/chroma-operator.<wbr>yaml</code><button class="copy" type="button" data-copy="kubectl apply -f https://github.com/ChromaDotNet/ChromaDB.Operator/releases/latest/download/chroma-operator.yaml">Copy</button></div>
+      <p>Its image, <code>ghcr.io/chromadotnet/chroma-operator:0.1.1</code>, is public, for amd64 and arm64, with SLSA provenance and a Sigstore signature. To verify it:</p>
+      <div class="install"><code>gh attestation verify oci://ghcr.<wbr>io/chromadotnet/chroma-operator:0.<wbr>1.<wbr>1 --owner ChromaDotNet</code><button class="copy" type="button" data-copy="gh attestation verify oci://ghcr.io/chromadotnet/chroma-operator:0.1.1 --owner ChromaDotNet">Copy</button></div>
     </div>
   </section>
 
@@ -223,7 +225,7 @@ spec:
     limits: {memory: 1Gi}</code></pre></div>
       <div class="install"><code>kubectl apply -f demo.<wbr>yaml</code><button class="copy" type="button" data-copy="kubectl apply -f demo.yaml">Copy</button></div>
       <p>The operator creates the PersistentVolumeClaim, the Pod and the Service. When the Chroma is ready, <code>status.endpoint</code> gives its address, like <code>http://demo-rw.&lt;namespace&gt;.svc:8000</code>.</p>
-      <p class="note">The end-to-end tests of the operator apply this manifest: the Chroma becomes ready, and 1,000 records written through its Service are all there.</p>
+      <p class="note">Tested on 25 October 2026 with the release v0.1.1 on k3d: the Chroma was ready in 16 s and answered on its Service. The end-to-end tests of the operator apply the same manifest and find all 1,000 records written through the Service.</p>
       <p class="note">Not yet: backups, resize of the claim, hibernation, metrics, a Helm chart, authentication.</p>
     </div>
   </section>

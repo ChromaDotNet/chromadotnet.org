@@ -10,7 +10,7 @@
 <link rel="icon" href="../assets/icon-96.png" sizes="96x96" type="image/png">
 <link rel="icon" href="../assets/icon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-<meta name="theme-color" content="#0B1F24">
+<meta name="theme-color" content="#0b1120">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ChromaDotNet">
 <meta property="og:title" content="Samples: ChromaDotNet">
@@ -29,21 +29,23 @@
   --bg: #FFFFFF;
   --surface: #F6F8FA;
   --border: #D8DEE4;
-  --text: #0B1F24;
+  --text: #0b1120;
   --muted: #4A5A60;
-  --accent: #512BD4;
-  --code-bg: #0B1F24;
+  --accent: #4f46e5;
+  --mark: #0d9488;
+  --code-bg: #0b1120;
   --code-text: #E6EDF0;
   --code-muted: #8FA3A9;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0B1F24;
+    --bg: #0b1120;
     --surface: #10292F;
     --border: #23434B;
     --text: #F2F6F7;
     --muted: #A9B8BD;
-    --accent: #9B87F5;
+    --accent: #818cf8;
+    --mark: #2dd4bf;
     --code-bg: #07161A;
     --code-text: #E6EDF0;
     --code-muted: #8FA3A9;
@@ -86,8 +88,8 @@ nav.links a.gh svg { width: 18px; height: 18px; fill: currentColor; flex-shrink:
 .code .bar span { color: var(--code-muted); font-size: 14px; font-family: "IBM Plex Mono", monospace; overflow-wrap: anywhere; min-width: 0; }
 .code pre { margin: 0; padding: 18px 20px; overflow-x: auto; font-size: 14.5px; line-height: 1.65; }
 .code .c { color: var(--code-muted); }
-.code .k { color: #9B87F5; }
-.code .s { color: #FFDE2D; }
+.code .k { color: #818cf8; }
+.code .s { color: #2dd4bf; }
 .code .t { color: #7FB2FF; }
 
 button.copy {
@@ -96,7 +98,7 @@ button.copy {
   border: 1px solid #2E5058; border-radius: 6px;
   padding: 4px 10px; min-height: 32px; cursor: pointer;
 }
-button.copy:hover { border-color: #9B87F5; }
+button.copy:hover { border-color: #818cf8; }
 .lib button.copy { color: var(--text); border-color: var(--border); }
 .lib button.copy:hover { border-color: var(--accent); }
 
@@ -129,15 +131,15 @@ footer p { margin: 0 0 8px; }
   <div class="wrap">
     <a class="brand" href="../" aria-label="ChromaDotNet home">
       <svg viewBox="0 0 64 64" aria-hidden="true">
-        <circle cx="42.43" cy="45.43" r="2.4" fill="#327EFF"/>
-        <circle cx="32.30" cy="50.71" r="3.0" fill="#327EFF"/>
-        <circle cx="20.97" cy="49.22" r="3.6" fill="#327EFF"/>
-        <circle cx="12.55" cy="41.50" r="4.2" fill="#FF6446"/>
-        <circle cx="10.07" cy="30.34" r="4.6" fill="#FF6446"/>
-        <circle cx="14.45" cy="19.79" r="4.2" fill="#FF6446"/>
-        <circle cx="24.08" cy="13.65" r="3.6" fill="#FFDE2D"/>
-        <circle cx="35.50" cy="14.15" r="3.0" fill="#FFDE2D"/>
-        <circle cx="43.55" cy="19.79" r="2.4" fill="#FFDE2D"/>
+        <circle cx="42.43" cy="45.43" r="2.4" fill="var(--mark)"/>
+        <circle cx="32.30" cy="50.71" r="3.0" fill="var(--mark)"/>
+        <circle cx="20.97" cy="49.22" r="3.6" fill="var(--mark)"/>
+        <circle cx="12.55" cy="41.50" r="4.2" fill="var(--mark)"/>
+        <circle cx="10.07" cy="30.34" r="4.6" fill="var(--mark)"/>
+        <circle cx="14.45" cy="19.79" r="4.2" fill="var(--mark)"/>
+        <circle cx="24.08" cy="13.65" r="3.6" fill="var(--mark)"/>
+        <circle cx="35.50" cy="14.15" r="3.0" fill="var(--mark)"/>
+        <circle cx="43.55" cy="19.79" r="2.4" fill="var(--mark)"/>
         <circle cx="52" cy="46" r="5.2" fill="var(--accent)"/>
       </svg>
       <span>Chroma<span class="net">DotNet</span></span>

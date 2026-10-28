@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ChromaDotNet.Embeddings: the default embedding function of Chroma for .NET</title>
-<meta name="description" content="all-MiniLM-L6-v2 in ONNX for .NET, with the same vectors as the Python client of Chroma: installation, a first example and the documentation.">
+<title>ChromaDotNet.Embeddings: the embedding functions of Chroma for .NET</title>
+<meta name="description" content="all-MiniLM-L6-v2 in ONNX for .NET, with the same vectors as the Python client of Chroma, and the hosted functions of Chroma Cloud on your machine: Qwen3-Embedding-0.6B and SPLADE. Installation, examples, speed and the documentation.">
 <link rel="icon" href="../../favicon.ico" sizes="any">
 <link rel="icon" href="../../assets/icon-48.png" sizes="48x48" type="image/png">
 <link rel="icon" href="../../assets/icon-96.png" sizes="96x96" type="image/png">
@@ -13,8 +13,8 @@
 <meta name="theme-color" content="#0b1120">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ChromaDotNet">
-<meta property="og:title" content="ChromaDotNet.Embeddings: the default embedding function of Chroma for .NET">
-<meta property="og:description" content="all-MiniLM-L6-v2 in ONNX for .NET, with the same vectors as the Python client of Chroma: installation, a first example and the documentation.">
+<meta property="og:title" content="ChromaDotNet.Embeddings: the embedding functions of Chroma for .NET">
+<meta property="og:description" content="all-MiniLM-L6-v2 in ONNX for .NET, with the same vectors as the Python client of Chroma, and the hosted functions of Chroma Cloud on your machine: Qwen3-Embedding-0.6B and SPLADE. Installation, examples, speed and the documentation.">
 <link rel="canonical" href="https://chromadotnet.org/libraries/embeddings/">
 <meta property="og:url" content="https://chromadotnet.org/libraries/embeddings/">
 <meta property="og:image" content="https://chromadotnet.org/assets/og.png">
@@ -147,6 +147,11 @@ section p.note { color: var(--muted); font-size: 15px; }
 ul.docs { margin: 0; padding-left: 1.2em; max-width: 760px; }
 ul.docs li { margin: 8px 0; }
 .label { display: inline-block; margin: 0 0 8px; padding: 2px 10px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font-size: 13px; font-weight: 500; }
+.tablewrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; margin: 12px 0 14px; max-width: 760px; }
+.tablewrap table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+.tablewrap th, .tablewrap td { padding: 8px 12px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+.tablewrap th { background: var(--surface); font-weight: 600; }
+.tablewrap tr:last-child td { border-bottom: 0; }
 </style>
 </head>
 <body>
@@ -186,8 +191,8 @@ ul.docs li { margin: 8px 0; }
     <div class="wrap">
       <p class="crumb"><a href="../">Libraries</a></p>
       <h1 class="name">ChromaDotNet.<wbr>Embeddings</h1>
-      <p class="lead">The default embedding function of Chroma for .NET: all-MiniLM-L6-v2 in ONNX, with the same vectors as the Python client. An <code>IEmbeddingGenerator</code> of Microsoft.Extensions.AI, for ChromaDotNet.Client.</p>
-      <ul class="facts"><li>Latest release <strong>1.0.0-preview.3</strong></li><li><a href="https://www.nuget.org/packages/ChromaDotNet.Embeddings">NuGet</a></li><li><a href="https://github.com/ChromaDotNet/ChromaDB.Embeddings">GitHub</a></li><li><a href="https://github.com/ChromaDotNet/ChromaDB.Embeddings#readme">Documentation</a></li><li><a href="https://codespaces.new/ChromaDotNet/ChromaDB.Local?quickstart=1">Try it in your browser</a></li></ul>
+      <p class="lead">The default embedding function of Chroma for .NET: all-MiniLM-L6-v2 in ONNX, with the same vectors as the Python client. An <code>IEmbeddingGenerator</code> of Microsoft.Extensions.AI, for ChromaDotNet.Client. It also computes the two hosted embedding functions of Chroma Cloud on your machine: <code>chroma-cloud-qwen</code> and <code>chroma-cloud-splade</code>.</p>
+      <ul class="facts"><li>Latest release <strong>1.0.0-preview.5</strong></li><li><a href="https://www.nuget.org/packages/ChromaDotNet.Embeddings">NuGet</a></li><li><a href="https://github.com/ChromaDotNet/ChromaDB.Embeddings">GitHub</a></li><li><a href="https://github.com/ChromaDotNet/ChromaDB.Embeddings#readme">Documentation</a></li><li><a href="https://codespaces.new/ChromaDotNet/ChromaDB.Local?quickstart=1">Try it in your browser</a></li></ul>
     </div>
   </section>
 
@@ -239,16 +244,80 @@ foreach (var result in results)
 
 <span class="k">foreach</span> (<span class="k">var</span> result <span class="k">in</span> results)
     <span class="t">Console</span>.WriteLine(<span class="s">$&quot;{result.Id}: {result.Document} ({result.Distance})&quot;</span>);</code></pre></div>
-      <p class="note">Tested on 25 October 2026 with ChromaDotNet.Embeddings 1.0.0-preview.3 and ChromaDotNet.Client 2.18.0 on Chroma 1.5.9: the nearest record to “something sour” is the lemon.</p>
+      <p class="note">Tested on 28 October 2026 with ChromaDotNet.Embeddings 1.0.0-preview.5 and ChromaDotNet.Client 2.18.1 on Chroma 1.5.9: the nearest record to “something sour” is the lemon.</p>
       <p class="note">The first start downloads the model, 83 MB, into the cache folder of Python, and checks it with its SHA-256.</p>
     </div>
   </section>
 
+  <section id="hosted">
+    <div class="wrap">
+      <h2>The hosted functions of Chroma Cloud</h2>
+      <p>Chroma Cloud computes two embedding functions on its servers. This package computes them on your machine, on the CPU, with the same models in ONNX. It needs no account and no API key.</p>
+      <ul class="docs"><li><code>ChromaQwenEmbeddingGenerator</code> is <code>chroma-cloud-qwen</code>: <a href="https://huggingface.co/Qwen/Qwen3-Embedding-0.6B">Qwen3-Embedding-0.6B</a>, with vectors of 1024 dimensions. It downloads 1.2 GB in float16, the default, or 2.4 GB in float32.</li><li><code>ChromaSpladeEmbeddingGenerator</code> is <code>chroma-cloud-splade</code>: the sparse vectors of <a href="https://huggingface.co/prithivida/Splade_PP_en_v1">SPLADE, prithivida/Splade_PP_en_v1</a>. It downloads 533 MB.</li></ul>
+      <p>With Chroma started as above, add two documents with Qwen and query them with a question:</p>
+      <div class="code"><div class="bar"><span>Program.cs</span><button class="copy" type="button" data-copy="using ChromaDB.Client;
+using ChromaDB.Client.Models;
+using ChromaDotNet.Embeddings;
+
+using var qwen = await ChromaQwenEmbeddingGenerator.CreateAsync();
+using var client = new ChromaClient(&quot;http://localhost:8000&quot;);
+var collection = await client.GetOrCreateCollectionAsync(new ChromaCollectionDefinition(&quot;code&quot;));
+var forDocuments = client.GetCollectionClient(collection).WithEmbeddingGenerator(qwen);
+var forQueries = client.GetCollectionClient(collection).WithEmbeddingGenerator(qwen.Queries);
+
+await forDocuments.AddAsync([&quot;add&quot;, &quot;lemon&quot;],
+    documents: [&quot;def add(a, b): return a + b&quot;, &quot;A sour lemon&quot;]);
+
+var results = await forQueries.QueryAsync(&quot;How do I add two numbers?&quot;, nResults: 1,
+    include: ChromaQueryInclude.Documents | ChromaQueryInclude.Distances);
+
+foreach (var result in results)
+    Console.WriteLine($&quot;{result.Id}: {result.Document} ({result.Distance})&quot;);">Copy</button></div><pre><code><span class="k">using</span> ChromaDB.Client;
+<span class="k">using</span> ChromaDB.Client.Models;
+<span class="k">using</span> ChromaDotNet.Embeddings;
+
+<span class="k">using</span> var qwen = <span class="k">await</span> <span class="t">ChromaQwenEmbeddingGenerator</span>.CreateAsync();
+<span class="k">using</span> var client = <span class="k">new</span> <span class="t">ChromaClient</span>(<span class="s">&quot;http://localhost:8000&quot;</span>);
+<span class="k">var</span> collection = <span class="k">await</span> client.GetOrCreateCollectionAsync(<span class="k">new</span> <span class="t">ChromaCollectionDefinition</span>(<span class="s">&quot;code&quot;</span>));
+<span class="k">var</span> forDocuments = client.GetCollectionClient(collection).WithEmbeddingGenerator(qwen);
+<span class="k">var</span> forQueries = client.GetCollectionClient(collection).WithEmbeddingGenerator(qwen.Queries);
+
+<span class="k">await</span> forDocuments.AddAsync([<span class="s">&quot;add&quot;</span>, <span class="s">&quot;lemon&quot;</span>],
+    documents: [<span class="s">&quot;def add(a, b): return a + b&quot;</span>, <span class="s">&quot;A sour lemon&quot;</span>]);
+
+<span class="k">var</span> results = <span class="k">await</span> forQueries.QueryAsync(<span class="s">&quot;How do I add two numbers?&quot;</span>, nResults: 1,
+    include: <span class="t">ChromaQueryInclude</span>.Documents | <span class="t">ChromaQueryInclude</span>.Distances);
+
+<span class="k">foreach</span> (<span class="k">var</span> result <span class="k">in</span> results)
+    <span class="t">Console</span>.WriteLine(<span class="s">$&quot;{result.Id}: {result.Document} ({result.Distance})&quot;</span>);</code></pre></div>
+      <p class="note">Tested on 28 October 2026 with ChromaDotNet.Embeddings 1.0.0-preview.5 and ChromaDotNet.Client 2.18.1 on Chroma 1.5.9: the nearest record to “How do I add two numbers?” is the add function.</p>
+      <p class="note">The first start downloads the files of the model from Hugging Face, at a fixed revision, and checks them with their SHA-256.</p>
+      <p>Qwen reads documents and queries with different instructions, as Chroma Cloud does: <code>qwen</code> embeds the documents, and <code>qwen.Queries</code> the queries.</p>
+      <p>SPLADE gives a <code>ChromaSparseEmbedding</code>. Pass its indices and values to ChromaDotNet.Client as a <code>ChromaSparseVector</code>.</p>
+      <p>On the texts of the tests, the vectors are those of Chroma Cloud within small differences: 1 − cosine up to 4.53e-6 for Qwen, on the runners of our CI, and values up to 0.045 apart for SPLADE.</p>
+    </div>
+  </section>
+  <section id="speed">
+    <div class="wrap">
+      <h2>Speed</h2>
+      <p>In our tests, these are the times of one text at a time, on the CPU, with the files already downloaded. They are the median of 5 runs, on a 13th Gen Intel Core i5-13600KF with Windows 11, .NET 8 and the default 10 threads.</p>
+      <div class="tablewrap"><table>
+<tr><th></th><th>Qwen in float16</th><th>SPLADE</th></tr>
+<tr><td>A short query: 28 to 38 tokens with the instruction of Qwen, 7 to 16 for SPLADE</td><td>69 ms</td><td>12 ms</td></tr>
+<tr><td>A document of about 100 tokens</td><td>181 ms</td><td>42 ms</td></tr>
+<tr><td>A document of 661 tokens for Qwen, truncated to 512 for SPLADE</td><td>1.3 s</td><td>194 ms</td></tr>
+<tr><td>A document of 3322 tokens for Qwen, truncated to 512 for SPLADE</td><td>11.7 s</td><td>195 ms</td></tr>
+<tr><td>Peak working set of the process</td><td>4.3 GB</td><td>0.79 GB</td></tr>
+</table></div>
+      <p>Qwen is slow to index many long documents: the time of each token grows with the length of the text. On a document of about 100 tokens, SPLADE takes about a quarter of the time of Qwen. SPLADE reads 512 tokens at most, so a longer document takes it no more time.</p>
+      <p>For Qwen in float16, onnxruntime 1.24.4 in Python with the same files takes the same times, within the differences between two runs. So does a NativeAOT build. The <a href="https://github.com/ChromaDotNet/ChromaDB.Embeddings#their-speed">README</a> has the load, float32 and the conditions of the runs.</p>
+    </div>
+  </section>
   <section id="platforms">
     <div class="wrap">
       <h2>Platforms</h2>
-      <p>Windows x64 and arm64, Linux x64 and arm64, and macOS arm64 on .NET 8 and later; .NET Framework 4.6.2 and later on Windows, in a 64-bit process. Intel Macs and 32-bit processes are not supported.</p>
-      <p>On .NET 8 and later it runs through ElBruno.LocalEmbeddings by Bruno Capuano; on .NET Framework, on ONNX Runtime. Tokenizer: Hugging Face, through Tokenizers.DotNet.</p>
+      <p>Windows x64 and arm64, Linux x64 and arm64, and macOS arm64 on .NET 8 and later; .NET Framework 4.6.2 and later on Windows, in a 64-bit process. Intel Macs and 32-bit processes are not supported. The generators of the hosted models run on the same platforms.</p>
+      <p>On .NET 8 and later the default model runs through ElBruno.LocalEmbeddings by Bruno Capuano; on .NET Framework, and for the hosted models, on ONNX Runtime. Tokenizer: Hugging Face, through Tokenizers.DotNet.</p>
     </div>
   </section>
 </main>

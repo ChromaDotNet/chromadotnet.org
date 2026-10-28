@@ -187,7 +187,7 @@ ul.docs li { margin: 8px 0; }
       <p class="crumb"><a href="../">Libraries</a></p>
       <h1 class="name">Aspire integrations for Chroma</h1>
       <p class="lead">The Chroma integrations for Aspire are part of the Aspire Community Toolkit, merged with <a href="https://github.com/CommunityToolkit/Aspire/pull/2219">CommunityToolkit/Aspire#2219</a>. They arrive with the next release of the toolkit, as CommunityToolkit.Aspire.Hosting.Chroma and CommunityToolkit.Aspire.Chroma. Until then, try them with ChromaDotNet.Aspire.Hosting and ChromaDotNet.Aspire.Client.</p>
-      <ul class="facts"><li>Latest release <strong>0.2.8</strong></li><li><a href="https://www.nuget.org/packages/ChromaDotNet.Aspire.Hosting">NuGet (hosting)</a></li><li><a href="https://www.nuget.org/packages/ChromaDotNet.Aspire.Client">NuGet (client)</a></li><li><a href="https://github.com/ChromaDotNet/ChromaDB.Aspire">GitHub</a></li><li><a href="https://github.com/ChromaDotNet/ChromaDB.Aspire#readme">Documentation</a></li><li><a href="https://github.com/CommunityToolkit/Aspire">Aspire Community Toolkit</a></li></ul>
+      <ul class="facts"><li>Latest release <strong>0.2.9</strong></li><li><a href="https://www.nuget.org/packages/ChromaDotNet.Aspire.Hosting">NuGet (hosting)</a></li><li><a href="https://www.nuget.org/packages/ChromaDotNet.Aspire.Client">NuGet (client)</a></li><li><a href="https://github.com/ChromaDotNet/ChromaDB.Aspire">GitHub</a></li><li><a href="https://github.com/ChromaDotNet/ChromaDB.Aspire#readme">Documentation</a></li><li><a href="https://github.com/CommunityToolkit/Aspire">Aspire Community Toolkit</a></li></ul>
     </div>
   </section>
 
@@ -195,7 +195,7 @@ ul.docs li { margin: 8px 0; }
     <div class="wrap">
       <h2>What they do</h2>
       <ul class="docs"><li><a href="https://www.nuget.org/packages/ChromaDotNet.Aspire.Hosting">ChromaDotNet.Aspire.Hosting</a>: for the AppHost: <code>AddChroma</code>, <code>WithDataVolume</code>, <code>WithDataBindMount</code>. Image <code>chromadb/chroma:1.5.9</code>, health check on <code>/api/v2/heartbeat</code>.</li><li><a href="https://www.nuget.org/packages/ChromaDotNet.Aspire.Client">ChromaDotNet.Aspire.Client</a>: for a service: <code>AddChromaClient</code>, <code>AddKeyedChromaClient</code>, with ChromaDotNet.Client, a health check, traces and metrics. It connects to a Chroma server or to Chroma Cloud.</li></ul>
-      <p>The source files of ChromaDotNet.Aspire 0.2.8 are the same as those of the Chroma integrations in the Aspire Community Toolkit: we compared them on 25 October 2026.</p>
+      <p>The source files of ChromaDotNet.Aspire 0.2.9 are the same as those of the Chroma integrations in the Aspire Community Toolkit, except in the two project files: the package descriptions say that the project is independent of Chroma Inc., and the hosting package references MessagePack 2.5.303, for the advisory <a href="https://github.com/advisories/GHSA-qhrr-8q5h-9q3h">GHSA-qhrr-8q5h-9q3h</a>. We compared them on 28 October 2026.</p>
     </div>
   </section>
 
@@ -227,7 +227,7 @@ builder.AddProject&lt;<span class="t">Projects</span>.ApiService&gt;(<span class
 
 <span class="c">// Service
 </span>builder.AddChromaClient(<span class="s">&quot;chroma&quot;</span>);</code></pre></div>
-      <p class="note">Tested on 25 October 2026: the AppHost code builds with ChromaDotNet.Aspire.Hosting 0.2.8, and the service code connects to Chroma 1.5.9 with ChromaDotNet.Aspire.Client 0.2.8.</p>
+      <p class="note">Tested on 28 October 2026: the AppHost code builds with ChromaDotNet.Aspire.Hosting 0.2.9, and the service code connects to Chroma 1.5.9 with ChromaDotNet.Aspire.Client 0.2.9.</p>
     </div>
   </section>
 </main>

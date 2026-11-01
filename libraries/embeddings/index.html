@@ -192,7 +192,7 @@ ul.docs li { margin: 8px 0; }
       <p class="crumb"><a href="../">Libraries</a></p>
       <h1 class="name">ChromaDotNet.<wbr>Embeddings</h1>
       <p class="lead">The default embedding function of Chroma for .NET: all-MiniLM-L6-v2 in ONNX, with the same vectors as the Python client. An <code>IEmbeddingGenerator</code> of Microsoft.Extensions.AI, for ChromaDotNet.Client. It also computes the two hosted embedding functions of Chroma Cloud on your machine: <code>chroma-cloud-qwen</code> and <code>chroma-cloud-splade</code>.</p>
-      <ul class="facts"><li>Latest release <strong>1.0.0-preview.5</strong></li><li><a href="https://www.nuget.org/packages/ChromaDotNet.Embeddings">NuGet</a></li><li><a href="https://github.com/ChromaDotNet/ChromaDB.Embeddings">GitHub</a></li><li><a href="https://github.com/ChromaDotNet/ChromaDB.Embeddings#readme">Documentation</a></li><li><a href="https://codespaces.new/ChromaDotNet/ChromaDB.Local?quickstart=1">Try it in your browser</a></li></ul>
+      <ul class="facts"><li>Latest release <strong>1.0.0-preview.6</strong></li><li><a href="https://www.nuget.org/packages/ChromaDotNet.Embeddings">NuGet</a></li><li><a href="https://github.com/ChromaDotNet/ChromaDB.Embeddings">GitHub</a></li><li><a href="https://github.com/ChromaDotNet/ChromaDB.Embeddings#readme">Documentation</a></li><li><a href="https://codespaces.new/ChromaDotNet/ChromaDB.Local?quickstart=1">Try it in your browser</a></li></ul>
     </div>
   </section>
 
@@ -244,7 +244,7 @@ foreach (var result in results)
 
 <span class="k">foreach</span> (<span class="k">var</span> result <span class="k">in</span> results)
     <span class="t">Console</span>.WriteLine(<span class="s">$&quot;{result.Id}: {result.Document} ({result.Distance})&quot;</span>);</code></pre></div>
-      <p class="note">Tested on 28 October 2026 with ChromaDotNet.Embeddings 1.0.0-preview.5 and ChromaDotNet.Client 2.18.1 on Chroma 1.5.9: the nearest record to “something sour” is the lemon.</p>
+      <p class="note">Tested on 1 November 2026 with ChromaDotNet.Embeddings 1.0.0-preview.6 and ChromaDotNet.Client 2.18.1 on Chroma 1.5.9: the nearest record to “something sour” is the lemon.</p>
       <p class="note">The first start downloads the model, 83 MB, into the cache folder of Python, and checks it with its SHA-256.</p>
     </div>
   </section>
@@ -253,7 +253,7 @@ foreach (var result in results)
     <div class="wrap">
       <h2>The hosted functions of Chroma Cloud</h2>
       <p>Chroma Cloud computes two embedding functions on its servers. This package computes them on your machine, on the CPU, with the same models in ONNX. It needs no account and no API key.</p>
-      <ul class="docs"><li><code>ChromaQwenEmbeddingGenerator</code> is <code>chroma-cloud-qwen</code>: <a href="https://huggingface.co/Qwen/Qwen3-Embedding-0.6B">Qwen3-Embedding-0.6B</a>, with vectors of 1024 dimensions. It downloads 1.2 GB in float16, the default, or 2.4 GB in float32.</li><li><code>ChromaSpladeEmbeddingGenerator</code> is <code>chroma-cloud-splade</code>: the sparse vectors of <a href="https://huggingface.co/prithivida/Splade_PP_en_v1">SPLADE, prithivida/Splade_PP_en_v1</a>. It downloads 533 MB.</li></ul>
+      <ul class="docs"><li><code>ChromaQwenEmbeddingGenerator</code> is <code>chroma-cloud-qwen</code>: <a href="https://huggingface.co/Qwen/Qwen3-Embedding-0.6B">Qwen3-Embedding-0.6B</a>, with vectors of 1024 dimensions. A text can have up to 8192 tokens, with its instruction: a longer one is refused with an <code>ArgumentException</code>. It downloads 1.2 GB in float16, the default, or 2.4 GB in float32.</li><li><code>ChromaSpladeEmbeddingGenerator</code> is <code>chroma-cloud-splade</code>: the sparse vectors of <a href="https://huggingface.co/prithivida/Splade_PP_en_v1">SPLADE, prithivida/Splade_PP_en_v1</a>. It downloads 533 MB.</li></ul>
       <p>With Chroma started as above, add two documents with Qwen and query them with a question:</p>
       <div class="code"><div class="bar"><span>Program.cs</span><button class="copy" type="button" data-copy="using ChromaDB.Client;
 using ChromaDB.Client.Models;
@@ -290,7 +290,7 @@ foreach (var result in results)
 
 <span class="k">foreach</span> (<span class="k">var</span> result <span class="k">in</span> results)
     <span class="t">Console</span>.WriteLine(<span class="s">$&quot;{result.Id}: {result.Document} ({result.Distance})&quot;</span>);</code></pre></div>
-      <p class="note">Tested on 28 October 2026 with ChromaDotNet.Embeddings 1.0.0-preview.5 and ChromaDotNet.Client 2.18.1 on Chroma 1.5.9: the nearest record to “How do I add two numbers?” is the add function.</p>
+      <p class="note">Tested on 1 November 2026 with ChromaDotNet.Embeddings 1.0.0-preview.6 and ChromaDotNet.Client 2.18.1 on Chroma 1.5.9: the nearest record to “How do I add two numbers?” is the add function.</p>
       <p class="note">The first start downloads the files of the model from Hugging Face, at a fixed revision, and checks them with their SHA-256.</p>
       <p>Qwen reads documents and queries with different instructions, as Chroma Cloud does: <code>qwen</code> embeds the documents, and <code>qwen.Queries</code> the queries.</p>
       <p>SPLADE gives a <code>ChromaSparseEmbedding</code>. Pass its indices and values to ChromaDotNet.Client as a <code>ChromaSparseVector</code>.</p>
@@ -300,17 +300,17 @@ foreach (var result in results)
   <section id="speed">
     <div class="wrap">
       <h2>Speed</h2>
-      <p>In our tests, these are the times of one text at a time, on the CPU, with the files already downloaded. They are the median of 5 runs, on a 13th Gen Intel Core i5-13600KF with Windows 11, .NET 8 and the default 10 threads.</p>
+      <p>In our tests, these are the times of one text at a time, on the CPU, with the files already downloaded. They are the median of 5 runs, on an Azure VM Standard_D8ads_v6: 8 logical processors of an AMD EPYC 9V74, 32 GB, Ubuntu 24.04, .NET 8 and the default 4 threads.</p>
       <div class="tablewrap"><table>
-<tr><th></th><th>Qwen in float16</th><th>SPLADE</th></tr>
-<tr><td>A short query: 28 to 38 tokens with the instruction of Qwen, 7 to 16 for SPLADE</td><td>69 ms</td><td>12 ms</td></tr>
-<tr><td>A document of about 100 tokens</td><td>181 ms</td><td>42 ms</td></tr>
-<tr><td>A document of 661 tokens for Qwen, truncated to 512 for SPLADE</td><td>1.3 s</td><td>194 ms</td></tr>
-<tr><td>A document of 3322 tokens for Qwen, truncated to 512 for SPLADE</td><td>11.7 s</td><td>195 ms</td></tr>
-<tr><td>Peak working set of the process</td><td>4.3 GB</td><td>0.79 GB</td></tr>
+<tr><th>On a Standard_D8ads_v6</th><th>Qwen in float16</th><th>SPLADE</th></tr>
+<tr><td>A short query: 28 to 38 tokens with the instruction of Qwen, 7 to 16 for SPLADE</td><td>98 ms</td><td>15 ms</td></tr>
+<tr><td>A document of about 100 tokens</td><td>283 ms</td><td>70 ms</td></tr>
+<tr><td>A document of 661 tokens for Qwen, truncated to 512 for SPLADE</td><td>2.0 s</td><td>337 ms</td></tr>
+<tr><td>A document of 3322 tokens for Qwen, truncated to 512 for SPLADE</td><td>18.8 s</td><td>334 ms</td></tr>
+<tr><td>Peak working set of the process</td><td>4.3 GB</td><td>0.83 GB</td></tr>
 </table></div>
       <p>Qwen is slow to index many long documents: the time of each token grows with the length of the text. On a document of about 100 tokens, SPLADE takes about a quarter of the time of Qwen. SPLADE reads 512 tokens at most, so a longer document takes it no more time.</p>
-      <p>For Qwen in float16, onnxruntime 1.24.4 in Python with the same files takes the same times, within the differences between two runs. So does a NativeAOT build. The <a href="https://github.com/ChromaDotNet/ChromaDB.Embeddings#their-speed">README</a> has the load, float32 and the conditions of the runs.</p>
+      <p>On the same VM, for Qwen in float16, onnxruntime 1.28.0 in Python with the same files takes the same times up to 661 tokens, and 19.1 s on the document of 3322 tokens. A NativeAOT build takes the same times, within the differences between runs. The <a href="https://github.com/ChromaDotNet/ChromaDB.Embeddings#their-speed">README</a> has the load, float32 and the conditions of the runs.</p>
     </div>
   </section>
   <section id="platforms">

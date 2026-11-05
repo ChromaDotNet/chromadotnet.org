@@ -6,7 +6,7 @@ Source: https://chromadotnet.org/vecturadb/
 
 VecturaDB is a single-node server built from Chroma: a complement of Chroma, not a substitute. It adds sparse vectors, BM25, the Search API and collection fork to the single node of Chroma. It serves the Chroma API, so ChromaDotNet.Client works with it as it does with Chroma.
 
-  * Latest release **1.0.0-preview.6**
+  * Latest release **1.0.0-preview.7**
   * [vecturadb.org](https://vecturadb.org/)
   * [GitHub](https://github.com/VecturaDB/VecturaDB)
   * [Docker image](https://github.com/VecturaDB/VecturaDB/pkgs/container/vecturadb)
@@ -16,7 +16,7 @@ VecturaDB is a single-node server built from Chroma: a complement of Chroma, not
 
 Start VecturaDB with Docker:
 
-`docker run -p 127.0.0.1:8000:8000 -v ./data:/data ghcr.io/vecturadb/vecturadb:1.0.0-preview.6`
+`docker run -p 127.0.0.1:8000:8000 -v ./data:/data ghcr.io/vecturadb/vecturadb:1.0.0-preview.7`
 
 Then use [ChromaDotNet.Client](https://chromadotnet.org/libraries/client/) as with Chroma:
 
@@ -40,7 +40,7 @@ Program.cs
     foreach (var result in results)
         Console.WriteLine($"{result.Id}: {result.Document} ({result.Distance})");
 
-Tested on 5 November 2026 with ChromaDotNet.Client 2.18.1 on VecturaDB 1.0.0-preview.6.
+Tested on 5 November 2026 with ChromaDotNet.Client 2.18.1 on VecturaDB 1.0.0-preview.7.
 
 ## Without Docker
 

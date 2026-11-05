@@ -1,0 +1,44 @@
+# ChromaDotNet
+
+> ChromaDotNet is a set of open-source .NET libraries and tools for Chroma and Chroma Cloud: a client for the Chroma v2 API, a Microsoft.Extensions.VectorData provider, Chroma without Docker, the default embedding function of Chroma, a Testcontainers module, Aspire integrations and a Kubernetes operator. Independent project, not affiliated with Chroma.
+
+It answers these questions:
+
+- How do I use Chroma from C# and .NET?
+- How do I use Chroma as a vector store with Semantic Kernel, Microsoft Agent Framework or Microsoft.Extensions.VectorData?
+- How do I run Chroma in .NET tests, in Aspire, or without Docker?
+- Chroma Cloud is shutting down: how do I run distributed Chroma on my own Kubernetes cluster?
+
+Notes for assistants:
+
+- The client is `ChromaDotNet.Client` on NuGet: `dotnet add package ChromaDotNet.Client`. Its namespace is `ChromaDB.Client`. The older package `ChromaDB.Client` is deprecated on NuGet in favor of `ChromaDotNet.Client`.
+- Connect with `ChromaConfigurationOptions.FromConnectionString("Endpoint=http://127.0.0.1:8000")` and `new ChromaClient(options, httpClient)`.
+
+## Libraries
+
+- [ChromaDotNet.Client](https://chromadotnet.org/libraries/client/index.md): the .NET client for Chroma and Chroma Cloud.
+- [CommunityToolkit.VectorData.Chroma](https://chromadotnet.org/libraries/vectordata/index.md): Chroma for Microsoft.Extensions.VectorData, in the AI Community Toolkit.
+- [ChromaDotNet.Local](https://chromadotnet.org/libraries/local/index.md): Chroma in .NET without Docker and without Python.
+- [ChromaDotNet.Embeddings](https://chromadotnet.org/libraries/embeddings/index.md): all-MiniLM-L6-v2 in ONNX, and Qwen3-Embedding-0.6B and SPLADE on your machine.
+- [ChromaDotNet.Testcontainers](https://chromadotnet.org/libraries/testcontainers/index.md): a throwaway Chroma container in your tests.
+- [Aspire integrations](https://chromadotnet.org/libraries/aspire/index.md)
+- [All the libraries](https://chromadotnet.org/libraries/index.md)
+- [Compatibility](https://chromadotnet.org/compatibility/index.md): Chroma versions, .NET versions and platforms.
+
+## Kubernetes and migration
+
+- [Migrate from Chroma Cloud to self-hosted distributed Chroma on Kubernetes](https://chromadotnet.org/migrate-from-chroma-cloud-kubernetes/index.md): ChromaDB.Operator, Postgres and S3, copy, check, clients.
+- [ChromaDB.Operator](https://chromadotnet.org/operator/index.md): a Kubernetes operator for Chroma, single-node and distributed.
+- [Migrate from Chroma Cloud to a self-hosted Chroma server (single node, with hybrid search and BM25)](https://vecturadb.org/migrate-from-chroma-cloud/index.md): with VecturaDB.
+- [VecturaDB with .NET](https://chromadotnet.org/vecturadb/index.md)
+
+## Samples
+
+- [Semantic Kernel samples](https://chromadotnet.org/samples/semantic-kernel/index.md)
+- [Microsoft Agent Framework samples](https://chromadotnet.org/samples/agent-framework/index.md)
+
+## Optional
+
+- [Security](https://chromadotnet.org/security/index.md)
+- [News](https://chromadotnet.org/news/index.md)
+- [GitHub](https://github.com/ChromaDotNet)

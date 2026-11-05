@@ -38,7 +38,7 @@ Cited in
 
 [**Semantic Kernel** Recommended for Chroma in .NET.](https://github.com/microsoft/semantic-kernel/blob/7e68276a4a85022dd4da255beae3263ab5cbf059/dotnet/src/VectorData/Chroma/README.md#L1) [**LangChain.Databases** Recommended for Chroma in its README.](https://github.com/tryAGI/LangChain.Databases/blob/17c118f863ef1437b4ecaa0222081eb045b38a87/README.md#L36) [**Microsoft Agent Framework** Listed among the .NET community projects.](https://learn.microsoft.com/en-us/agent-framework/integrations/community-projects#context-providers)
 
-  * [Aspire Community Toolkit](https://github.com/CommunityToolkit/Aspire/blob/523b84b27c5d019d242d95c2252046ba3619303c/src/CommunityToolkit.Aspire.Chroma/CommunityToolkit.Aspire.Chroma.csproj#L12)CommunityToolkit.Aspire.Chroma: the Chroma client integration, in the Aspire Community Toolkit of the .NET Foundation. The packages are not on nuget.org yet.
+  * [Aspire Community Toolkit](https://github.com/CommunityToolkit/Aspire/blob/523b84b27c5d019d242d95c2252046ba3619303c/src/CommunityToolkit.Aspire.Chroma/CommunityToolkit.Aspire.Chroma.csproj#L12)CommunityToolkit.Aspire.Chroma: the Chroma client integration, in the Aspire Community Toolkit of the .NET Foundation, in beta on nuget.org.
   * [BotSharp](https://github.com/SciSharp/BotSharp/blob/c8f632bf13bb22aed53c8ba63d41ee9e0e0fb75b/src/Plugins/BotSharp.Plugin.Chroma/BotSharp.Plugin.Chroma.csproj#L14)BotSharp.Plugin.Chroma: the Chroma vector database plugin of BotSharp, by SciSharp.
   * [LLM Tornado](https://github.com/lofcz/LLMTornado/blob/d619b5d4c6558094cc2fcb663a5d6b55e6871233/src/LlmTornado.VectorDatabases.ChromaDB/LlmTornado.VectorDatabases.ChromaDB.csproj#L17)LlmTornado.VectorDatabases.ChromaDB: the Chroma connector of LLM Tornado.
   * [eShopLite](https://github.com/Azure-Samples/eShopLite/blob/ae63e987b17e8db076914415ad289b28a18a76e0/scenarios/04-chromadb/src/Products/Products.csproj#L33)The Chroma scenario of the Azure sample, on Chroma 1.x.
@@ -63,13 +63,13 @@ Your app: Semantic Kernel, Agent Framework, Aspire services
 
 CommunityToolkit.VectorData.ChromaMicrosoft.Extensions.VectorData provider, in the AI Community Toolkit
 
-ChromaDotNet.Aspire.ClientAspire client integration
+CommunityToolkit.Aspire.ChromaAspire client integration
 
 ChromaDotNet.Clientthe .NET client for the Chroma API
 
 Chroma and Chroma Cloud
 
-ChromaDotNet.Local, ChromaDotNet.Testcontainers and ChromaDotNet.Aspire.Hosting start Chroma: in your app without Docker, in your tests, and in the Aspire app host.
+ChromaDotNet.Local, ChromaDotNet.Testcontainers and the Aspire hosting integration start Chroma: in your app without Docker, in your tests, and in the Aspire app host.
 
 ### ChromaDotNet.Client
 
@@ -111,15 +111,15 @@ A Testcontainers for .NET module. It gives your tests a throwaway Chroma contain
 
 [Docs](https://chromadotnet.org/libraries/testcontainers/)[GitHub](https://github.com/ChromaDotNet/ChromaDB.Testcontainers)[NuGet](https://www.nuget.org/packages/ChromaDotNet.Testcontainers)
 
-### ChromaDotNet.Aspire.Hosting / .Client
+### CommunityToolkit.Aspire.Chroma
 
-Aspire integrations. Add Chroma to the app host and the client to your services, with health checks, traces and metrics.
+Aspire integrations, in the Aspire Community Toolkit. Add Chroma to the app host and the client to your services, with health checks, traces and metrics. Beta. Until Aspire 17 is on NuGet, use ChromaDotNet.Aspire.Hosting 0.2.10 in the AppHost.
 
-`dotnet add package ChromaDotNet.Aspire.Hosting`
+`dotnet add package CommunityToolkit.Aspire.Chroma --prerelease`
 
-`dotnet add package ChromaDotNet.Aspire.Client`
+`dotnet add package ChromaDotNet.Aspire.Hosting --version 0.2.10`
 
-[Docs](https://chromadotnet.org/libraries/aspire/)[GitHub](https://github.com/ChromaDotNet/ChromaDB.Aspire)[NuGet (hosting)](https://www.nuget.org/packages/ChromaDotNet.Aspire.Hosting)[NuGet (client)](https://www.nuget.org/packages/ChromaDotNet.Aspire.Client)
+[Docs](https://chromadotnet.org/libraries/aspire/)[GitHub](https://github.com/CommunityToolkit/Aspire/tree/main/src/CommunityToolkit.Aspire.Chroma)[NuGet (hosting)](https://www.nuget.org/packages/CommunityToolkit.Aspire.Hosting.Chroma)[NuGet (client)](https://www.nuget.org/packages/CommunityToolkit.Aspire.Chroma)
 
 ### ChromaDB.Operator
 

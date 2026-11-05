@@ -6,6 +6,8 @@ Source: https://chromadotnet.org/news/aspire-community-toolkit/
 
 Federico Laurianti, 25 October 2026
 
+**Updated on 6 November 2026:** the toolkit published CommunityToolkit.Aspire.Hosting.Chroma and CommunityToolkit.Aspire.Chroma in beta. The hosting package needs Aspire 17, which is not on NuGet yet: until then, use ChromaDotNet.Aspire.Hosting 0.2.10 in the AppHost.
+
 [Aspire](https://github.com/microsoft/aspire) runs the services of a distributed application, and the resources they depend on, from one AppHost project. The Chroma integrations of ChromaDotNet, one for hosting and one for the client, are now part of the [Aspire Community Toolkit](https://github.com/CommunityToolkit/Aspire): the pull request [CommunityToolkit/Aspire#2219](https://github.com/CommunityToolkit/Aspire/pull/2219) was merged on 12 October 2026.
 
 Until the toolkit publishes its own packages, the same integrations are on NuGet as [ChromaDotNet.Aspire.Hosting](https://www.nuget.org/packages/ChromaDotNet.Aspire.Hosting) and [ChromaDotNet.Aspire.Client](https://www.nuget.org/packages/ChromaDotNet.Aspire.Client), version 0.2.9.

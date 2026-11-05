@@ -8,7 +8,7 @@ Articles about ChromaDotNet, written by the author of the project.
 
 Federico Laurianti, 25 October 2026
 
-The Chroma hosting and client integrations of ChromaDotNet are merged into the Aspire Community Toolkit. Until the toolkit publishes its packages, they are on NuGet as ChromaDotNet.Aspire.Hosting and ChromaDotNet.Aspire.Client 0.2.9.
+The Chroma hosting and client integrations of ChromaDotNet are merged into the Aspire Community Toolkit. Since 4 November 2026 they are on NuGet in beta.
 
   * [The Chroma provider for Microsoft.Extensions.VectorData joins the AI Community Toolkit](https://chromadotnet.org/news/chroma-ai-community-toolkit/)
 

@@ -8,13 +8,13 @@ Your app: Semantic Kernel, Agent Framework, Aspire services
 
 CommunityToolkit.VectorData.ChromaMicrosoft.Extensions.VectorData provider, in the AI Community Toolkit
 
-ChromaDotNet.Aspire.ClientAspire client integration
+CommunityToolkit.Aspire.ChromaAspire client integration
 
 ChromaDotNet.Clientthe .NET client for the Chroma API
 
 Chroma and Chroma Cloud
 
-ChromaDotNet.Local, ChromaDotNet.Testcontainers and ChromaDotNet.Aspire.Hosting start Chroma: in your app without Docker, in your tests, and in the Aspire app host.
+ChromaDotNet.Local, ChromaDotNet.Testcontainers and the Aspire hosting integration start Chroma: in your app without Docker, in your tests, and in the Aspire app host.
 
 ### ChromaDotNet.Client
 
@@ -56,15 +56,15 @@ A Testcontainers for .NET module. It gives your tests a throwaway Chroma contain
 
 [Docs](https://chromadotnet.org/libraries/testcontainers/)[GitHub](https://github.com/ChromaDotNet/ChromaDB.Testcontainers)[NuGet](https://www.nuget.org/packages/ChromaDotNet.Testcontainers)
 
-### ChromaDotNet.Aspire.Hosting / .Client
+### CommunityToolkit.Aspire.Chroma
 
-Aspire integrations. Add Chroma to the app host and the client to your services, with health checks, traces and metrics.
+Aspire integrations, in the Aspire Community Toolkit. Add Chroma to the app host and the client to your services, with health checks, traces and metrics. Beta. Until Aspire 17 is on NuGet, use ChromaDotNet.Aspire.Hosting 0.2.10 in the AppHost.
 
-`dotnet add package ChromaDotNet.Aspire.Hosting`
+`dotnet add package CommunityToolkit.Aspire.Chroma --prerelease`
 
-`dotnet add package ChromaDotNet.Aspire.Client`
+`dotnet add package ChromaDotNet.Aspire.Hosting --version 0.2.10`
 
-[Docs](https://chromadotnet.org/libraries/aspire/)[GitHub](https://github.com/ChromaDotNet/ChromaDB.Aspire)[NuGet (hosting)](https://www.nuget.org/packages/ChromaDotNet.Aspire.Hosting)[NuGet (client)](https://www.nuget.org/packages/ChromaDotNet.Aspire.Client)
+[Docs](https://chromadotnet.org/libraries/aspire/)[GitHub](https://github.com/CommunityToolkit/Aspire/tree/main/src/CommunityToolkit.Aspire.Chroma)[NuGet (hosting)](https://www.nuget.org/packages/CommunityToolkit.Aspire.Hosting.Chroma)[NuGet (client)](https://www.nuget.org/packages/CommunityToolkit.Aspire.Chroma)
 
 ## VecturaDB
 

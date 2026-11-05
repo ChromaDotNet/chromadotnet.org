@@ -222,7 +222,7 @@ footer p { margin: 0 0 8px; }
             </div>
           </div>
         </li>
-        <li><a href="https://github.com/CommunityToolkit/Aspire/blob/523b84b27c5d019d242d95c2252046ba3619303c/src/CommunityToolkit.Aspire.Chroma/CommunityToolkit.Aspire.Chroma.csproj#L12">Aspire Community Toolkit</a><span>CommunityToolkit.Aspire.Chroma: the Chroma client integration, in the Aspire Community Toolkit of the .NET Foundation. The packages are not on nuget.org yet.</span></li>
+        <li><a href="https://github.com/CommunityToolkit/Aspire/blob/523b84b27c5d019d242d95c2252046ba3619303c/src/CommunityToolkit.Aspire.Chroma/CommunityToolkit.Aspire.Chroma.csproj#L12">Aspire Community Toolkit</a><span>CommunityToolkit.Aspire.Chroma: the Chroma client integration, in the Aspire Community Toolkit of the .NET Foundation, in beta on nuget.org.</span></li>
         <li><a href="https://github.com/SciSharp/BotSharp/blob/c8f632bf13bb22aed53c8ba63d41ee9e0e0fb75b/src/Plugins/BotSharp.Plugin.Chroma/BotSharp.Plugin.Chroma.csproj#L14">BotSharp</a><span>BotSharp.Plugin.Chroma: the Chroma vector database plugin of BotSharp, by SciSharp.</span></li>
         <li><a href="https://github.com/lofcz/LLMTornado/blob/d619b5d4c6558094cc2fcb663a5d6b55e6871233/src/LlmTornado.VectorDatabases.ChromaDB/LlmTornado.VectorDatabases.ChromaDB.csproj#L17">LLM Tornado</a><span>LlmTornado.VectorDatabases.ChromaDB: the Chroma connector of LLM Tornado.</span></li>
         <li><a href="https://github.com/Azure-Samples/eShopLite/blob/ae63e987b17e8db076914415ad289b28a18a76e0/scenarios/04-chromadb/src/Products/Products.csproj#L33">eShopLite</a><span>The Chroma scenario of the Azure sample, on Chroma 1.x.</span></li>
@@ -250,11 +250,11 @@ footer p { margin: 0 0 8px; }
         <div class="layer layer-edge">Your app: Semantic Kernel, Agent Framework, Aspire services</div>
         <div class="layer-row">
           <div class="layer">CommunityToolkit.VectorData.Chroma<span>Microsoft.Extensions.VectorData provider, in the AI Community Toolkit</span></div>
-          <div class="layer">ChromaDotNet.Aspire.Client<span>Aspire client integration</span></div>
+          <div class="layer">CommunityToolkit.Aspire.Chroma<span>Aspire client integration</span></div>
         </div>
         <div class="layer layer-core">ChromaDotNet.Client<span>the .NET client for the Chroma API</span></div>
         <div class="layer layer-edge">Chroma and Chroma Cloud</div>
-        <p class="stack-note">ChromaDotNet.Local, ChromaDotNet.Testcontainers and ChromaDotNet.Aspire.Hosting start Chroma: in your app without Docker, in your tests, and in the Aspire app host.</p>
+        <p class="stack-note">ChromaDotNet.Local, ChromaDotNet.Testcontainers and the Aspire hosting integration start Chroma: in your app without Docker, in your tests, and in the Aspire app host.</p>
       </div>
       <div class="grid">
         <article class="lib">
@@ -288,11 +288,11 @@ footer p { margin: 0 0 8px; }
           <div class="more"><a href="libraries/testcontainers/">Docs</a><a href="https://github.com/ChromaDotNet/ChromaDB.Testcontainers">GitHub</a><a href="https://www.nuget.org/packages/ChromaDotNet.Testcontainers">NuGet</a></div>
         </article>
         <article class="lib">
-          <h3>ChromaDotNet.<wbr>Aspire.<wbr>Hosting / .<wbr>Client</h3>
-          <p>Aspire integrations. Add Chroma to the app host and the client to your services, with health checks, traces and metrics.</p>
-          <div class="install"><code>dotnet add package ChromaDotNet.<wbr>Aspire.<wbr>Hosting</code><button class="copy" type="button" data-copy="dotnet add package ChromaDotNet.Aspire.Hosting">Copy</button></div>
-          <div class="install"><code>dotnet add package ChromaDotNet.<wbr>Aspire.<wbr>Client</code><button class="copy" type="button" data-copy="dotnet add package ChromaDotNet.Aspire.Client">Copy</button></div>
-          <div class="more"><a href="libraries/aspire/">Docs</a><a href="https://github.com/ChromaDotNet/ChromaDB.Aspire">GitHub</a><a href="https://www.nuget.org/packages/ChromaDotNet.Aspire.Hosting">NuGet (hosting)</a><a href="https://www.nuget.org/packages/ChromaDotNet.Aspire.Client">NuGet (client)</a></div>
+          <h3>CommunityToolkit.<wbr>Aspire.<wbr>Chroma</h3>
+          <p>Aspire integrations, in the Aspire Community Toolkit. Add Chroma to the app host and the client to your services, with health checks, traces and metrics. Beta. Until Aspire 17 is on NuGet, use ChromaDotNet.Aspire.Hosting 0.2.10 in the AppHost.</p>
+          <div class="install"><code>dotnet add package CommunityToolkit.<wbr>Aspire.<wbr>Chroma --prerelease</code><button class="copy" type="button" data-copy="dotnet add package CommunityToolkit.Aspire.Chroma --prerelease">Copy</button></div>
+          <div class="install"><code>dotnet add package ChromaDotNet.<wbr>Aspire.<wbr>Hosting --version 0.2.10</code><button class="copy" type="button" data-copy="dotnet add package ChromaDotNet.Aspire.Hosting --version 0.2.10">Copy</button></div>
+          <div class="more"><a href="libraries/aspire/">Docs</a><a href="https://github.com/CommunityToolkit/Aspire/tree/main/src/CommunityToolkit.Aspire.Chroma">GitHub</a><a href="https://www.nuget.org/packages/CommunityToolkit.Aspire.Hosting.Chroma">NuGet (hosting)</a><a href="https://www.nuget.org/packages/CommunityToolkit.Aspire.Chroma">NuGet (client)</a></div>
         </article>
         <article class="lib">
           <h3>ChromaDB.<wbr>Operator</h3>

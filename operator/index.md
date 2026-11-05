@@ -4,9 +4,10 @@ Source: https://chromadotnet.org/operator/
 
 # ChromaDB.Operator
 
-A Kubernetes operator for Chroma 1.x, single-node and distributed, and for [VecturaDB](https://chromadotnet.org/vecturadb/) 1.0.0-preview.3, single-node, written in .NET with KubeOps. v0.1: the API is `v1alpha1` and can change. The distributed mode and VecturaDB are previews.
+A Kubernetes operator for Chroma 1.x, single-node and distributed, and for [VecturaDB](https://chromadotnet.org/vecturadb/) 1.0.0-preview.5, single-node, written in .NET with KubeOps. v0.1: the API is `v1alpha1` and can change. The distributed mode and VecturaDB are previews.
 
-  * Latest release **v0.1.2**
+  * Latest release **v0.1.3**
+  * [Migrate from Chroma Cloud](https://chromadotnet.org/migrate-from-chroma-cloud-kubernetes/)
   * [GitHub](https://github.com/ChromaDotNet/ChromaDB.Operator)
   * [Releases](https://github.com/ChromaDotNet/ChromaDB.Operator/releases)
   * [Documentation](https://github.com/ChromaDotNet/ChromaDB.Operator#readme)
@@ -19,9 +20,9 @@ The manifest of the latest release:
 
 `kubectl apply -f https://github.com/ChromaDotNet/ChromaDB.Operator/releases/latest/download/chroma-operator.yaml`
 
-Its image, `ghcr.io/chromadotnet/chroma-operator:0.1.2`, is public, for amd64 and arm64, with SLSA provenance and a Sigstore signature. To verify it:
+Its image, `ghcr.io/chromadotnet/chroma-operator:0.1.3`, is public, for amd64 and arm64, with SLSA provenance and a Sigstore signature. To verify it:
 
-`gh attestation verify oci://ghcr.io/chromadotnet/chroma-operator:0.1.2 --owner ChromaDotNet`
+`gh attestation verify oci://ghcr.io/chromadotnet/chroma-operator:0.1.3 --owner ChromaDotNet`
 
 ## Example
 

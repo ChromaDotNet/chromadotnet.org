@@ -23,24 +23,24 @@ This page is about `ChromaDotNet.Client` and `ChromaDotNet.Client.DependencyInje
 
 ## Verifying a package
 
-From 2.10.2 on, each [GitHub release](https://github.com/ChromaDotNet/ChromaDB.Client/releases) has the packages that the CI built from the version tag, with their Sigstore signatures and their build provenance. nuget.org serves the same packages with its repository signature added. So the two files have different hashes, and each check works on one of them.
+The latest [GitHub release](https://github.com/ChromaDotNet/ChromaDB.Client/releases/latest) has the packages that the CI built from the version tag, with their Sigstore signatures and their build provenance. nuget.org serves the same packages with its repository signature added. So the two files have different hashes, and each check works on one of them.
 
 On the package from the GitHub release, with Cosign 3 or later:
     
     
-    cosign verify-blob ChromaDotNet.Client.2.18.1.nupkg --bundle ChromaDotNet.Client.2.18.1.nupkg.sigstore.json --certificate-identity-regexp '^https://github[.]com/ChromaDotNet/ChromaDB[.]Client/[.]github/workflows/release-assets[.]yml@' --certificate-oidc-issuer https://token.actions.githubusercontent.com
+    cosign verify-blob ChromaDotNet.Client.2.19.0.nupkg --bundle ChromaDotNet.Client.2.19.0.nupkg.sigstore.json --certificate-identity-regexp '^https://github[.]com/ChromaDotNet/ChromaDB[.]Client/[.]github/workflows/release-assets[.]yml@' --certificate-oidc-issuer https://token.actions.githubusercontent.com
     
 
 On the package from the GitHub release, with the GitHub CLI:
     
     
-    gh attestation verify ChromaDotNet.Client.2.18.1.nupkg --bundle provenance-v2.18.1.intoto.jsonl --repo ChromaDotNet/ChromaDB.Client --signer-workflow ChromaDotNet/ChromaDB.Client/.github/workflows/ci.yml --source-ref refs/tags/v2.18.1
+    gh attestation verify ChromaDotNet.Client.2.19.0.nupkg --bundle provenance-v2.19.0.intoto.jsonl --repo ChromaDotNet/ChromaDB.Client --signer-workflow ChromaDotNet/ChromaDB.Client/.github/workflows/ci.yml --source-ref refs/tags/v2.19.0
     
 
 On the package from nuget.org:
     
     
-    dotnet nuget verify --all ChromaDotNet.Client.2.18.1.nupkg
+    dotnet nuget verify --all ChromaDotNet.Client.2.19.0.nupkg
     
 
 ## Reporting a vulnerability

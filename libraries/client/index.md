@@ -4,9 +4,9 @@ Source: https://chromadotnet.org/libraries/client/
 
 # ChromaDotNet.Client
 
-A .NET client for Chroma and Chroma Cloud, tested with Chroma 0.4.10 to 1.5.9. It covers collections, tenants and databases, records and nearest neighbor queries with filters, the Search API with hybrid BM25 search, and OpenTelemetry traces and metrics.
+A .NET client for Chroma and Chroma Cloud, tested with Chroma 0.4.10 to 1.5.9, with VecturaDB 1.0.0-preview.8, and with distributed Chroma, the one Chroma Cloud runs on, both on Chroma Cloud and on Kubernetes with ChromaDB.Operator 0.1.3. It covers collections, tenants and databases, records and nearest neighbor queries with filters, the Search API with hybrid BM25 search, conditional transactions, and OpenTelemetry traces and metrics.
 
-  * Latest release **2.18.1**
+  * Latest release **2.19.0**
   * [NuGet](https://www.nuget.org/packages/ChromaDotNet.Client)
   * [GitHub](https://github.com/ChromaDotNet/ChromaDB.Client)
   * [Documentation](https://github.com/ChromaDotNet/ChromaDB.Client#readme)
@@ -51,7 +51,7 @@ Program.cs
     foreach (var result in results)
         Console.WriteLine($"{result.Id}: {result.Document} ({result.Distance})");
 
-Tested on 28 October 2026 with ChromaDotNet.Client 2.18.1 on Chroma 1.5.9.
+Tested on 6 November 2026 with ChromaDotNet.Client 2.19.0 on Chroma 1.5.9.
 
 [Try it in your browser](https://codespaces.new/ChromaDotNet/ChromaDB.Client?quickstart=1): a GitHub Codespace with .NET and Chroma, then `dotnet run Samples/quickstart.cs`.
 

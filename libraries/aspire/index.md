@@ -4,9 +4,9 @@ Source: https://chromadotnet.org/libraries/aspire/
 
 # Aspire integrations for Chroma
 
-The Chroma integrations for Aspire are part of the Aspire Community Toolkit, merged with [CommunityToolkit/Aspire#2219](https://github.com/CommunityToolkit/Aspire/pull/2219). Since 4 November 2026 they are on NuGet in beta, as CommunityToolkit.Aspire.Hosting.Chroma and CommunityToolkit.Aspire.Chroma. They started here as ChromaDotNet.Aspire.
+The Chroma integrations for Aspire are part of the Aspire Community Toolkit, merged with [CommunityToolkit/Aspire#2219](https://github.com/CommunityToolkit/Aspire/pull/2219). They are on NuGet in beta, as CommunityToolkit.Aspire.Hosting.Chroma and CommunityToolkit.Aspire.Chroma. They started here as ChromaDotNet.Aspire.
 
-  * Latest release **17.0.0-beta.1009**
+  * Latest release **17.0.0-beta.1018**
   * [NuGet (hosting)](https://www.nuget.org/packages/CommunityToolkit.Aspire.Hosting.Chroma)
   * [NuGet (client)](https://www.nuget.org/packages/CommunityToolkit.Aspire.Chroma)
   * [GitHub](https://github.com/CommunityToolkit/Aspire/tree/main/src/CommunityToolkit.Aspire.Chroma)

@@ -28,19 +28,19 @@ The latest [GitHub release](https://github.com/ChromaDotNet/ChromaDB.Client/rele
 On the package from the GitHub release, with Cosign 3 or later:
     
     
-    cosign verify-blob ChromaDotNet.Client.2.20.0.nupkg --bundle ChromaDotNet.Client.2.20.0.nupkg.sigstore.json --certificate-identity-regexp '^https://github[.]com/ChromaDotNet/ChromaDB[.]Client/[.]github/workflows/release-assets[.]yml@' --certificate-oidc-issuer https://token.actions.githubusercontent.com
+    cosign verify-blob ChromaDotNet.Client.2.21.0.nupkg --bundle ChromaDotNet.Client.2.21.0.nupkg.sigstore.json --certificate-identity-regexp '^https://github[.]com/ChromaDotNet/ChromaDB[.]Client/[.]github/workflows/release-assets[.]yml@' --certificate-oidc-issuer https://token.actions.githubusercontent.com
     
 
 On the package from the GitHub release, with the GitHub CLI:
     
     
-    gh attestation verify ChromaDotNet.Client.2.20.0.nupkg --bundle provenance-v2.20.0.intoto.jsonl --repo ChromaDotNet/ChromaDB.Client --signer-workflow ChromaDotNet/ChromaDB.Client/.github/workflows/ci.yml --source-ref refs/tags/v2.20.0
+    gh attestation verify ChromaDotNet.Client.2.21.0.nupkg --bundle provenance-v2.21.0.intoto.jsonl --repo ChromaDotNet/ChromaDB.Client --signer-workflow ChromaDotNet/ChromaDB.Client/.github/workflows/ci.yml --source-ref refs/tags/v2.21.0
     
 
 On the package from nuget.org:
     
     
-    dotnet nuget verify --all ChromaDotNet.Client.2.20.0.nupkg
+    dotnet nuget verify --all ChromaDotNet.Client.2.21.0.nupkg
     
 
 ## Reporting a vulnerability

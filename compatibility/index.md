@@ -2,24 +2,24 @@ Source: https://chromadotnet.org/compatibility/
 
 # ChromaDotNet.Client conformance: Chroma single server and Chroma Cloud
 
-  * **Client:** ChromaDotNet.Client 2.20.0
+  * **Client:** ChromaDotNet.Client 2.21.0
   * **Chroma:** `chromadb/chroma:1.5.9`, a single server in Docker
-  * **Chroma Cloud:** AWS us-east-1, run on 2026-11-06 with the client 2.20.0 on .NET 10.0.14; every collection and database deleted at the end
+  * **Chroma Cloud:** AWS us-east-1, run on 2026-11-13 with the client 2.21.0 on .NET 10.0.15; every collection and database deleted at the end
   * **OpenTelemetry SDK:** 1.19.1; **ChromaDotNet.Testcontainers:** 0.1.7 (Testcontainers 4.15.0)
   * **Chroma image digest:** chromadb/chroma@sha256:1e0b73a187a28757c572acba508c46f48c9e8b0acaf5c20e6d95cdedce1acdf6
   * **Docker:** 29.7.2 (linux/amd64)
   * **.NET SDK:** 10.0.401
   * **Host:** Windows 10.0.26200, x86_64
-  * **Client package:** the packages of nuget.org (same SHA-512): ChromaDotNet.Client 3eVE8ZPHUNjlcat/jErqGkTnhiRT2BOOpvQahVGth3vHjn352UVCDKHsJHt6I84FewIyg1SkRlAT1LhAXtUkSg==, ChromaDotNet.Client.DependencyInjection hrMw1RAqdMfI+0XuBAGTk3y48j3bihwR58O5+LflXKtzNnwQTLHwsKG6piJ2WI+daT0BsEVumlV42X5o3SBt7A==
+  * **Client package:** the test package built from the commit of the tag, bb6dd70; nuget.org has the same files, but for its signature: ChromaDotNet.Client nWedgJ0d4B8FmemQA6aREUiiMtV+o+vQ2v1SmfrAKW5Iqwx1QXVH0DSldqSVIJWZZeDcKSXy6+BTMb47ReaQwg==, ChromaDotNet.Client.DependencyInjection BfcIiS+u0w+aNwocxDs75B+LLmtEQq3PPbxr7sNWa/a3PAqiW4xv6fx3abTurTbPia2rGAPSEGs8idPgwuIi8w==; win_netcoreapp3.1, win_netcoreapp3.1_ja-JP, win_net5.0, win_net6.0, win_net6.0_ar-SA, win_net7.0 and linux_net6.0 ran again on the packages of nuget.org, the same files
   * **Arm64:** the Linux arm64 images of .NET, emulated by Docker on this x86-64 host
-  * **Environments:** 31, 2154 checks run
-  * **Generated:** 2026-11-06 22:19 UTC
+  * **Environments:** 31, 2182 checks run
+  * **Generated:** 2026-11-13 21:34 UTC
 
-✓ every check passed · ✗ a check failed · ⚠ passed, with a defect of the Chroma server noted below · — not on a single server: a feature of distributed Chroma, the one Chroma Cloud runs on, and the check verified that the client reports the error of the server as documented · on Chroma Cloud, — is what an API key cannot do, with the error the check verified · ¹ a note under the table · a blank cell: the row is not about that column (the quotas of Chroma Cloud on a single server; on Chroma Cloud, the checks with no server or with a local container; a feature the build of the client for that column does not have, as the embeddings of a generator on .NET Core 3.1 to 7, which take the build for .NET Standard 2.0)
+✓ every check passed · ✗ a check failed · ⚠ passed, with a defect of the Chroma server noted below · — not on a single server: a feature of distributed Chroma, the one Chroma Cloud runs on, and the check verified that the client reports the error of the server as documented · on Chroma Cloud, — is what an API key cannot do, with the error the check verified · ¹ a note under the table · a blank cell: the row is not about that column (the quotas of Chroma Cloud on a single server; on Chroma Cloud, the checks with no server or with a local container)
 
 ## By feature
 
-Chroma docs section | Feature | Windows · .NET Framework 4.6.2, 4.8 · x64, x86 | Windows · .NET Core 3.1, .NET 5, 6, 7 · x64 | Windows · .NET 8, 9, 10 · x64, x86 | Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64 | Alpine 3.24 (musl) · .NET 8, 10 · x64 | Linux (Debian 12, Ubuntu 24.04) · .NET 8, 10 · arm64 | NativeAOT, Ubuntu 24.04 · .NET 10 · x64 | Chroma Cloud, AWS us-east-1 · .NET 10 · x64  
+Chroma docs section | Feature | Windows · .NET Framework 4.6.2, 4.8 · x64, x86 | Windows · .NET Core 3.1, .NET 5, 6, 7, 8, 9 · x64, x86 | Windows · .NET 10 · x64, x86 | Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64 | Alpine 3.24 (musl) · .NET 8, 10 · x64 | Linux (Debian 12, Ubuntu 24.04) · .NET 8, 10 · arm64 | NativeAOT, Ubuntu 24.04 · .NET 10 · x64 | Chroma Cloud, AWS us-east-1 · .NET 10 · x64  
 ---|---|---|---|---|---|---|---|---|---  
 **Run Chroma** | Clients: local server, Chroma Cloud, authentication | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓  
 | Tenants and databases | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓¹  
@@ -43,7 +43,7 @@ Chroma docs section | Feature | Windows · .NET Framework 4.6.2, 4.8 · x64, x86
 | Mocks in tests | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |   
 | BM25 vectors computed by the client | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |   
 | Search and filter requests built by the client | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |   
-**Embeddings** | embeddings from a generator (the builds for .NET 8 and .NET Framework) | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓  
+**Embeddings** | embeddings from a generator (IEmbeddingGenerator of Microsoft.Extensions.AI) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓  
   
 ¹ On cloud_aws-us-east-1, “create and get a tenant” is not available: an API key of Chroma Cloud cannot create a tenant: Chroma Cloud answers 403 "Permission denied.", which the client throws as a ChromaException; on cloud_aws-us-east-1, “collections in another tenant and database” is not available: an API key of Chroma Cloud cannot create a tenant for the collections of another tenant: Chroma Cloud answers 403 "Permission denied.", which the client throws as a ChromaException.  
 ² On alpine_net10.0, alpine_net8.0, aot_net10.0, arm64_net10.0, arm64_net8.0, linux_net10.0, linux_net10.0_tr-TR, linux_net6.0, linux_net8.0, linux_net9.0, win32_net10.0, win32_net48, win32_net8.0, win_net10.0, win_net10.0_th-TH, win_net10.0_tr-TR, win_net462, win_net48, win_net48_de-DE, win_net48_fa-IR, win_net48_tr-TR, win_net5.0, win_net6.0, win_net6.0_ar-SA, win_net7.0, win_net8.0, win_net8.0_de-DE, win_net9.0, win_netcoreapp3.1, win_netcoreapp3.1_ja-JP, “begin, get, write and commit; a conflict; RunConditionalTransactionAsync again” is not available: distributed Chroma, the one Chroma Cloud runs on, has conditional transactions for the tenants that the configuration of its frontend enables; a single server answers 404 "NotFound: POST /api/v2/tenants/default_tenant/databases/default_database/collections/{collection_id}/conditional/get", which the client throws as a ChromaException.  
@@ -54,7 +54,7 @@ Chroma docs section | Feature | Windows · .NET Framework 4.6.2, 4.8 · x64, x86
 
 The seeded fuzz of the test bench sends the same random requests from each environment to a fresh Chroma 1.5.9 and compares what comes back, suite by suite, with the answers on win_net10.0: 30 environments, two seeds. ✓ the same answers in every environment of the column, ✗ different somewhere.
 
-Suite | Windows · .NET Framework 4.6.2, 4.8 · x64, x86 | Windows · .NET Core 3.1, .NET 5, 6, 7 · x64 | Windows · .NET 8, 9, 10 · x64, x86 | Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64 | Alpine 3.24 (musl) · .NET 8, 10 · x64 | Linux (Debian 12, Ubuntu 24.04) · .NET 8, 10 · arm64 | NativeAOT, Ubuntu 24.04 · .NET 10 · x64  
+Suite | Windows · .NET Framework 4.6.2, 4.8 · x64, x86 | Windows · .NET Core 3.1, .NET 5, 6, 7, 8, 9 · x64, x86 | Windows · .NET 10 · x64, x86 | Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64 | Alpine 3.24 (musl) · .NET 8, 10 · x64 | Linux (Debian 12, Ubuntu 24.04) · .NET 8, 10 · arm64 | NativeAOT, Ubuntu 24.04 · .NET 10 · x64  
 ---|---|---|---|---|---|---|---  
 bm25 | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓  
 concurrency | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓  
@@ -77,31 +77,31 @@ Windows · .NET Framework 4.6.2, 4.8 · x64, x86 | win_net48 | Microsoft Windows
 Windows · .NET Framework 4.6.2, 4.8 · x64, x86 | win_net48_de-DE | Microsoft Windows 10.0.26200 | X64 | .NET Framework 4.8.9363.0 | .NETFramework,Version=v4.6.2 | de-DE | 65 ✓ · 5 —  
 Windows · .NET Framework 4.6.2, 4.8 · x64, x86 | win_net48_fa-IR | Microsoft Windows 10.0.26200 | X64 | .NET Framework 4.8.9363.0 | .NETFramework,Version=v4.6.2 | fa-IR | 65 ✓ · 5 —  
 Windows · .NET Framework 4.6.2, 4.8 · x64, x86 | win_net48_tr-TR | Microsoft Windows 10.0.26200 | X64 | .NET Framework 4.8.9363.0 | .NETFramework,Version=v4.6.2 | tr-TR | 65 ✓ · 5 —  
-Windows · .NET Core 3.1, .NET 5, 6, 7 · x64 | win_netcoreapp3.1 | Microsoft Windows 10.0.26200 | X64 | .NET Core 3.1.28 | .NETStandard,Version=v2.0 | en-GB | 60 ✓ · 6 —  
-Windows · .NET Core 3.1, .NET 5, 6, 7 · x64 | win_netcoreapp3.1_ja-JP | Microsoft Windows 10.0.26200 | X64 | .NET Core 3.1.28 | .NETStandard,Version=v2.0 | ja-JP | 60 ✓ · 6 —  
-Windows · .NET Core 3.1, .NET 5, 6, 7 · x64 | win_net5.0 | Microsoft Windows 10.0.26200 | X64 | .NET 5.0.16 | .NETStandard,Version=v2.0 | en-GB | 61 ✓ · 5 —  
-Windows · .NET Core 3.1, .NET 5, 6, 7 · x64 | win_net6.0 | Microsoft Windows 10.0.26200 | X64 | .NET 6.0.6 | .NETStandard,Version=v2.0 | en-GB | 61 ✓ · 5 —  
-Windows · .NET Core 3.1, .NET 5, 6, 7 · x64 | win_net6.0_ar-SA | Microsoft Windows 10.0.26200 | X64 | .NET 6.0.6 | .NETStandard,Version=v2.0 | ar-SA | 61 ✓ · 5 —  
-Windows · .NET Core 3.1, .NET 5, 6, 7 · x64 | win_net7.0 | Microsoft Windows 10.0.26200 | X64 | .NET 7.0.20 | .NETStandard,Version=v2.0 | en-GB | 61 ✓ · 5 —  
-Windows · .NET 8, 9, 10 · x64, x86 | win32_net8.0 | Microsoft Windows 10.0.26200 | X86 | .NET 8.0.31 | .NETCoreApp,Version=v8.0 | en-GB | 65 ✓ · 5 —  
-Windows · .NET 8, 9, 10 · x64, x86 | win_net8.0 | Microsoft Windows 10.0.26200 | X64 | .NET 8.0.33 | .NETCoreApp,Version=v8.0 | en-GB | 65 ✓ · 5 —  
-Windows · .NET 8, 9, 10 · x64, x86 | win_net8.0_de-DE | Microsoft Windows 10.0.26200 | X64 | .NET 8.0.33 | .NETCoreApp,Version=v8.0 | de-DE | 65 ✓ · 5 —  
-Windows · .NET 8, 9, 10 · x64, x86 | win_net9.0 | Microsoft Windows 10.0.26200 | X64 | .NET 9.0.20 | .NETCoreApp,Version=v8.0 | en-GB | 65 ✓ · 5 —  
-Windows · .NET 8, 9, 10 · x64, x86 | win32_net10.0 | Microsoft Windows 10.0.26200 | X86 | .NET 10.0.12 | .NETCoreApp,Version=v8.0 | en-GB | 65 ✓ · 5 —  
-Windows · .NET 8, 9, 10 · x64, x86 | win_net10.0 | Microsoft Windows 10.0.26200 | X64 | .NET 10.0.14 | .NETCoreApp,Version=v8.0 | en-GB | 65 ✓ · 5 —  
-Windows · .NET 8, 9, 10 · x64, x86 | win_net10.0_th-TH | Microsoft Windows 10.0.26200 | X64 | .NET 10.0.14 | .NETCoreApp,Version=v8.0 | th-TH | 65 ✓ · 5 —  
-Windows · .NET 8, 9, 10 · x64, x86 | win_net10.0_tr-TR | Microsoft Windows 10.0.26200 | X64 | .NET 10.0.14 | .NETCoreApp,Version=v8.0 | tr-TR | 65 ✓ · 5 —  
-Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64 | linux_net6.0 | Debian GNU/Linux 11 (bullseye) | X64 | .NET 6.0.36 | .NETStandard,Version=v2.0 | invariant | 61 ✓ · 5 —  
-Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64 | linux_net8.0 | Debian GNU/Linux 12 (bookworm) | X64 | .NET 8.0.33 | .NETCoreApp,Version=v8.0 | invariant | 65 ✓ · 5 —  
-Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64 | linux_net9.0 | Debian GNU/Linux 12 (bookworm) | X64 | .NET 9.0.22 | .NETCoreApp,Version=v8.0 | invariant | 65 ✓ · 5 —  
-Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64 | linux_net10.0 | Ubuntu 24.04.5 LTS | X64 | .NET 10.0.14 | .NETCoreApp,Version=v8.0 | invariant | 65 ✓ · 5 —  
-Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64 | linux_net10.0_tr-TR | Ubuntu 24.04.5 LTS | X64 | .NET 10.0.14 | .NETCoreApp,Version=v8.0 | tr-TR | 65 ✓ · 5 —  
-Alpine 3.24 (musl) · .NET 8, 10 · x64 | alpine_net8.0 | Alpine Linux v3.24 | X64 | .NET 8.0.33 | .NETCoreApp,Version=v8.0 | invariant | 65 ✓ · 5 —  
-Alpine 3.24 (musl) · .NET 8, 10 · x64 | alpine_net10.0 | Alpine Linux v3.24 | X64 | .NET 10.0.14 | .NETCoreApp,Version=v8.0 | invariant | 65 ✓ · 5 —  
-Linux (Debian 12, Ubuntu 24.04) · .NET 8, 10 · arm64 | arm64_net8.0 | Debian GNU/Linux 12 (bookworm) | Arm64 | .NET 8.0.33 | .NETCoreApp,Version=v8.0 | invariant | 65 ✓ · 5 —  
-Linux (Debian 12, Ubuntu 24.04) · .NET 8, 10 · arm64 | arm64_net10.0 | Ubuntu 24.04.5 LTS | Arm64 | .NET 10.0.14 | .NETCoreApp,Version=v8.0 | invariant | 65 ✓ · 5 —  
-NativeAOT, Ubuntu 24.04 · .NET 10 · x64 | aot_net10.0 | Ubuntu 24.04.5 LTS | X64 | .NET 10.0.12, NativeAOT | .NETCoreApp,Version=v8.0 | invariant | 65 ✓ · 5 —  
-Chroma Cloud, AWS us-east-1 · .NET 10 · x64 | cloud_aws-us-east-1 | Chroma Cloud, AWS us-east-1; the client on Microsoft Windows 10.0.26200 | X64 | .NET 10.0.14 | .NETCoreApp,Version=v8.0 | en-GB | 79 ✓ · 1 ⚠ · 2 —  
+Windows · .NET Core 3.1, .NET 5, 6, 7, 8, 9 · x64, x86 | win_netcoreapp3.1 | Microsoft Windows 10.0.26200 | X64 | .NET Core 3.1.28 | .NETStandard,Version=v2.0 | en-GB | 64 ✓ · 6 —  
+Windows · .NET Core 3.1, .NET 5, 6, 7, 8, 9 · x64, x86 | win_netcoreapp3.1_ja-JP | Microsoft Windows 10.0.26200 | X64 | .NET Core 3.1.28 | .NETStandard,Version=v2.0 | ja-JP | 64 ✓ · 6 —  
+Windows · .NET Core 3.1, .NET 5, 6, 7, 8, 9 · x64, x86 | win_net5.0 | Microsoft Windows 10.0.26200 | X64 | .NET 5.0.16 | .NETStandard,Version=v2.0 | en-GB | 65 ✓ · 5 —  
+Windows · .NET Core 3.1, .NET 5, 6, 7, 8, 9 · x64, x86 | win_net6.0 | Microsoft Windows 10.0.26200 | X64 | .NET 6.0.6 | .NETStandard,Version=v2.0 | en-GB | 65 ✓ · 5 —  
+Windows · .NET Core 3.1, .NET 5, 6, 7, 8, 9 · x64, x86 | win_net6.0_ar-SA | Microsoft Windows 10.0.26200 | X64 | .NET 6.0.6 | .NETStandard,Version=v2.0 | ar-SA | 65 ✓ · 5 —  
+Windows · .NET Core 3.1, .NET 5, 6, 7, 8, 9 · x64, x86 | win_net7.0 | Microsoft Windows 10.0.26200 | X64 | .NET 7.0.20 | .NETStandard,Version=v2.0 | en-GB | 65 ✓ · 5 —  
+Windows · .NET Core 3.1, .NET 5, 6, 7, 8, 9 · x64, x86 | win32_net8.0 | Microsoft Windows 10.0.26200 | X86 | .NET 8.0.31 | .NETStandard,Version=v2.0 | en-GB | 65 ✓ · 5 —  
+Windows · .NET Core 3.1, .NET 5, 6, 7, 8, 9 · x64, x86 | win_net8.0 | Microsoft Windows 10.0.26200 | X64 | .NET 8.0.34 | .NETStandard,Version=v2.0 | en-GB | 65 ✓ · 5 —  
+Windows · .NET Core 3.1, .NET 5, 6, 7, 8, 9 · x64, x86 | win_net8.0_de-DE | Microsoft Windows 10.0.26200 | X64 | .NET 8.0.34 | .NETStandard,Version=v2.0 | de-DE | 65 ✓ · 5 —  
+Windows · .NET Core 3.1, .NET 5, 6, 7, 8, 9 · x64, x86 | win_net9.0 | Microsoft Windows 10.0.26200 | X64 | .NET 9.0.20 | .NETStandard,Version=v2.0 | en-GB | 65 ✓ · 5 —  
+Windows · .NET 10 · x64, x86 | win32_net10.0 | Microsoft Windows 10.0.26200 | X86 | .NET 10.0.12 | .NETCoreApp,Version=v10.0 | en-GB | 65 ✓ · 5 —  
+Windows · .NET 10 · x64, x86 | win_net10.0 | Microsoft Windows 10.0.26200 | X64 | .NET 10.0.15 | .NETCoreApp,Version=v10.0 | en-GB | 65 ✓ · 5 —  
+Windows · .NET 10 · x64, x86 | win_net10.0_th-TH | Microsoft Windows 10.0.26200 | X64 | .NET 10.0.15 | .NETCoreApp,Version=v10.0 | th-TH | 65 ✓ · 5 —  
+Windows · .NET 10 · x64, x86 | win_net10.0_tr-TR | Microsoft Windows 10.0.26200 | X64 | .NET 10.0.15 | .NETCoreApp,Version=v10.0 | tr-TR | 65 ✓ · 5 —  
+Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64 | linux_net6.0 | Debian GNU/Linux 11 (bullseye) | X64 | .NET 6.0.36 | .NETStandard,Version=v2.0 | invariant | 65 ✓ · 5 —  
+Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64 | linux_net8.0 | Debian GNU/Linux 12 (bookworm) | X64 | .NET 8.0.34 | .NETStandard,Version=v2.0 | invariant | 65 ✓ · 5 —  
+Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64 | linux_net9.0 | Debian GNU/Linux 12 (bookworm) | X64 | .NET 9.0.23 | .NETStandard,Version=v2.0 | invariant | 65 ✓ · 5 —  
+Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64 | linux_net10.0 | Ubuntu 24.04.5 LTS | X64 | .NET 10.0.15 | .NETCoreApp,Version=v10.0 | invariant | 65 ✓ · 5 —  
+Linux (Debian 11, Debian 12, Ubuntu 24.04) · .NET 6, 8, 9, 10 · x64 | linux_net10.0_tr-TR | Ubuntu 24.04.5 LTS | X64 | .NET 10.0.15 | .NETCoreApp,Version=v10.0 | tr-TR | 65 ✓ · 5 —  
+Alpine 3.24 (musl) · .NET 8, 10 · x64 | alpine_net8.0 | Alpine Linux v3.24 | X64 | .NET 8.0.34 | .NETStandard,Version=v2.0 | invariant | 65 ✓ · 5 —  
+Alpine 3.24 (musl) · .NET 8, 10 · x64 | alpine_net10.0 | Alpine Linux v3.24 | X64 | .NET 10.0.15 | .NETCoreApp,Version=v10.0 | invariant | 65 ✓ · 5 —  
+Linux (Debian 12, Ubuntu 24.04) · .NET 8, 10 · arm64 | arm64_net8.0 | Debian GNU/Linux 12 (bookworm) | Arm64 | .NET 8.0.34 | .NETStandard,Version=v2.0 | invariant | 65 ✓ · 5 —  
+Linux (Debian 12, Ubuntu 24.04) · .NET 8, 10 · arm64 | arm64_net10.0 | Ubuntu 24.04.5 LTS | Arm64 | .NET 10.0.15 | .NETCoreApp,Version=v10.0 | invariant | 65 ✓ · 5 —  
+NativeAOT, Ubuntu 24.04 · .NET 10 · x64 | aot_net10.0 | Ubuntu 24.04.5 LTS | X64 | .NET 10.0.15, NativeAOT | .NETCoreApp,Version=v10.0 | invariant | 65 ✓ · 5 —  
+Chroma Cloud, AWS us-east-1 · .NET 10 · x64 | cloud_aws-us-east-1 | Chroma Cloud, AWS us-east-1; the client on Microsoft Windows 10.0.26200 | X64 | .NET 10.0.15 | .NETCoreApp,Version=v10.0 | en-GB | 79 ✓ · 1 ⚠ · 2 —  
   
 ## Checks
 
@@ -257,7 +257,7 @@ Chroma Cloud, AWS us-east-1 · .NET 10 · x64 | cloud_aws-us-east-1 | Chroma Clo
 
   * ✓ the JSON of ranks and filters
 
-### embeddings from a generator (the builds for .NET 8 and .NET Framework)
+### embeddings from a generator (IEmbeddingGenerator of Microsoft.Extensions.AI)
 
   * ✓ add, update and upsert with documents only: the embeddings of the generator
   * ✓ query by text: the records of the query by its embedding

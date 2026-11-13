@@ -40,7 +40,7 @@ Program.cs
     foreach (var result in results)
         Console.WriteLine($"{result.Id}: {result.Document} ({result.Distance})");
 
-Tested on 13 November 2026 with ChromaDotNet.Client 2.20.0 on VecturaDB 1.0.0-preview.9.
+Tested on 13 November 2026 with ChromaDotNet.Client 2.21.0 on VecturaDB 1.0.0-preview.9.
 
 ## Without Docker
 

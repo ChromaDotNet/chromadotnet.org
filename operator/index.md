@@ -60,4 +60,4 @@ The published images of the worker services need CPUs with AVX-512. There is one
   * [A distributed Chroma](https://github.com/ChromaDotNet/ChromaDB.Operator#a-distributed-chroma), in the README: the fields, the conditions and the upgrades.
   * [Migrate from Chroma Cloud to self-hosted distributed Chroma on Kubernetes](https://chromadotnet.org/migrate-from-chroma-cloud-kubernetes/): the install, the copy of your collections from Chroma Cloud and the clients.
 
-Tried on AKS with the release v0.1.3: on 5 November 2026 with Postgres 17.6 and SeaweedFS 4.48, and on 14 November 2026 with Postgres 16 and MinIO. Not tried: AWS S3, a managed Postgres.
+Tried on AKS on 5 November 2026, with the release v0.1.3, Postgres 17.6 and SeaweedFS 4.48. Tried again on 14 November 2026, with v0.1.3 and then v0.1.4, Postgres 16 and MinIO. Not tried: AWS S3, a managed Postgres.

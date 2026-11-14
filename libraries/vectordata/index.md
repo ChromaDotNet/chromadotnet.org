@@ -6,7 +6,7 @@ Source: https://chromadotnet.org/libraries/vectordata/
 
 The Chroma provider for Microsoft.Extensions.VectorData, in the AI Community Toolkit of the .NET Foundation, built on ChromaDotNet.Client. Use it with Semantic Kernel, Agent Framework or any code written against the abstractions.
 
-  * Latest release **1.0.2-preview**
+  * Latest release **1.1.0-preview**
   * [NuGet](https://www.nuget.org/packages/CommunityToolkit.VectorData.Chroma)
   * [GitHub](https://github.com/CommunityToolkit/AI/tree/main/MEVD/src/Chroma)
   * [Documentation](https://github.com/CommunityToolkit/AI/blob/main/MEVD/src/Chroma/README.md)
@@ -50,7 +50,7 @@ Program.cs
         [VectorStoreVector(3)] public ReadOnlyMemory<float> Vector { get; set; }
     }
 
-Tested on 27 October 2026 with CommunityToolkit.VectorData.Chroma 1.0.2-preview on Chroma 1.5.9.
+Tested on 14 November 2026 with CommunityToolkit.VectorData.Chroma 1.1.0-preview on Chroma 1.5.9.
 
 With dependency injection, `AddChromaVectorStore` registers the vector store.
 

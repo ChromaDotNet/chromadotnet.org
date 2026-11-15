@@ -2,18 +2,18 @@ Source: https://chromadotnet.org/compatibility/
 
 # ChromaDotNet.Client conformance: Chroma single server and Chroma Cloud
 
-  * **Client:** ChromaDotNet.Client 2.21.0
+  * **Client:** ChromaDotNet.Client 2.22.0
   * **Chroma:** `chromadb/chroma:1.5.9`, a single server in Docker
-  * **Chroma Cloud:** AWS us-east-1, run on 2026-11-13 with the client 2.21.0 on .NET 10.0.15; every collection and database deleted at the end
+  * **Chroma Cloud:** AWS us-east-1, run on 2026-11-15 with the client 2.22.0 on .NET 10.0.15; every collection and database deleted at the end
   * **OpenTelemetry SDK:** 1.19.1; **ChromaDotNet.Testcontainers:** 0.1.7 (Testcontainers 4.15.0)
   * **Chroma image digest:** chromadb/chroma@sha256:1e0b73a187a28757c572acba508c46f48c9e8b0acaf5c20e6d95cdedce1acdf6
   * **Docker:** 29.7.2 (linux/amd64)
   * **.NET SDK:** 10.0.401
   * **Host:** Windows 10.0.26200, x86_64
-  * **Client package:** the test package built from the commit of the tag, bb6dd70; nuget.org has the same files, but for its signature: ChromaDotNet.Client nWedgJ0d4B8FmemQA6aREUiiMtV+o+vQ2v1SmfrAKW5Iqwx1QXVH0DSldqSVIJWZZeDcKSXy6+BTMb47ReaQwg==, ChromaDotNet.Client.DependencyInjection BfcIiS+u0w+aNwocxDs75B+LLmtEQq3PPbxr7sNWa/a3PAqiW4xv6fx3abTurTbPia2rGAPSEGs8idPgwuIi8w==; win_netcoreapp3.1, win_netcoreapp3.1_ja-JP, win_net5.0, win_net6.0, win_net6.0_ar-SA, win_net7.0 and linux_net6.0 ran again on the packages of nuget.org, the same files
+  * **Client package:** the test package built from the commit of the tag, e87a848; nuget.org has the same files, but for its signature: ChromaDotNet.Client eF9dUfCLWV633hDOdFYtzHcYJcqybbvGA6ar4zYC0YjEnmIkh1DcWdptm+PSyF3fOq6XX76ONWGbvnK3xQ/GHQ==, ChromaDotNet.Client.DependencyInjection pGQrUGXPOnuXDlzizm74R+MFCgWOUcgr4Emaa4LVZtAUskNG8JxT3D8Fpex5FUuT6wAmeWvCwTV9U4UGU7u7Fw==
   * **Arm64:** the Linux arm64 images of .NET, emulated by Docker on this x86-64 host
   * **Environments:** 31, 2182 checks run
-  * **Generated:** 2026-11-13 21:34 UTC
+  * **Generated:** 2026-11-15 21:18 UTC
 
 ✓ every check passed · ✗ a check failed · ⚠ passed, with a defect of the Chroma server noted below · — not on a single server: a feature of distributed Chroma, the one Chroma Cloud runs on, and the check verified that the client reports the error of the server as documented · on Chroma Cloud, — is what an API key cannot do, with the error the check verified · ¹ a note under the table · a blank cell: the row is not about that column (the quotas of Chroma Cloud on a single server; on Chroma Cloud, the checks with no server or with a local container)
 

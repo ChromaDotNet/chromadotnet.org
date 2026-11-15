@@ -6,7 +6,7 @@ Source: https://chromadotnet.org/libraries/client/
 
 A .NET client for Chroma and Chroma Cloud, tested with Chroma 0.4.10 to 1.5.9, with VecturaDB 1.0.0-preview.9, and with distributed Chroma, the one Chroma Cloud runs on, both on Chroma Cloud and on Kubernetes with ChromaDB.Operator 0.1.3. It covers collections, tenants and databases, records and nearest neighbor queries with filters, the Search API with hybrid BM25 search, conditional transactions, and OpenTelemetry traces and metrics.
 
-  * Latest release **2.21.0**
+  * Latest release **2.22.0**
   * [NuGet](https://www.nuget.org/packages/ChromaDotNet.Client)
   * [GitHub](https://github.com/ChromaDotNet/ChromaDB.Client)
   * [Documentation](https://github.com/ChromaDotNet/ChromaDB.Client#readme)
@@ -51,9 +51,28 @@ Program.cs
     foreach (var result in results)
         Console.WriteLine($"{result.Id}: {result.Document} ({result.Distance})");
 
-Tested on 13 November 2026 with ChromaDotNet.Client 2.21.0 on Chroma 1.5.9.
+Tested on 15 November 2026 with ChromaDotNet.Client 2.22.0 on Chroma 1.5.9.
 
 [Try it in your browser](https://codespaces.new/ChromaDotNet/ChromaDB.Client?quickstart=1): a GitHub Codespace with .NET and Chroma, then `dotnet run Samples/quickstart.cs`.
+
+## Backup and restore
+
+From 2.22.0, `ChromaDotNet.Client.Backup` saves the collections of a database into a zip file through the API of Chroma, writes them back into the same server or another one, and compares a file with a database. `ChromaDotNet.Client.Cli` is the command `chromadotnet`, with `backup`, `restore` and `verify`, as a .NET tool: it needs .NET 10 or later.
+
+`dotnet tool install -g ChromaDotNet.Client.Cli`
+    
+    
+    chromadotnet backup --url http://127.0.0.1:8000 --all --out backup.zip
+    chromadotnet restore --url http://127.0.0.1:8001 --in backup.zip
+    chromadotnet verify --url http://127.0.0.1:8001 --in backup.zip
+
+Each release also has the command as a file that runs without .NET, for Linux, macOS and Windows, and the image `ghcr.io/chromadotnet/chromadotnet` for Linux x64. The files for Linux with glibc need glibc 2.34 or later.
+
+**A server that takes writes during the backup:** the file can hold records of different moments. A record added during the backup can be there or not, and one changed can be there as it was before or after. The command says so and exits with 2. A stopped server, or one that takes no writes, gives a consistent copy.
+
+The file does not have what the API does not give: the id of a collection, its forks, its attached functions, the index itself, which the server builds again, and the settings of tenants and databases, the users and the keys.
+
+Tested with Chroma 1.5.9, VecturaDB 1.0.0-preview.9 and Chroma Cloud, also from each one into the others. Distributed Chroma installed by yourself: not tested. [Backup and restore](https://github.com/ChromaDotNet/ChromaDB.Client/blob/main/docs/backup.md).
 
 ## Documentation
 

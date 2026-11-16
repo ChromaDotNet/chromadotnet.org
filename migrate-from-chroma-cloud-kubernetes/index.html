@@ -240,7 +240,7 @@ spec:
 kubectl -n chroma get chroma chroma
 </code></pre>
 <p><code>version</code> is the commit of Chroma whose images run: the operator knows <code>52ce844</code> (chart 0.1.94) and <code>26e51e7</code> (chart 0.1.93). The operator migrates Postgres with a Job, then starts the components tier by tier, the frontend last. The Chroma is <code>Ready</code> when they all are. If Postgres or the bucket is wrong, the conditions <code>PostgresReady</code> and <code>ObjectStorageReady</code> say why.</p>
-<p>For a trial, the end-to-end tests of the operator have a Postgres and an S3 server in one file, <a href="https://github.com/ChromaDotNet/ChromaDB.Operator/blob/v0.1.4/tests/ChromaDotNet.Operator.E2E/distributed-deps.yaml">distributed-deps.yaml</a>. It creates the Secrets <code>chroma-postgres</code> and <code>chroma-storage</code> too, and overwrites those of the step above. Its data is in <code>emptyDir</code> volumes, so it is not for your data.</p>
+<p>For a trial, the end-to-end tests of the operator have a Postgres and an S3 server in one file, <a href="https://github.com/ChromaDotNet/ChromaDB.Operator/blob/v0.1.5/tests/ChromaDotNet.Operator.E2E/distributed-deps.yaml">distributed-deps.yaml</a>. It creates the Secrets <code>chroma-postgres</code> and <code>chroma-storage</code> too, and overwrites those of the step above. Its data is in <code>emptyDir</code> volumes, so it is not for your data.</p>
 <h2 id="3-reach-the-frontend">3. Reach the frontend</h2>
 <p>From the machine that runs the copy:</p>
 <pre tabindex="0"><code class="language-bash">kubectl -n chroma port-forward svc/rust-frontend-service 8000:8000

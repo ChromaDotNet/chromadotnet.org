@@ -67,7 +67,7 @@ The credentials go in two Secrets, in the namespace of the Chroma:
 
 `version` is the commit of Chroma whose images run: the operator knows `52ce844` (chart 0.1.94) and `26e51e7` (chart 0.1.93). The operator migrates Postgres with a Job, then starts the components tier by tier, the frontend last. The Chroma is `Ready` when they all are. If Postgres or the bucket is wrong, the conditions `PostgresReady` and `ObjectStorageReady` say why.
 
-For a trial, the end-to-end tests of the operator have a Postgres and an S3 server in one file, [distributed-deps.yaml](https://github.com/ChromaDotNet/ChromaDB.Operator/blob/v0.1.4/tests/ChromaDotNet.Operator.E2E/distributed-deps.yaml). It creates the Secrets `chroma-postgres` and `chroma-storage` too, and overwrites those of the step above. Its data is in `emptyDir` volumes, so it is not for your data.
+For a trial, the end-to-end tests of the operator have a Postgres and an S3 server in one file, [distributed-deps.yaml](https://github.com/ChromaDotNet/ChromaDB.Operator/blob/v0.1.5/tests/ChromaDotNet.Operator.E2E/distributed-deps.yaml). It creates the Secrets `chroma-postgres` and `chroma-storage` too, and overwrites those of the step above. Its data is in `emptyDir` volumes, so it is not for your data.
 
 ## 3\. Reach the frontend
 

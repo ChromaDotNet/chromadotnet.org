@@ -4,7 +4,7 @@ Source: https://chromadotnet.org/libraries/client/
 
 # ChromaDotNet.Client
 
-A .NET client for Chroma and Chroma Cloud, tested with Chroma 0.4.10 to 1.5.9, with VecturaDB 1.0.0-preview.9, and with distributed Chroma, the one Chroma Cloud runs on, both on Chroma Cloud and on Kubernetes with ChromaDB.Operator 0.1.3. It covers collections, tenants and databases, records and nearest neighbor queries with filters, the Search API with hybrid BM25 search, conditional transactions, and OpenTelemetry traces and metrics.
+A .NET client for Chroma and Chroma Cloud, tested with Chroma 0.4.10 to 1.5.9, with VecturaDB 1.0.0-preview.10.post1, and with distributed Chroma, the one Chroma Cloud runs on, both on Chroma Cloud and on Kubernetes. It covers collections, tenants and databases, records and nearest neighbor queries with filters, the Search API with hybrid BM25 search, conditional transactions, and OpenTelemetry traces and metrics.
 
   * Latest release **2.22.0**
   * [NuGet](https://www.nuget.org/packages/ChromaDotNet.Client)
@@ -72,7 +72,7 @@ Each release also has the command as a file that runs without .NET, for Linux, m
 
 The file does not have what the API does not give: the id of a collection, its forks, its attached functions, the index itself, which the server builds again, and the settings of tenants and databases, the users and the keys.
 
-Tested with Chroma 1.5.9, VecturaDB 1.0.0-preview.9 and Chroma Cloud, also from each one into the others. Distributed Chroma installed by yourself: not tested. [Backup and restore](https://github.com/ChromaDotNet/ChromaDB.Client/blob/main/docs/backup.md).
+Tested with Chroma 1.5.9, VecturaDB and Chroma Cloud, also from each one into the others: VecturaDB 1.0.0-preview.10.post1 into Chroma 1.5.9 and back, and Chroma Cloud into VecturaDB 1.0.0-preview.10.post1 and back, on 16 November 2026; Chroma Cloud into Chroma 1.5.9 and back on 15 November 2026. Distributed Chroma installed by yourself: not tested. [Backup and restore](https://github.com/ChromaDotNet/ChromaDB.Client/blob/main/docs/backup.md).
 
 ## Documentation
 

@@ -186,7 +186,7 @@ ul.docs li { margin: 8px 0; }
     <div class="wrap">
       <p class="crumb"><a href="../">Libraries</a></p>
       <h1 class="name">ChromaDotNet.<wbr>Client</h1>
-      <p class="lead">A .NET client for Chroma and Chroma Cloud, tested with Chroma 0.4.10 to 1.5.9, with VecturaDB 1.0.0-preview.9, and with distributed Chroma, the one Chroma Cloud runs on, both on Chroma Cloud and on Kubernetes with ChromaDB.Operator 0.1.3. It covers collections, tenants and databases, records and nearest neighbor queries with filters, the Search API with hybrid BM25 search, conditional transactions, and OpenTelemetry traces and metrics.</p>
+      <p class="lead">A .NET client for Chroma and Chroma Cloud, tested with Chroma 0.4.10 to 1.5.9, with VecturaDB 1.0.0-preview.10.post1, and with distributed Chroma, the one Chroma Cloud runs on, both on Chroma Cloud and on Kubernetes. It covers collections, tenants and databases, records and nearest neighbor queries with filters, the Search API with hybrid BM25 search, conditional transactions, and OpenTelemetry traces and metrics.</p>
       <ul class="facts"><li>Latest release <strong>2.22.0</strong></li><li><a href="https://www.nuget.org/packages/ChromaDotNet.Client">NuGet</a></li><li><a href="https://github.com/ChromaDotNet/ChromaDB.Client">GitHub</a></li><li><a href="https://github.com/ChromaDotNet/ChromaDB.Client#readme">Documentation</a></li><li><a href="https://github.com/ChromaDotNet/ChromaDB.Client/blob/main/docs/COMPATIBILITY.md">Tested versions</a></li><li><a href="https://www.bestpractices.dev/projects/15264">OpenSSF Best Practices: passing</a></li></ul>
     </div>
   </section>
@@ -254,7 +254,7 @@ chromadotnet verify --url http://127.0.0.1:8001 --in backup.zip</code></pre>
       <p>Each release also has the command as a file that runs without .NET, for Linux, macOS and Windows, and the image <code>ghcr.io/chromadotnet/chromadotnet</code> for Linux x64. The files for Linux with glibc need glibc 2.34 or later.</p>
       <p><strong>A server that takes writes during the backup:</strong> the file can hold records of different moments. A record added during the backup can be there or not, and one changed can be there as it was before or after. The command says so and exits with 2. A stopped server, or one that takes no writes, gives a consistent copy.</p>
       <p>The file does not have what the API does not give: the id of a collection, its forks, its attached functions, the index itself, which the server builds again, and the settings of tenants and databases, the users and the keys.</p>
-      <p class="note">Tested with Chroma 1.5.9, VecturaDB 1.0.0-preview.9 and Chroma Cloud, also from each one into the others. Distributed Chroma installed by yourself: not tested. <a href="https://github.com/ChromaDotNet/ChromaDB.Client/blob/main/docs/backup.md">Backup and restore</a>.</p>
+      <p class="note">Tested with Chroma 1.5.9, VecturaDB and Chroma Cloud, also from each one into the others: VecturaDB 1.0.0-preview.10.post1 into Chroma 1.5.9 and back, and Chroma Cloud into VecturaDB 1.0.0-preview.10.post1 and back, on 16 November 2026; Chroma Cloud into Chroma 1.5.9 and back on 15 November 2026. Distributed Chroma installed by yourself: not tested. <a href="https://github.com/ChromaDotNet/ChromaDB.Client/blob/main/docs/backup.md">Backup and restore</a>.</p>
     </div>
   </section>
 

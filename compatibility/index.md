@@ -2,19 +2,19 @@ Source: https://chromadotnet.org/compatibility/
 
 # ChromaDotNet.Client conformance: Chroma single server and Chroma Cloud
 
-  * **Client:** ChromaDotNet.Client 2.23.0
+  * **Client:** ChromaDotNet.Client 2.23.1
   * **Chroma:** `chromadb/chroma:1.5.9`, a single server in Docker
-  * **Chroma Cloud:** AWS us-east-1, run on 2026-11-20 with the client 2.23.0 on .NET 10.0.15; every collection and database deleted at the end
+  * **Chroma Cloud:** AWS us-east-1, run on 2026-11-26 with the client 2.23.1 on .NET 10.0.15; every collection and database deleted at the end
   * **OpenTelemetry SDK:** 1.19.1; **ChromaDotNet.Testcontainers:** 0.1.7 (Testcontainers 4.15.0)
   * **Chroma image digest:** chromadb/chroma@sha256:1e0b73a187a28757c572acba508c46f48c9e8b0acaf5c20e6d95cdedce1acdf6
   * **Docker:** 29.7.2 (linux/amd64)
   * **.NET SDK:** 10.0.401
   * **Host:** Windows 10.0.26200, x86_64
-  * **Client package:** the packages of nuget.org, built from the commit of the tag, 5fdba3c: ChromaDotNet.Client IX6B1u1yjeejQglc9JMCihTV+DQaWtVy7C2M8N7ydCS+2kGQwpNN7B1WISGiGiOkkoWXBN9mVGpSlE017eRXRA==, ChromaDotNet.Client.DependencyInjection ETcxHr5f2GS37sclFMRa3dk7HaTXrXToJabN02ywQKJzv/WkbUxFabDOjevJY/cYfYOZDeuei2gW66j4TRlT4w==
-  * **Scope:** the features the client had before 2.23.0; what 2.23.0 adds (redirects followed only to the same server, the body of an error read up to 64 KB, the MaxResponseSize option) is covered by the tests of the client, not by this bench
+  * **Client package:** the packages of nuget.org, built from the commit of the tag, 88bcbd5: ChromaDotNet.Client zTcou2yU4DpBFeS6/eDX9Zgg+0qj/x4O05XOA4OEdTiFHUpwt379I3qLQv8TGsmi0meZ7Fl+q7L1/yIkEduQMQ==, ChromaDotNet.Client.DependencyInjection y4wv2J5ZJ2J8dvVq6dppFFT1zm7zw72mg1mmSte7CFA/5abP+d8cLJ+K1NKwiuD4Fhafw+Kl2WgKSZasMltRLA==
+  * **Scope:** redirects followed only to the same server, the body of an error read up to 64 KB, the MaxResponseSize option, and the forwarding of IsExternalInit that lets a netstandard2.0 library set init properties on .NET 10 are covered by the tests of the client, not by this bench
   * **Arm64:** the Linux arm64 images of .NET, emulated by Docker on this x86-64 host
   * **Environments:** 31, 2182 checks run
-  * **Generated:** 2026-11-20 12:22 UTC
+  * **Generated:** 2026-11-26 17:41 UTC
 
 ✓ every check passed · ✗ a check failed · ⚠ passed, with a defect of the Chroma server noted below · — not on a single server: a feature of distributed Chroma, the one Chroma Cloud runs on, and the check verified that the client reports the error of the server as documented · on Chroma Cloud, — is what an API key cannot do, with the error the check verified · ¹ a note under the table · a blank cell: the row is not about that column (the quotas of Chroma Cloud on a single server; on Chroma Cloud, the checks with no server or with a local container)
 
